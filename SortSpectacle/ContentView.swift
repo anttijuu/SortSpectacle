@@ -20,7 +20,7 @@ struct NumbersShape : Shape {
 
 struct ContentView: View {
    
-   private var numbers = NumberCollection(range: 100)
+   private var numbers = NumberCollection(range: 0...100)
    
     var body: some View {
       VStack {

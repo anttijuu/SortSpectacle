@@ -12,14 +12,16 @@ import XCTest
 class SortSpectacleCollectionTests: XCTestCase {
    
    private var numbers : NumberCollection!
-   private var range = 0
-   private var count = 0
-   
+   private var range = 0...10
+   private var count = 10
    
    override func setUp() {
       super.setUp()
-      range = Int.random(in: 2...1000)
-      count = Int.random(in: 2...5000)
+      range = Int.random(in: -1000...0)...Int.random(in: 0...1000)
+      if range.isEmpty {
+         range = -10...10
+      }
+      count = Int.random(in: 2...1000)
       numbers = NumberCollection(range: range)
       numbers.generateNumbers(count: count)
    }
@@ -28,22 +30,33 @@ class SortSpectacleCollectionTests: XCTestCase {
       numbers = nil
    }
    
-   func test1EmptyCollection() {
+   func testEmptyCollection() {
       numbers.clear()
       XCTAssertEqual(numbers.count(), 0)
+      XCTAssertNil(numbers.max())
+      XCTAssertNil(numbers.min())
    }
    
    func testNumbersSetup() {
       XCTAssertEqual(numbers.count(), count)
-      let maxValue = numbers.max()
-      XCTAssertLessThan(maxValue, range+1)
+      XCTAssertNotNil(numbers.max())
+      XCTAssertNotNil(numbers.min())
+      if let maxValue = numbers.max() {
+         XCTAssertLessThan(maxValue, range.upperBound+1)
+      }
+      if let minValue = numbers.min() {
+         XCTAssertGreaterThan(minValue, range.lowerBound-1)
+      }
+      let max = numbers.max()!
+      let min = numbers.min()!
+      XCTAssertLessThanOrEqual(min, max)
    }
    
    func testSwappingValues() {
-      let randomIndex1 = Int.random(in: 0...numbers.count())
+      let randomIndex1 = Int.random(in: 0..<numbers.count())
       var randomIndex2 = 0
       repeat {
-         randomIndex2 = Int.random(in: 0...numbers.count())
+         randomIndex2 = Int.random(in: 0..<numbers.count())
       } while randomIndex1 == randomIndex2
       
       let value1 = numbers.number(index: randomIndex1)
