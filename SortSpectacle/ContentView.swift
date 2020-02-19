@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct BackgroundShape : Shape {
+struct NumbersShape : Shape {
    func path(in rect: CGRect) -> Path {
       var path = Path()
       path.addRect(rect)
@@ -23,8 +23,13 @@ struct ContentView: View {
    private var numbers = NumberCollection(range: 100)
    
     var body: some View {
-      BackgroundShape()
-         .stroke()
+      VStack {
+         Text("Sort Spectacle")
+            .font(.largeTitle)
+         Text("<sort method here>")
+         NumbersShape()
+            .stroke()
+      }
     }
 }
 
