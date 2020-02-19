@@ -66,6 +66,14 @@ class SortSpectacleCollectionTests: XCTestCase {
       XCTAssertEqual(numbers.number(index: randomIndex1), value2)
    }
    
+   func testCopying() {
+      let copy : NumberCollection = numbers.copy() as! NumberCollection
+      for _ in 1...5 {
+         let random = Int.random(in: 0..<numbers.count())
+         XCTAssertEqual(copy.number(index: random), numbers.number(index: random))
+      }
+   }
+   
    func testPerformanceExample() {
       // This is an example of a performance test case.
       self.measure {
