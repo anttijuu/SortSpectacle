@@ -25,7 +25,7 @@ import Foundation
  - Version:
    0.1.0
  */
-class NumberCollection {
+class NumberCollection : NSCopying {
 
    var numberRange = 0...50
    var numbers : [Int] = []
@@ -37,6 +37,13 @@ class NumberCollection {
    init(range : ClosedRange<Int>) {
       precondition(!range.isEmpty)
       numberRange = range
+   }
+   
+   //MARK: NSCopying
+   func copy(with zone: NSZone? = nil) -> Any {
+      let prototype = NumberCollection(range: numberRange)
+      prototype.numbers = numbers
+      return prototype
    }
    
    /**
