@@ -67,10 +67,13 @@ class SortSpectacleCollectionTests: XCTestCase {
    }
    
    func testCopying() {
-      let copy : NumberCollection = numbers.copy() as! NumberCollection
-      for _ in 1...5 {
+      var copy : NumberCollection? = nil
+      self.measure {
+         copy = numbers.copy() as? NumberCollection
+      }
+      for _ in 1...copy!.count() / 5 {
          let random = Int.random(in: 0..<numbers.count())
-         XCTAssertEqual(copy.number(index: random), numbers.number(index: random))
+         XCTAssertEqual(copy!.number(index: random), numbers.number(index: random))
       }
    }
    
@@ -78,6 +81,7 @@ class SortSpectacleCollectionTests: XCTestCase {
       // This is an example of a performance test case.
       self.measure {
          _ = numbers.max()
+         _ = numbers.min()
       }
    }
    
