@@ -19,11 +19,14 @@ import Foundation
  var numbers = NumberCollection(range: -50...50)
  numbers.generateNumbers(count: 10)
  ```
+ NumberCollection conforms to NSCopying protocol, making the object clonable a la **Prototype** design pattern.
  
  - Author:
    Antti Juustila
  - Version:
    0.1.0
+ - Copyright:
+   © 2020 Antti Juustila, all rights reserved.
  */
 class NumberCollection : NSCopying {
 
@@ -32,6 +35,7 @@ class NumberCollection : NSCopying {
    
    /**
     Initializes the number collection to handle integer values between the range provided.
+    - Important: Range must not be empty. Empty ranges will terminate the program immediately.
     - parameter range: The range of values the integers will have in the collection, from the range.
     */
    init(range : ClosedRange<Int>) {
@@ -48,6 +52,7 @@ class NumberCollection : NSCopying {
    
    /**
     Fills the collection with random integers from the range specified when the collection was initialized.
+    - Important: Number count must be 2 or larger. Otherwise the program will be terminated.
      - parameter count: The count of random numbers to add to the collection.
     */
    func generateNumbers(count : Int) -> Void {
@@ -76,6 +81,7 @@ class NumberCollection : NSCopying {
    
    /**
     Query the value of a number in the specified location in the container.
+    If index is out of range of the container, this will terminate the program immediately.
      - parameter index: The location index of the number to query.
      - returns: The value of the number in the index.
     */
@@ -119,7 +125,8 @@ class NumberCollection : NSCopying {
    }
 
    /**
-    Swaps the values in the specified indexes.
+    Swaps the values in the specified indexes. If any of the indexes is out of range for the
+    collection or the indexes are equal, this will terminate the program immediately.
     - parameters:
        - index1 : The index of the first number to swap
        - index2 : The index of the second number to swap.
