@@ -11,8 +11,7 @@ import Foundation
 protocol SortMethod {
    
    init(array : inout [Int])
-   func start() -> Void
-   func stop() -> Void
+   func getName() -> String
    func nextStep() -> Bool
    
 }

@@ -9,15 +9,22 @@
 import SwiftUI
 
 struct NumbersShape : Shape {
-   private var array : [Int]!
+   private var array : [Int]
    private var maxAbsValue = 1
    private var minValue = 0
    
-   init(sourceArray : [Int]) {
-      array = sourceArray
-      if (array.count > 2) {
-         maxAbsValue = abs(array.max()!) > abs(array.min()!) ? array.max()! : array.min()!
-         minValue = array.min()!
+   init(sourceArray : [Int]?) {
+      if let arr = sourceArray {
+         print("Init NumbersShape with \(arr.count) numbers.")
+         array = arr
+         if array.count > 2 {
+            maxAbsValue = abs(array.max()!) > abs(array.min()!) ? array.max()! : array.min()!
+            minValue = array.min()!
+            print("NumbersShape max and min values: \(maxAbsValue) \(minValue).")
+         }
+      } else {
+         print("NumbersShape with empty array")
+         array = [Int]()
       }
    }
    
@@ -39,6 +46,7 @@ struct NumbersShape : Shape {
       path.addLine(to: CGPoint(x: xOrigin, y: rect.origin.y+rect.height))
       var yOrigin = rect.origin.y+2
       var xTarget = xOrigin
+      print("Drawing path for \(array.count) numbers...")
       for number in array {
          path.move(to: CGPoint(x: xOrigin, y: yOrigin))
          xTarget = CGFloat(number) * pixelsPerLineUnit
@@ -51,39 +59,28 @@ struct NumbersShape : Shape {
 
 struct ContentView: View {
    
-   @State private var numbers = [Int]()
-   @State private var sorter : SortMethod?
-   
-   init() {
-//      numbers = [Int]()
-      numbers.prepare(range: -150...150, count: 200)
-      sorter = BubbleSort(array: &numbers)
-   }
-   
-   mutating func toggleSortOnOff() {
-      if let worker = sorter {
-         worker.stop()
-      } else {
-         sorter?.start()
-      }
+   @ObservedObject private var sortEngine = SortCoordinator()
+      
+   var tap: some Gesture {
+      TapGesture(count: 1)
+         .onEnded { _ in
+            if self.sortEngine.isRunning() {
+               print("Stopped sorter")
+               self.sortEngine.stop()
+            } else {
+               print("Starting sorter")
+               self.sortEngine.start()
+            }}
    }
    
    var body: some View {
-      let _ = TapGesture()
-         .onEnded { _ in
-            if let worker = self.sorter {
-               worker.stop()
-            } else {
-               self.sorter = BubbleSort(array: &self.numbers)
-               self.sorter?.start()
-            }
-      }
       
       return VStack {
          Text("Sort Spectacle")
             .font(.largeTitle)
+            .gesture(tap)
          Text("<sort method here>")
-         NumbersShape(sourceArray: numbers)
+         NumbersShape(sourceArray: sortEngine.getArray())
             .stroke()
       }
    }

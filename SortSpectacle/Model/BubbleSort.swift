@@ -7,44 +7,31 @@
 //
 
 import Foundation
+import Combine
 
-class BubbleSort : SortMethod {
-  
-   private var innerIndex : Int
-   private var outerIndex : Int
+class BubbleSort : SortMethod {   
+   
+   var innerIndex : Int
+   var outerIndex : Int
+   var array : [Int]
    private let size : Int
-   private var array : [Int]!
    private var done : Bool
    private var swappedInInnerLoop : Bool
-   private var timer : Timer?
+   
+   func getName() -> String {
+      return "BubbleSort"
+   }
    
    required init(array : inout [Int]) {
       self.array = array
-      size = array.count
       innerIndex = 0;
       outerIndex = 0;
+      size = array.count
       done = false
       swappedInInnerLoop = false
+      self.array.shuffle()
    }
-   
-   func start() -> Void {
-      timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
-   }
-
-   func stop() -> Void {
-      if let clock = timer {
-         clock.invalidate()
-      }
-   }
-   
-   @objc func fireTimer() {
-       print("Timer fired!")
-       if nextStep() {
-          timer!.invalidate()
-       }
-   }
-   
-
+      
    func nextStep() -> Bool {
       if done {
          return true
@@ -68,21 +55,26 @@ class BubbleSort : SortMethod {
              break;
         }
        */
+      //TODO: loop until you find something to swap, that is one step (I guess?)
       if array[innerIndex] > array[innerIndex+1] {
+         print(" >> [\(outerIndex),\(innerIndex)] Swapped \(array[innerIndex]) with \(array[innerIndex+1])")
          array.swapAt(innerIndex, innerIndex+1)
          swappedInInnerLoop = true
       }
       innerIndex += 1
       if innerIndex >= size-outerIndex-1 {
          innerIndex = 0
-         swappedInInnerLoop = false
          outerIndex += 1
-         if outerIndex >= size - 1 || !swappedInInnerLoop {
+         if outerIndex >= size - 1 {
             done = true
+            print(array)
          }
       }
       return done
    }
    
+   func getArray() -> [Int] {
+      return array
+   }
    
 }

@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		310D16AD2404157C00EB1863 /* SortCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D16AC2404157C00EB1863 /* SortCoordinator.swift */; };
+		310D16AE2404157C00EB1863 /* SortCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D16AC2404157C00EB1863 /* SortCoordinator.swift */; };
+		310D16AF2404157C00EB1863 /* SortCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D16AC2404157C00EB1863 /* SortCoordinator.swift */; };
+		310D16B02404158400EB1863 /* SortMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BFEF2D2403D9310016690A /* SortMethod.swift */; };
+		310D16B12404158400EB1863 /* SortMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BFEF2D2403D9310016690A /* SortMethod.swift */; };
+		310D16B22404158A00EB1863 /* BubbleSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BFEF2F2403DA210016690A /* BubbleSort.swift */; };
+		310D16B32404158A00EB1863 /* BubbleSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BFEF2F2403DA210016690A /* BubbleSort.swift */; };
 		86276FED23FD1CD600E339EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86276FEC23FD1CD600E339EC /* AppDelegate.swift */; };
 		86276FEF23FD1CD600E339EC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86276FEE23FD1CD600E339EC /* SceneDelegate.swift */; };
 		86276FF123FD1CD600E339EC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86276FF023FD1CD600E339EC /* ContentView.swift */; };
@@ -40,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		310D16AC2404157C00EB1863 /* SortCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCoordinator.swift; sourceTree = "<group>"; };
 		86276FE923FD1CD600E339EC /* SortSpectacle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SortSpectacle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86276FEC23FD1CD600E339EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86276FEE23FD1CD600E339EC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -151,6 +159,7 @@
 				8627701D23FD201F00E339EC /* NumberCollection.swift */,
 				86BFEF2D2403D9310016690A /* SortMethod.swift */,
 				86BFEF2F2403DA210016690A /* BubbleSort.swift */,
+				310D16AC2404157C00EB1863 /* SortCoordinator.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -289,6 +298,7 @@
 				86276FED23FD1CD600E339EC /* AppDelegate.swift in Sources */,
 				86276FEF23FD1CD600E339EC /* SceneDelegate.swift in Sources */,
 				86BFEF2E2403D9310016690A /* SortMethod.swift in Sources */,
+				310D16AD2404157C00EB1863 /* SortCoordinator.swift in Sources */,
 				8627701E23FD201F00E339EC /* NumberCollection.swift in Sources */,
 				86276FF123FD1CD600E339EC /* ContentView.swift in Sources */,
 				86BFEF302403DA210016690A /* BubbleSort.swift in Sources */,
@@ -299,6 +309,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				310D16B02404158400EB1863 /* SortMethod.swift in Sources */,
+				310D16AE2404157C00EB1863 /* SortCoordinator.swift in Sources */,
+				310D16B22404158A00EB1863 /* BubbleSort.swift in Sources */,
 				8627701F23FD201F00E339EC /* NumberCollection.swift in Sources */,
 				8627700423FD1CD700E339EC /* SortSpectacleTests.swift in Sources */,
 			);
@@ -308,6 +321,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				310D16B12404158400EB1863 /* SortMethod.swift in Sources */,
+				310D16AF2404157C00EB1863 /* SortCoordinator.swift in Sources */,
+				310D16B32404158A00EB1863 /* BubbleSort.swift in Sources */,
 				8627702023FD201F00E339EC /* NumberCollection.swift in Sources */,
 				8627700F23FD1CD700E339EC /* SortSpectacleUITests.swift in Sources */,
 			);
