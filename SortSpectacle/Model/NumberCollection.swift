@@ -9,139 +9,56 @@
 import Foundation
 
 /**
- NumberCollection class is a wrapper around a collection of integers. It helps
- easy creation of number arrays for sorting them step by step, using different SortAlgorithms.
- 
- A number collection has a certain *count* of numbers from a certain value *range*.
- For example, if the range is from -50...50 and count is 10, the collection has ten numbers having values
- between -50 to 50. To create such a NumberCollection would happen like this:
- ```
- var numbers = NumberCollection(range: -50...50)
- numbers.generateNumbers(count: 10)
- ```
- NumberCollection conforms to NSCopying protocol, making the object clonable a la **Prototype** design pattern.
+ Declare an extension to Int array to be able to easily prepare an array either
+ - with integers from a specified range and count of numbers, or
+ - with sequence of integers from 1 to count of numbers.
  
  - Author:
    Antti Juustila
  - Version:
-   0.1.0
+   0.2.0
  - Copyright:
    © 2020 Antti Juustila, all rights reserved.
  */
-class NumberCollection : NSCopying {
-
-   var numberRange = 0...50
-   var numbers : [Int] = []
+extension Array where Element == Int {
    
    /**
-    Initializes the number collection to handle integer values between the range provided.
-    - Precondition: Range must not be empty. Empty range parameter will terminate the program immediately.
-    - parameter range: The range of values the integers will have in the collection, from the range.
+    Prepare an array with a count of random numbers from a specified range.
+    - parameter range: The range of values the array is holding, e.g. -10..-10.
+    - parameter count: The count of numbers to generate to the array, randomly.
     */
-   init(range : ClosedRange<Int>) {
+   mutating func prepare(range : ClosedRange<Int>, count : Int) {
       precondition(!range.isEmpty)
-      numberRange = range
-   }
-   
-   //MARK: NSCopying
-   func copy(with zone: NSZone? = nil) -> Any {
-      let prototype = NumberCollection(range: numberRange)
-      prototype.numbers = numbers
-      return prototype
-   }
-   
-   /**
-    Fills the collection with random integers from the range specified when the collection was initialized.
-     - Precondition: Number count must be 2 or larger. Otherwise the program will be terminated.
-     - parameter count: The count of random numbers to add to the collection.
-    */
-   func generateNumbers(count : Int) -> Void {
-      precondition(count > 1)
-      numbers = []
-      numbers.reserveCapacity(count)
+      removeAll()
+      reserveCapacity(count)
       for _ in 0..<count {
-         numbers.append(Int.random(in: numberRange))
+         append(Int.random(in: range))
       }
    }
    
    /**
-    Empties the number container.
+    Prepare an array from a specified range sequentially.
+    - parameter range: The range of values the array is holding, e.g. -10..-10.
     */
-   func clear() -> Void {
-      numbers = []
+   mutating func prepare(range : ClosedRange<Int>) {
+      precondition(!range.isEmpty)
+      removeAll()
+      reserveCapacity(range.count)
+      for number in range {
+         append(number)
+      }
    }
    
    /**
-    Queries the count of numbers the container has.
-    - returns: The number of integers in the container.
+    Prepare an array of numbers from 1 to `count` sequentially.
+    - parameter count: The count of numbers to generate.
     */
-   func count() -> Int {
-      numbers.count
+   mutating func prepare(count : Int) {
+      removeAll()
+      reserveCapacity(count)
+      for number in 1...count {
+         append(number)
+      }
    }
    
-   /**
-    Query the value of a number in the specified location in the container.
-     - Precondition: If index is out of range of the container, this will terminate the program immediately.
-     - parameter index: The location index of the number to query.
-     - returns: The value of the number in the index.
-    */
-   func number(index : Int) -> Int {
-      precondition(index >= 0 && index < count())
-      return numbers[index]
-   }
-   
-   /**
-    Get the largest value stored in the collection.
-    - returns: The largest number found, nil if collection is empty.
-    */
-   func max() -> Int? {
-      if numbers.isEmpty {
-         return nil
-      }
-      var largest = numberRange.min()!
-      for number in numbers {
-         if number > largest {
-            largest = number
-         }
-      }
-      return largest
-   }
-
-   /**
-    Get the smallest value stored in the collection.
-    - returns: The smallest number found, zero if collection is empty.
-    */
-   func min() -> Int? {
-      if numbers.isEmpty {
-         return nil
-      }
-      var smallest = numberRange.max()!
-      for number in numbers {
-         if number < smallest {
-            smallest = number
-         }
-      }
-      return smallest
-   }
-
-   /**
-    Swaps the values in the specified indexes.
-    - Precondition: If any of the indexes is out of range for the collection or the indexes are equal, this will terminate the program immediately.
-    - parameters:
-       - index1 : The index of the first number to swap
-       - index2 : The index of the second number to swap.
-    */
-   func swap(from index1 : Int, to index2 : Int) -> Void {
-      precondition(index1 >= 0 && index1 < count() && index2 >= 0 && index2 < count() && index1 != index2)
-      let temp = numbers[index1]
-      numbers[index1] = numbers[index2]
-      numbers[index2] = temp
-   }
-   
-   /**
-    Shuffles the values in the collection to a random order.
-    */
-   func shuffle() -> Void {
-      numbers.shuffle()
-   }
 }
