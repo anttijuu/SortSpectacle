@@ -14,9 +14,12 @@ Another view for setting
 
 Also, more functionality
 
+1. Show sorting algorithm name on screen
+1. Different timings for different events
+1. Make a ShuffleMethod for shuffling the numbers with animation?
 1. More sorting algorithms
 1. Better visuals, like line width, highlighting the numbers compared just now
-1. Sounds
+1. Sounds, generated from sort status data.
 1. Adjusting speed, depending on array size and animations
 
 ## License

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Combine
 
 class BubbleSort : SortMethod {   
    
@@ -41,7 +40,6 @@ class BubbleSort : SortMethod {
       }
       //TODO: loop until you find something to swap, that is one step (I guess?)
       if array[innerIndex] > array[innerIndex+1] {
-         //print(" >> [\(outerIndex),\(innerIndex)] Swapped \(array[innerIndex]) with \(array[innerIndex+1])")
          array.swapAt(innerIndex, innerIndex+1)
          swappedInInnerLoop = true
       }
@@ -51,7 +49,6 @@ class BubbleSort : SortMethod {
          outerIndex += 1
          if outerIndex >= size - 1 {
             done = true
-            //print(array)
          }
       }
       return done
