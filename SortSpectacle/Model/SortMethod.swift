@@ -8,9 +8,12 @@
 
 import Foundation
 
+/**
+ A common protocol for all sorting methods.
+ */
 protocol SortMethod {
    
-   init(/*array : inout [Int]*/)
+   init()
    func getName() -> String
    func nextStep(_ array : inout [Int]) -> Bool
    
