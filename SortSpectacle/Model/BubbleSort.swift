@@ -13,8 +13,8 @@ class BubbleSort : SortMethod {
    
    var innerIndex : Int
    var outerIndex : Int
-   var array : [Int]
-   private let size : Int
+   //var array : [Int];
+   //private let size : Int
    private var done : Bool
    private var swappedInInnerLoop : Bool
    
@@ -22,17 +22,18 @@ class BubbleSort : SortMethod {
       return "BubbleSort"
    }
    
-   required init(array : inout [Int]) {
-      self.array = array
+   required init(/*array : inout [Int]*/) {
+      //self.array = array
       innerIndex = 0;
       outerIndex = 0;
-      size = array.count
+//      size = array.count
       done = false
       swappedInInnerLoop = false
-      self.array.shuffle()
+      //self.array.shuffle()
    }
       
-   func nextStep() -> Bool {
+   func nextStep(_ array : inout [Int]) -> Bool {
+      let size = array.count
       if done {
          return true
       }
@@ -73,8 +74,8 @@ class BubbleSort : SortMethod {
       return done
    }
    
-   func getArray() -> [Int] {
-      return array
-   }
+//   func getArray() -> [Int] {
+//      return array
+//   }
    
 }

@@ -10,8 +10,8 @@ import Foundation
 
 protocol SortMethod {
    
-   init(array : inout [Int])
+   init(/*array : inout [Int]*/)
    func getName() -> String
-   func nextStep() -> Bool
+   func nextStep(_ array : inout [Int]) -> Bool
    
 }

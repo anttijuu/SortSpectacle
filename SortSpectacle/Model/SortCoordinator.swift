@@ -19,8 +19,8 @@ class SortCoordinator : ObservableObject {
 
    required init() {
       array = [Int]()
-      prepare(count: 20)
-      currentMethod = BubbleSort(array: &self.array)
+      prepare(range: -50...50)
+      currentMethod = BubbleSort()
       methodName = (currentMethod?.getName())!
    }
    
@@ -36,10 +36,14 @@ class SortCoordinator : ObservableObject {
       array.prepare(count: count)
    }
    
+   func prepare(range : ClosedRange<Int>) {
+      array.prepare(range: range)
+   }
+   
    func start() -> Void {
       running = true
       array.shuffle()
-      timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
+      timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in
          if self.nextStep() {
             print("=== Sorter finished")
             self.timer?.invalidate()
@@ -61,7 +65,7 @@ class SortCoordinator : ObservableObject {
    
    func nextStep() -> Bool {
       if let method = currentMethod {
-         if method.nextStep() {
+         if method.nextStep(&array) {
             print("Coordinator array: \(array ?? [])")
             return true
          }
