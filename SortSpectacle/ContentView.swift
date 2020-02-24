@@ -15,15 +15,16 @@ struct NumbersShape : Shape {
    
    init(sourceArray : [Int]?) {
       if let arr = sourceArray {
-         print("Init NumbersShape with \(arr.count) numbers.")
+         //print("Init NumbersShape with \(arr.count) numbers.")
          array = arr
          if array.count > 2 {
             maxAbsValue = abs(array.max()!) > abs(array.min()!) ? array.max()! : array.min()!
+            maxAbsValue = abs(maxAbsValue)
             minValue = array.min()!
-            print("NumbersShape max and min values: \(maxAbsValue) \(minValue).")
+            //print("NumbersShape max and min values: \(maxAbsValue) \(minValue).")
          }
       } else {
-         print("NumbersShape with empty array")
+         //print("NumbersShape with empty array")
          array = [Int]()
       }
    }
@@ -46,7 +47,7 @@ struct NumbersShape : Shape {
       path.addLine(to: CGPoint(x: xOrigin, y: rect.origin.y+rect.height))
       var yOrigin = rect.origin.y+2
       var xTarget = xOrigin
-      print("Drawing path for \(array.count) numbers...")
+      //print("Drawing path for \(array.count) numbers...")
       for number in array {
          path.move(to: CGPoint(x: xOrigin, y: yOrigin))
          xTarget = CGFloat(number) * pixelsPerLineUnit

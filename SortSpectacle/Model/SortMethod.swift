@@ -15,6 +15,7 @@ protocol SortMethod {
    
    init()
    func getName() -> String
+   func restart() -> Void 
    func nextStep(_ array : inout [Int]) -> Bool
    
 }
