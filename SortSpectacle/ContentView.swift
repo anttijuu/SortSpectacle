@@ -14,7 +14,6 @@ struct NumbersShape : Shape {
    private var minValue = 0
    
    init(sourceArray : [Int]) {
-      precondition(sourceArray.count >= 2, "Array must have 2 or more integers.")
       array = sourceArray
       if (array.count > 2) {
          maxAbsValue = abs(array.max()!) > abs(array.min()!) ? array.max()! : array.min()!
@@ -25,7 +24,7 @@ struct NumbersShape : Shape {
    func path(in rect: CGRect) -> Path {
       var path = Path()
       path.addRect(rect)
-
+      
       var xOrigin = rect.origin.x
       if (minValue >= 0) {
          xOrigin += 2
@@ -52,15 +51,35 @@ struct NumbersShape : Shape {
 
 struct ContentView: View {
    
-   private var numbers : [Int]
+   @State private var numbers = [Int]()
+   @State private var sorter : SortMethod?
    
    init() {
-      numbers = [Int] ()
-      numbers.prepare(range: -150...150)
+//      numbers = [Int]()
+      numbers.prepare(range: -150...150, count: 200)
+      sorter = BubbleSort(array: &numbers)
+   }
+   
+   mutating func toggleSortOnOff() {
+      if let worker = sorter {
+         worker.stop()
+      } else {
+         sorter?.start()
+      }
    }
    
    var body: some View {
-      VStack {
+      let _ = TapGesture()
+         .onEnded { _ in
+            if let worker = self.sorter {
+               worker.stop()
+            } else {
+               self.sorter = BubbleSort(array: &self.numbers)
+               self.sorter?.start()
+            }
+      }
+      
+      return VStack {
          Text("Sort Spectacle")
             .font(.largeTitle)
          Text("<sort method here>")
