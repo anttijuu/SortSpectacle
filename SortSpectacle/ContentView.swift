@@ -61,7 +61,7 @@ struct NumbersShape : Shape {
 struct ContentView: View {
    
    @ObservedObject private var sortEngine = SortCoordinator()
-      
+   
    var tap: some Gesture {
       TapGesture(count: 1)
          .onEnded { _ in
@@ -71,16 +71,17 @@ struct ContentView: View {
             } else {
                print("Starting sorter")
                self.sortEngine.start()
-            }}
+            }
+      }
    }
    
    var body: some View {
       
       return VStack {
-         Text("Sort Spectacle")
+         Text("Sort it out")
             .font(.largeTitle)
             .gesture(tap)
-         Text("<sort method here>")
+         Text(sortEngine.getName())
          NumbersShape(sourceArray: sortEngine.getArray())
             .stroke()
       }

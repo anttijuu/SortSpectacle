@@ -28,7 +28,7 @@ class SortCoordinator : ObservableObject {
       if let method = currentMethod {
          return method.getName()
       }
-      return "Start sorting"
+      return "No sort method selected"
    }
 
    
@@ -45,9 +45,10 @@ class SortCoordinator : ObservableObject {
       array.shuffle()
       if let method = currentMethod {
          method.restart()
+         methodName = method.getName()
+         //TODO: Replace timer with GCD async queue, then implement quicksort
          timer = Timer.scheduledTimer(withTimeInterval: 0.001, repeats: true) { _ in
             if self.nextStep() {
-               //print("=== Sorter finished")
                self.timer?.invalidate()
                self.running = false
             }
@@ -69,7 +70,6 @@ class SortCoordinator : ObservableObject {
    func nextStep() -> Bool {
       if let method = currentMethod {
          if method.nextStep(&array) {
-            //print("Coordinator array: \(array ?? [])")
             return true
          }
       }
