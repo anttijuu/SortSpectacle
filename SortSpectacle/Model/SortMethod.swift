@@ -8,6 +8,11 @@
 
 import Foundation
 
+struct SwappedItems {
+   var first = -1
+   var second = -1
+}
+
 /**
  A common protocol for all sorting methods.
  */
@@ -16,6 +21,6 @@ protocol SortMethod {
    init()
    func getName() -> String
    func restart() -> Void 
-   func nextStep(_ array : inout [Int]) -> Bool
+   func nextStep(array : [Int], swappedItems : inout SwappedItems) -> Bool
    
 }

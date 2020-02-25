@@ -33,14 +33,16 @@ class BubbleSort : SortMethod {
       swappedInInnerLoop = false
    }
       
-   func nextStep(_ array : inout [Int]) -> Bool {
+   func nextStep(array : [Int], swappedItems : inout SwappedItems) -> Bool {
       let size = array.count
       if done {
          return true
       }
       //TODO: loop until you find something to swap, that is one step (I guess?)
       if array[innerIndex] > array[innerIndex+1] {
-         array.swapAt(innerIndex, innerIndex+1)
+         swappedItems.first = innerIndex
+         swappedItems.second = innerIndex+1
+         // array.swapAt(innerIndex, innerIndex+1)
          swappedInInnerLoop = true
       }
       innerIndex += 1
