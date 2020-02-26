@@ -79,7 +79,6 @@ class LampSort : SortMethod {
       
       switch state {
          case .repeatFirstPart:
-            print("In RepeatLoop start")
             low = lows.pop()!
             high = highs.pop()!
             
@@ -99,11 +98,9 @@ class LampSort : SortMethod {
             }
 
          case .innerForLoop:
-            print("In inner for loop")
             if array[innerForLoopIndex] < pivot {
                swappedItems.first = pivotIndex
                swappedItems.second = innerForLoopIndex
-               print("Swapped \(swappedItems.first) with \(swappedItems.second)")
                pivotIndex += 1;
             }
             innerForLoopIndex += 1
@@ -114,7 +111,6 @@ class LampSort : SortMethod {
          case .repeatSecondPart:
             swappedItems.first = pivotIndex
             swappedItems.second = high
-            print("Swapped \(swappedItems.first) with \(swappedItems.second)")
             
             // Create the next two intervals.
             lows.push(low)
@@ -127,7 +123,6 @@ class LampSort : SortMethod {
             if array[low] > array[high] {
                swappedItems.first = low
                swappedItems.second = high
-               print("Swapped \(swappedItems.first) with \(swappedItems.second)")
             }
             state = .repeatFirstPart
          

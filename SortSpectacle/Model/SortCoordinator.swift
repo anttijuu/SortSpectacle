@@ -13,27 +13,35 @@ class SortCoordinator : ObservableObject {
    @Published var array : [Int]!
    @Published var methodName = String("Start sorting")
    
-   private var currentMethod : SortMethod?
+   enum TimerIntervals : Double {
+      case waitingForNextSortMethod = 2.0
+      case waitingForNextSortStep = 0.001
+   }
+   
+   private var currentMethod : SortMethod? = nil
    private var timer : Timer?
+   private var timerInterval = TimerIntervals.waitingForNextSortMethod
    private var running = false
    
    private var swappedItems = SwappedItems(first: -1, second: -1)
-      
+   
+   private var currentMethodIndex = 0
+   private var sortingMethods = [SortMethod]()
+   
    required init() {
       array = [Int]()
       prepare(range: -150...150)
       array.shuffle()
-      currentMethod = LampSort(arraySize: array.count)
-      methodName = (currentMethod?.name)!
+      sortingMethods.append(BubbleSort(arraySize: array.count))
+      sortingMethods.append(LampSort(arraySize: array.count))
+      currentMethodIndex = 0
+      currentMethod = sortingMethods[currentMethodIndex]
+      methodName = (currentMethod!.name)
    }
    
    func getName() -> String {
-      if let method = currentMethod {
-         return method.name
-      }
-      return "No sort method selected"
+      return currentMethod!.name
    }
-   
    
    func prepare(count : Int) {
       array.prepare(count: count)
@@ -46,24 +54,30 @@ class SortCoordinator : ObservableObject {
    func start() -> Void {
       running = true
       array.shuffle()
-      if let method = currentMethod {
-         method.restart()
-         methodName = method.name
-         
-         print("Starting the sorting...")
-
-//         if let test = currentMethod as? LampSort {
-//            test.realAlgorithm(arrayCopy: array, swappedItems: &swappedItems)
-//         }
-         timer = Timer.scheduledTimer(withTimeInterval: 0.005, repeats: true) { _ in
-            if self.nextStep() {
+      currentMethod!.restart()
+      methodName = currentMethod!.name
+      
+      print("Starting the sorting...")
+      
+      timer = Timer.scheduledTimer(withTimeInterval: timerInterval.rawValue, repeats: true) { _ in
+         self.timerInterval = TimerIntervals.waitingForNextSortStep
+         if self.nextStep() {
+            if self.currentMethodIndex < self.sortingMethods.count - 1 {
+               self.currentMethodIndex += 1
+               self.currentMethod = self.sortingMethods[self.currentMethodIndex]
+               self.array.shuffle()
+               self.currentMethod?.restart()
+            } else {
                self.timer?.invalidate()
                self.running = false
-               print("nextStep said sorting is done")
+               self.currentMethodIndex = 0
+               self.currentMethod = self.sortingMethods[self.currentMethodIndex]
             }
+            self.methodName = self.currentMethod?.name ?? "No sort method selected"
+            self.timerInterval = TimerIntervals.waitingForNextSortMethod
          }
-         
       }
+      
    }
    
    func isRunning() -> Bool {
@@ -79,15 +93,13 @@ class SortCoordinator : ObservableObject {
    
    func nextStep() -> Bool {
       var returnValue = false
-      if let method = currentMethod {
-         returnValue = method.nextStep(array: array, swappedItems: &swappedItems)
-         if self.swappedItems.first >= 0 && self.swappedItems.second >= 0 {
-            self.array.swapAt(self.swappedItems.first, self.swappedItems.second)
-            self.swappedItems.first = -1
-            self.swappedItems.second = -1
-         }
-         
+      returnValue = currentMethod!.nextStep(array: array, swappedItems: &swappedItems)
+      if self.swappedItems.first >= 0 && self.swappedItems.second >= 0 {
+         self.array.swapAt(self.swappedItems.first, self.swappedItems.second)
+         self.swappedItems.first = -1
+         self.swappedItems.second = -1
       }
+      
       return returnValue
    }
    
