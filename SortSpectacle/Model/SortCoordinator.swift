@@ -14,13 +14,13 @@ class SortCoordinator : ObservableObject {
    @Published var methodName = String("Start sorting")
    
    enum TimerIntervals : Double {
-      case waitingForNextSortMethod = 2.0
+      case waitingForNextSortMethod = 1.0
       case waitingForNextSortStep = 0.001
    }
    
    private var currentMethod : SortMethod? = nil
    private var timer : Timer?
-   private var timerInterval = TimerIntervals.waitingForNextSortMethod
+   private var timerInterval = TimerIntervals.waitingForNextSortStep
    private var running = false
    
    private var swappedItems = SwappedItems(first: -1, second: -1)
@@ -36,7 +36,7 @@ class SortCoordinator : ObservableObject {
       sortingMethods.append(LampSort(arraySize: array.count))
       currentMethodIndex = 0
       currentMethod = sortingMethods[currentMethodIndex]
-      methodName = (currentMethod!.name)
+      methodName = "Next: \(currentMethod!.name)"
    }
    
    func getName() -> String {
@@ -55,7 +55,7 @@ class SortCoordinator : ObservableObject {
       running = true
       array.shuffle()
       currentMethod!.restart()
-      methodName = currentMethod!.name
+      methodName = "Now sorting with \(currentMethod!.name)"
       
       print("Starting the sorting...")
       
@@ -73,7 +73,8 @@ class SortCoordinator : ObservableObject {
                self.currentMethodIndex = 0
                self.currentMethod = self.sortingMethods[self.currentMethodIndex]
             }
-            self.methodName = self.currentMethod?.name ?? "No sort method selected"
+            let method = self.currentMethod?.name ?? "No method selected"
+            self.methodName = "Next: \(method)"
             self.timerInterval = TimerIntervals.waitingForNextSortMethod
          }
       }
@@ -99,7 +100,6 @@ class SortCoordinator : ObservableObject {
          self.swappedItems.first = -1
          self.swappedItems.second = -1
       }
-      
       return returnValue
    }
    
