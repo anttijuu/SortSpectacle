@@ -81,7 +81,7 @@ struct ContentView: View {
          Text("Sort it out")
             .font(.largeTitle)
             .gesture(tap)
-         Text(sortEngine.getName())
+         Text(sortEngine.methodName)
          NumbersShape(sourceArray: sortEngine.getArray())
             .stroke()
       }

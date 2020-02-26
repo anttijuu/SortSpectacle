@@ -67,15 +67,13 @@ class SortCoordinator : ObservableObject {
                self.currentMethod = self.sortingMethods[self.currentMethodIndex]
                self.array.shuffle()
                self.currentMethod?.restart()
+               let method = self.currentMethod?.name ?? "No method selected"
+               self.methodName = "Next: \(method)"
+               self.timerInterval = TimerIntervals.waitingForNextSortMethod
+               self.timer?.fire()
             } else {
-               self.timer?.invalidate()
-               self.running = false
-               self.currentMethodIndex = 0
-               self.currentMethod = self.sortingMethods[self.currentMethodIndex]
+               self.stop()
             }
-            let method = self.currentMethod?.name ?? "No method selected"
-            self.methodName = "Next: \(method)"
-            self.timerInterval = TimerIntervals.waitingForNextSortMethod
          }
       }
       
@@ -88,8 +86,12 @@ class SortCoordinator : ObservableObject {
    func stop() -> Void {
       if let clock = timer {
          clock.invalidate()
-         running = false
       }
+      running = false
+      self.currentMethodIndex = 0
+      self.currentMethod = self.sortingMethods[self.currentMethodIndex]
+      let method = self.currentMethod?.name ?? "No method selected"
+      self.methodName = "Next: \(method)"
    }
    
    func nextStep() -> Bool {
