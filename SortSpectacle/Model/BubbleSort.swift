@@ -10,31 +10,31 @@ import Foundation
 
 class BubbleSort : SortMethod {   
    
-   var innerIndex : Int
-   var outerIndex : Int
-   private var done : Bool
-   private var swappedInInnerLoop : Bool
-   
-   func getName() -> String {
-      return "BubbleSort"
+   let size : Int
+   var innerIndex : Int = 0
+   var outerIndex : Int = 0
+   private var done : Bool = false
+   private var swappedInInnerLoop : Bool = false
+
+   var name : String {
+      get {
+         "BubbleSort"
+      }
    }
    
-   required init() {
-      innerIndex = 0;
-      outerIndex = 0;
-      done = false
-      swappedInInnerLoop = false
+   required init(arraySize : Int) {
+      size = arraySize
+      self.restart()
    }
    
    func restart() -> Void {
       innerIndex = 0;
       outerIndex = 0;
-      done = false
+      done = size < 2 ? true : false
       swappedInInnerLoop = false
    }
       
-   func nextStep(array : [Int], swappedItems : inout SwappedItems) -> Bool {
-      let size = array.count
+   func nextStep(array: [Int], swappedItems : inout SwappedItems) -> Bool {
       if done {
          return true
       }

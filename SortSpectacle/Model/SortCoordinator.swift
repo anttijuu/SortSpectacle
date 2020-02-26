@@ -18,23 +18,18 @@ class SortCoordinator : ObservableObject {
    private var running = false
    
    private var swappedItems = SwappedItems(first: -1, second: -1)
-   
-   // Dispatch queues
-   let dispatchGroup = DispatchGroup()
-   let dispatchQueue = DispatchQueue(label: "com.juustila.antti.SortCoordinator", qos: .userInitiated, attributes: .concurrent)
-   let dispatchSemafore = DispatchSemaphore(value: 0)
-   
+      
    required init() {
       array = [Int]()
-      prepare(range: -10...10)
+      prepare(range: -150...150)
       array.shuffle()
-      currentMethod = BubbleSort()
-      methodName = (currentMethod?.getName())!
+      currentMethod = LampSort(arraySize: array.count)
+      methodName = (currentMethod?.name)!
    }
    
    func getName() -> String {
       if let method = currentMethod {
-         return method.getName()
+         return method.name
       }
       return "No sort method selected"
    }
@@ -53,18 +48,21 @@ class SortCoordinator : ObservableObject {
       array.shuffle()
       if let method = currentMethod {
          method.restart()
-         methodName = method.getName()
+         methodName = method.name
          
          print("Starting the sorting...")
-         
+
+//         if let test = currentMethod as? LampSort {
+//            test.realAlgorithm(arrayCopy: array, swappedItems: &swappedItems)
+//         }
          timer = Timer.scheduledTimer(withTimeInterval: 0.005, repeats: true) { _ in
             if self.nextStep() {
                self.timer?.invalidate()
                self.running = false
+               print("nextStep said sorting is done")
             }
          }
          
-         print("Not running anymore")
       }
    }
    
@@ -84,7 +82,6 @@ class SortCoordinator : ObservableObject {
       if let method = currentMethod {
          returnValue = method.nextStep(array: array, swappedItems: &swappedItems)
          if self.swappedItems.first >= 0 && self.swappedItems.second >= 0 {
-            print("Decided to swap items")
             self.array.swapAt(self.swappedItems.first, self.swappedItems.second)
             self.swappedItems.first = -1
             self.swappedItems.second = -1
@@ -101,6 +98,13 @@ class SortCoordinator : ObservableObject {
    
    
 }
+
+
+//// Dispatch queues
+//let dispatchGroup = DispatchGroup()
+//let dispatchQueue = DispatchQueue(label: "com.juustila.antti.SortCoordinator", qos: .userInitiated, attributes: .concurrent)
+//let dispatchSemafore = DispatchSemaphore(value: 0)
+
 
 // Sync works but does not update display while sorting
 //            dispatchQueue.sync {

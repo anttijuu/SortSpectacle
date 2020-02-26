@@ -18,9 +18,11 @@ struct SwappedItems {
  */
 protocol SortMethod {
    
-   init()
-   func getName() -> String
-   func restart() -> Void 
-   func nextStep(array : [Int], swappedItems : inout SwappedItems) -> Bool
+   init(arraySize : Int)
+
+   var name : String { get }
+
+   func restart() -> Void
+   func nextStep(array: [Int], swappedItems : inout SwappedItems) -> Bool
    
 }
