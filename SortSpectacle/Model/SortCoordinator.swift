@@ -27,6 +27,7 @@ class SortCoordinator : ObservableObject {
    required init() {
       array = [Int]()
       prepare(range: -10...10)
+      array.shuffle()
       currentMethod = BubbleSort()
       methodName = (currentMethod?.getName())!
    }
@@ -37,7 +38,7 @@ class SortCoordinator : ObservableObject {
       }
       return "No sort method selected"
    }
-
+   
    
    func prepare(count : Int) {
       array.prepare(count: count)
@@ -56,47 +57,14 @@ class SortCoordinator : ObservableObject {
          
          print("Starting the sorting...")
          
-         while running {
-            print("Still running...")
-            
-            dispatchQueue.asyncAfter(deadline: .now() + .milliseconds(10), qos: .userInitiated, flags: .barrier) {
-               print("Async task initiated")
-               self.dispatchGroup.enter()
-               
-               if self.nextStep() {
-                  self.running = false
-               }
-               self.dispatchGroup.leave()
-               self.dispatchSemafore.wait()
+         timer = Timer.scheduledTimer(withTimeInterval: 0.005, repeats: true) { _ in
+            if self.nextStep() {
+               self.timer?.invalidate()
+               self.running = false
             }
-            print("After asyncAfter")
-            self.dispatchSemafore.signal()
-            
-            dispatchGroup.notify(queue: dispatchQueue) {
-               print("At dispatchGroup.notify")
-               
-               print("At DispatchQueue.main.async block")
-               if self.swappedItems.first >= 0 && self.swappedItems.second >= 0 {
-                  print("Decided to swap items")
-                  DispatchQueue.main.async(execute: {
-                     print(">> Actually swapping here")
-                     self.array.swapAt(self.swappedItems.first, self.swappedItems.second)
-                  })
-                  self.swappedItems.first = -1
-                  self.swappedItems.second = -1
-               }
-               
-            }
-
-            
          }
-         //TODO: Replace timer with GCD async queue, then implement quicksort
-//         timer = Timer.scheduledTimer(withTimeInterval: 0.001, repeats: true) { _ in
-//            if self.nextStep() {
-//               self.timer?.invalidate()
-//               self.running = false
-//            }
-//         }
+         
+         print("Not running anymore")
       }
    }
    
@@ -112,12 +80,18 @@ class SortCoordinator : ObservableObject {
    }
    
    func nextStep() -> Bool {
+      var returnValue = false
       if let method = currentMethod {
-         if method.nextStep(array: array, swappedItems: &swappedItems) {
-            return true
+         returnValue = method.nextStep(array: array, swappedItems: &swappedItems)
+         if self.swappedItems.first >= 0 && self.swappedItems.second >= 0 {
+            print("Decided to swap items")
+            self.array.swapAt(self.swappedItems.first, self.swappedItems.second)
+            self.swappedItems.first = -1
+            self.swappedItems.second = -1
          }
+         
       }
-      return false
+      return returnValue
    }
    
    func getArray() -> [Int] {
@@ -127,3 +101,41 @@ class SortCoordinator : ObservableObject {
    
    
 }
+
+// Sync works but does not update display while sorting
+//            dispatchQueue.sync {
+//               if self.nextStep() {
+//                  self.running = false
+//               }
+//            }
+
+// Trying out async
+//            dispatchQueue.asyncAfter(deadline: .now() + .milliseconds(10), qos: .userInitiated, flags: .barrier) {
+//               print("Async task initiated")
+//               self.dispatchGroup.enter()
+//
+//               if self.nextStep() {
+//                  self.running = false
+//               }
+//               self.dispatchGroup.leave()
+//               self.dispatchSemafore.wait()
+//            }
+//            print("After asyncAfter")
+//            self.dispatchSemafore.signal()
+//
+//            dispatchGroup.notify(queue: dispatchQueue) {
+//               print("At dispatchGroup.notify")
+//
+//               print("At DispatchQueue.main.async block")
+//               if self.swappedItems.first >= 0 && self.swappedItems.second >= 0 {
+//                  print("Decided to swap items")
+//                  DispatchQueue.main.async(execute: {
+//                     print(">> Actually swapping here")
+//                     self.array.swapAt(self.swappedItems.first, self.swappedItems.second)
+//                  })
+//                  self.swappedItems.first = -1
+//                  self.swappedItems.second = -1
+//               }
+//
+//            }
+
