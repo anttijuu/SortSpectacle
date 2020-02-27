@@ -8,6 +8,7 @@
 
 import Foundation
 
+//TODO: Find the original post in stackoverflow and credit the person who provided this code.
 protocol Stackable {
    associatedtype Element
    func peek() -> Element?

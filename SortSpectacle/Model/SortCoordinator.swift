@@ -10,6 +10,11 @@ import Foundation
 
 class SortCoordinator : ObservableObject {
    
+   //TODO: Two arrays, one original and one for sorters to use -- all methods start from the same shuffled data.
+   // That way results are comparable between sorters.
+   //TODO: Each method has an implementation with "original" loops that is used in performance testing.
+   //TODO: After showing animations of methods, comes a summary view where results of performance are shown.
+   
    @Published var array : [Int]!
    @Published var methodName = String("Start sorting")
    
