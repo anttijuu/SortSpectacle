@@ -26,13 +26,12 @@ class LampSort : SortMethod {
    var pivot = 0
    
    enum State {
-      case repeatFirstPart
+      case outerLoopFirstPart
       case innerForLoop
-      case repeatSecondPart
-      case spanIsOne
+      case outerLoopSecondPart
       case finished
    }
-   var state = State.repeatFirstPart
+   var state = State.outerLoopFirstPart
    
    var inRepeatLoop = true
    var inInnerLoop = false
@@ -67,21 +66,21 @@ class LampSort : SortMethod {
       inRepeatLoop = true
       lows.push(0)
       highs.push(size-1)
-      state = .repeatFirstPart
+      state = .outerLoopFirstPart
    }
    
-   //TODO: sometimes leaves first two numbers in wrong order, 2, 1 > rest are ok. Find out why.
    func nextStep(array : [Int], swappedItems: inout SwappedItems) -> Bool {
       
-      if size < 2 || (state == .repeatFirstPart && lows.isEmpty) {
-         state = .finished
-         return true
-      }
       swappedItems.first = -1
       swappedItems.second = -1
 
+      if size < 2 || (state == .outerLoopFirstPart && lows.isEmpty) {
+         state = .finished
+         return true
+      }
+
       switch state {
-         case .repeatFirstPart:
+         case .outerLoopFirstPart:
             low = lows.pop()!
             high = highs.pop()!
             
@@ -97,21 +96,26 @@ class LampSort : SortMethod {
                innerForLoopIndex = low
                state = .innerForLoop
             } else if span == 1 {
-               state = .spanIsOne
+               if low != high && array[low] > array[high] {
+                  swappedItems.first = low
+                  swappedItems.second = high
+               }
             }
 
          case .innerForLoop:
             if array[innerForLoopIndex] < pivot {
-               swappedItems.first = pivotIndex
-               swappedItems.second = innerForLoopIndex
+               if pivotIndex != innerForLoopIndex {
+                  swappedItems.first = pivotIndex
+                  swappedItems.second = innerForLoopIndex
+               }
                pivotIndex += 1;
             }
             innerForLoopIndex += 1
             if innerForLoopIndex == high {
-               state = .repeatSecondPart
+               state = .outerLoopSecondPart
             }
          
-         case .repeatSecondPart:
+         case .outerLoopSecondPart:
             swappedItems.first = pivotIndex
             swappedItems.second = high
             
@@ -120,14 +124,7 @@ class LampSort : SortMethod {
             highs.push(max(low, pivotIndex - 1))
             lows.push(min(pivotIndex + 1, high))
             highs.push(high)
-            state = .repeatFirstPart
-         
-         case .spanIsOne:
-            if array[low] > array[high] {
-               swappedItems.first = low
-               swappedItems.second = high
-            }
-            state = .repeatFirstPart
+            state = .outerLoopFirstPart
          
          case .finished:
             return true
@@ -137,11 +134,20 @@ class LampSort : SortMethod {
    }
    
    
-   func realAlgorithm(arrayCopy : [Int], swappedItems : inout SwappedItems) -> Bool {
+   func realAlgorithm(arrayCopy : [Int]) -> Bool {
       var array = arrayCopy
       var low : Int
       var high : Int
       var span : Int
+      let size = array.count
+      
+      if size < 2 { return true }
+      
+      lows.push(0)
+      highs.push(size-1)
+
+      var swappedItems = SwappedItems(first: -1, second: -1)
+      
       repeat {
          low = lows.pop()!
          high = highs.pop()!
@@ -158,17 +164,21 @@ class LampSort : SortMethod {
             
             for index in low..<high {
                if array[index] < pivot {
-                  swappedItems.first = pivotIndex
-                  swappedItems.second = index
-                  array.swapAt(swappedItems.first, swappedItems.second)
+                  if pivotIndex != index {
+                     swappedItems.first = pivotIndex
+                     swappedItems.second = index
+                     array.swapAt(swappedItems.first, swappedItems.second)
+                  }
                   pivotIndex += 1;
                }
             }
             
             // Swap the pivot at hi in at the right index.
-            swappedItems.first = pivotIndex
-            swappedItems.second = high
-            array.swapAt(swappedItems.first, swappedItems.second)
+            if pivotIndex != high {
+               swappedItems.first = pivotIndex
+               swappedItems.second = high
+               array.swapAt(swappedItems.first, swappedItems.second)
+            }
             // Create the next two intervals.
             lows.push(low)
             highs.push(max(low, pivotIndex - 1))
@@ -176,15 +186,22 @@ class LampSort : SortMethod {
             highs.push(high)
             
          } else if span == 1 {
-            if array[low] > array[high] {
+            if low != high && array[low] > array[high] {
                swappedItems.first = low
                swappedItems.second = high
                array.swapAt(swappedItems.first, swappedItems.second)
             }
          }
-         
       } while !lows.isEmpty
-      print(array)
+      var index = 0
+      for number in array {
+         if index < array.count - 1 {
+            if number >= array[index+1] {
+               return false
+            }
+         }
+         index += 1
+      }
       return true
    }
    

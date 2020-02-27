@@ -85,14 +85,20 @@ class SortSpectacleCollectionTests: XCTestCase {
       self.measure {
          doSortTest(sortAlgorithm: lampSort)
       }
-      print(intArray)
       XCTAssertTrue(checkArrayIsSorted(), "Array was not sorted correctly")
    }
    
+//   func testLampSortReal() {
+//      intArray.prepare(count: 10)
+//      let lampSort = LampSort(arraySize: intArray.count)
+//      self.measure {
+//         intArray.shuffle()
+//         XCTAssertTrue(lampSort.realAlgorithm(arrayCopy: intArray), "Array was not sorted correctly")
+//      }
+//   }
+   
    func doSortTest(sortAlgorithm : SortMethod) {
-      var swappedItems = SwappedItems()
-      swappedItems.first = -1
-      swappedItems.second = -1
+      var swappedItems = SwappedItems(first: -1, second: -1)
       while true {
          let finished = sortAlgorithm.nextStep(array: intArray, swappedItems: &swappedItems)
          if (swappedItems.first >= 0 && swappedItems.second >= 0) {
