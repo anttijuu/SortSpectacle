@@ -7,6 +7,7 @@
 //
 
 import XCTest
+
 @testable import SortSpectacle
 
 class SortSpectacleCollectionTests: XCTestCase {
@@ -68,5 +69,46 @@ class SortSpectacleCollectionTests: XCTestCase {
       if let minValue = intArray.min() {
          XCTAssertEqual(minValue, 1)
       }
+   }
+
+   func testBubbleSort() {
+      let bubbleSort = BubbleSort(arraySize: intArray.count)
+      doSortTest(sortAlgorithm: bubbleSort)
+   }
+   
+   func testLampSort() {
+      let lampSort = LampSort(arraySize: intArray.count)
+      doSortTest(sortAlgorithm: lampSort)
+   }
+   
+   func doSortTest(sortAlgorithm : SortMethod) {
+      self.measure {
+         var swappedItems = SwappedItems()
+         swappedItems.first = -1
+         swappedItems.second = -1
+         while true {
+            let finished = sortAlgorithm.nextStep(array: intArray, swappedItems: &swappedItems)
+            intArray.swapAt(swappedItems.first, swappedItems.second)
+            if finished {
+               break
+            }
+         }
+         XCTAssertTrue(checkArrayIsSorted(), "Array was not sorted correctly")
+      }
+   }
+   
+   
+   
+   func checkArrayIsSorted() -> Bool {
+      var index = 0
+      for number in intArray {
+         if index < intArray.count - 1 {
+            if number >= intArray[index+1] {
+               return false
+            }
+         }
+         index += 1
+      }
+      return true
    }
 }
