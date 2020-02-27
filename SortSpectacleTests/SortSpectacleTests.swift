@@ -20,7 +20,7 @@ class SortSpectacleCollectionTests: XCTestCase {
       super.setUp()
       range = Int.random(in: -1000...0)...Int.random(in: 0...1000)
       if range.isEmpty {
-         range = -10...10
+         range = -100...100
       }
       count = Int.random(in: 2...1000)
    }
@@ -28,10 +28,9 @@ class SortSpectacleCollectionTests: XCTestCase {
    override func tearDown() {
       intArray.removeAll()
    }
-      
+   
    func testNumbersSetupRandomRange() {
       intArray.prepare(range: range, count: count)
-      print(intArray)
       XCTAssertEqual(intArray.count, count)
       XCTAssertNotNil(intArray.max())
       XCTAssertNotNil(intArray.min())
@@ -45,7 +44,6 @@ class SortSpectacleCollectionTests: XCTestCase {
    
    func testNumbersSetupLinearRange() {
       intArray.prepare(range: range)
-      print(intArray)
       XCTAssertEqual(intArray.count, range.count)
       XCTAssertNotNil(intArray.max())
       XCTAssertNotNil(intArray.min())
@@ -59,7 +57,6 @@ class SortSpectacleCollectionTests: XCTestCase {
    
    func testNumbersSetupLinearFromOne() {
       intArray.prepare(count : count)
-      print(intArray)
       XCTAssertEqual(intArray.count, count)
       XCTAssertNotNil(intArray.max())
       XCTAssertNotNil(intArray.min())
@@ -70,34 +67,42 @@ class SortSpectacleCollectionTests: XCTestCase {
          XCTAssertEqual(minValue, 1)
       }
    }
-
+   
    func testBubbleSort() {
+      intArray.prepare(count: 1000)
+      intArray.shuffle()
       let bubbleSort = BubbleSort(arraySize: intArray.count)
-      doSortTest(sortAlgorithm: bubbleSort)
+      self.measure {
+         doSortTest(sortAlgorithm: bubbleSort)
+      }
+      XCTAssertTrue(checkArrayIsSorted(), "Array was not sorted correctly")
    }
    
    func testLampSort() {
+      intArray.prepare(count: 1000)
+      intArray.shuffle()
       let lampSort = LampSort(arraySize: intArray.count)
-      doSortTest(sortAlgorithm: lampSort)
+      self.measure {
+         doSortTest(sortAlgorithm: lampSort)
+      }
+      print(intArray)
+      XCTAssertTrue(checkArrayIsSorted(), "Array was not sorted correctly")
    }
    
    func doSortTest(sortAlgorithm : SortMethod) {
-      self.measure {
-         var swappedItems = SwappedItems()
-         swappedItems.first = -1
-         swappedItems.second = -1
-         while true {
-            let finished = sortAlgorithm.nextStep(array: intArray, swappedItems: &swappedItems)
+      var swappedItems = SwappedItems()
+      swappedItems.first = -1
+      swappedItems.second = -1
+      while true {
+         let finished = sortAlgorithm.nextStep(array: intArray, swappedItems: &swappedItems)
+         if (swappedItems.first >= 0 && swappedItems.second >= 0) {
             intArray.swapAt(swappedItems.first, swappedItems.second)
-            if finished {
-               break
-            }
          }
-         XCTAssertTrue(checkArrayIsSorted(), "Array was not sorted correctly")
+         if finished {
+            break
+         }
       }
    }
-   
-   
    
    func checkArrayIsSorted() -> Bool {
       var index = 0

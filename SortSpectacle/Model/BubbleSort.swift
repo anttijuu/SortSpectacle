@@ -38,6 +38,8 @@ class BubbleSort : SortMethod {
       if done {
          return true
       }
+      swappedItems.first = -1
+      swappedItems.second = -1
       //TODO: loop until you find something to swap, that is one step (I guess?)
       if array[innerIndex] > array[innerIndex+1] {
          swappedItems.first = innerIndex

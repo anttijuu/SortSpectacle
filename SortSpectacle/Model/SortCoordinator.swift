@@ -99,8 +99,6 @@ class SortCoordinator : ObservableObject {
       returnValue = currentMethod!.nextStep(array: array, swappedItems: &swappedItems)
       if self.swappedItems.first >= 0 && self.swappedItems.second >= 0 {
          self.array.swapAt(self.swappedItems.first, self.swappedItems.second)
-         self.swappedItems.first = -1
-         self.swappedItems.second = -1
       }
       return returnValue
    }

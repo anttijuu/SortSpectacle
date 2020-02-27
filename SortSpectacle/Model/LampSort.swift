@@ -70,13 +70,16 @@ class LampSort : SortMethod {
       state = .repeatFirstPart
    }
    
+   //TODO: sometimes leaves first two numbers in wrong order, 2, 1 > rest are ok. Find out why.
    func nextStep(array : [Int], swappedItems: inout SwappedItems) -> Bool {
       
-      if state == .repeatFirstPart && lows.isEmpty {
+      if size < 2 || (state == .repeatFirstPart && lows.isEmpty) {
          state = .finished
          return true
       }
-      
+      swappedItems.first = -1
+      swappedItems.second = -1
+
       switch state {
          case .repeatFirstPart:
             low = lows.pop()!
