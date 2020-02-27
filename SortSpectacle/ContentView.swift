@@ -83,7 +83,7 @@ struct ContentView: View {
             .gesture(tap)
          Text(sortEngine.methodName)
          NumbersShape(sourceArray: sortEngine.getArray())
-            .stroke()
+            .stroke(Color.gray, style: StrokeStyle(lineWidth: 1, lineCap: .round, lineJoin: .round, miterLimit: 3))
       }
    }
 }
