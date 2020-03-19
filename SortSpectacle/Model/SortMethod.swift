@@ -59,6 +59,7 @@ class SortBase : SortMethod {
    @discardableResult func nextStep(array: [Int], swappedItems : inout SwappedItems) -> Bool {
       swappedItems.first = -1
       swappedItems.second = -1
+      swappedItems.operation = .swap
       return false
    }
    

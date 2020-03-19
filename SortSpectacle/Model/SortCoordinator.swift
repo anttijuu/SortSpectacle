@@ -21,8 +21,8 @@ class SortCoordinator : ObservableObject {
    var originalArray : [Int]!
    
    enum TimerIntervals : Double {
-      case waitingForNextSortMethod = 1.5
-      case waitingForNextSortStep = 0.001
+      case waitingForNextSortMethod = 1.0
+      case waitingForNextSortStep = 0.0005
    }
    
    private var currentMethod : SortMethod? = nil
@@ -37,7 +37,7 @@ class SortCoordinator : ObservableObject {
    
    required init() {
       originalArray = [Int]()
-      originalArray.prepare(range: -150...150)
+      originalArray.prepare(range: -170...170)
       originalArray.shuffle()
       array = originalArray
       sortingMethods.append(BubbleSort(arraySize: array.count))
@@ -62,22 +62,15 @@ class SortCoordinator : ObservableObject {
    
    func start() -> Void {
       running = true
-      array.shuffle()
+      array = originalArray
       currentMethod!.restart()
       methodName = "Now sorting with \(currentMethod!.name)"
             
+      timerInterval = TimerIntervals.waitingForNextSortStep
       timer = Timer.scheduledTimer(withTimeInterval: timerInterval.rawValue, repeats: true) { _ in
-         self.timerInterval = TimerIntervals.waitingForNextSortStep
          if self.nextStep() {
             if self.currentMethodIndex < self.sortingMethods.count - 1 {
-               self.currentMethodIndex += 1
-               self.currentMethod = self.sortingMethods[self.currentMethodIndex]
-               self.array = self.originalArray
-               self.currentMethod?.restart()
-               let method = self.currentMethod?.name ?? "No method selected"
-               self.methodName = "Next method: \(method)"
-               self.timerInterval = TimerIntervals.waitingForNextSortMethod
-               self.timer?.fire()
+               self.nextMethod()
             } else {
                self.stop()
             }
@@ -106,6 +99,22 @@ class SortCoordinator : ObservableObject {
       returnValue = currentMethod!.nextStep(array: array, swappedItems: &swappedItems)
       self.array.handleSortOperation(operation: swappedItems)
       return returnValue
+   }
+   
+   func nextMethod() -> Void {
+      if let clock = timer {
+         clock.invalidate()
+      }
+      self.currentMethodIndex += 1
+      self.currentMethod = self.sortingMethods[self.currentMethodIndex]
+      self.currentMethod?.restart()
+      let method = self.currentMethod?.name ?? "No method selected"
+      self.methodName = "Next method: \(method)"
+      timer = Timer.scheduledTimer(withTimeInterval: TimerIntervals.waitingForNextSortMethod.rawValue, repeats: false) { _ in
+         self.start()
+      }
+      
+
    }
    
    func getArray() -> [Int] {

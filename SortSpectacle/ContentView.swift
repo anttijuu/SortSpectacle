@@ -31,7 +31,7 @@ struct NumbersShape : Shape {
    
    func path(in rect: CGRect) -> Path {
       var path = Path()
-      path.addRect(rect)
+      // path.addRect(rect)
       
       lineWidth = rect.height / CGFloat(array.count)
       
@@ -45,8 +45,8 @@ struct NumbersShape : Shape {
       if (pixelsPerLineUnit <= 0) {
          pixelsPerLineUnit = 1;
       }
-      path.move(to: CGPoint(x: xOrigin, y: rect.origin.y))
-      path.addLine(to: CGPoint(x: xOrigin, y: rect.origin.y+rect.height))
+//      path.move(to: CGPoint(x: xOrigin, y: rect.origin.y))
+//      path.addLine(to: CGPoint(x: xOrigin, y: rect.origin.y+rect.height))
       var yOrigin = rect.origin.y+2
       var xTarget = xOrigin
       //print("Drawing path for \(array.count) numbers...")
@@ -84,7 +84,7 @@ struct ContentView: View {
             .font(.largeTitle)
          Text(sortEngine.methodName)
          NumbersShape(sourceArray: sortEngine.getArray())
-            .stroke(Color.red, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round, lineJoin: .round, miterLimit: 3))
+            .stroke(Color.red, style: StrokeStyle(lineWidth: lineWidth, lineCap: .butt, lineJoin: .miter, miterLimit: 1))
             .gesture(tap)
       }
    }
