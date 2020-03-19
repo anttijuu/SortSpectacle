@@ -14,6 +14,9 @@
 		310D16B12404158400EB1863 /* SortMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BFEF2D2403D9310016690A /* SortMethod.swift */; };
 		310D16B22404158A00EB1863 /* BubbleSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BFEF2F2403DA210016690A /* BubbleSort.swift */; };
 		310D16B32404158A00EB1863 /* BubbleSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BFEF2F2403DA210016690A /* BubbleSort.swift */; };
+		31469E8A2422392B00C6E864 /* ShellSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31469E892422392B00C6E864 /* ShellSort.swift */; };
+		31469E8B2422393700C6E864 /* ShellSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31469E892422392B00C6E864 /* ShellSort.swift */; };
+		31469E8C2422393700C6E864 /* ShellSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31469E892422392B00C6E864 /* ShellSort.swift */; };
 		317E18672406551600D5DD7E /* LampSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317E18662406551600D5DD7E /* LampSort.swift */; };
 		317E186824065A7000D5DD7E /* LampSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317E18662406551600D5DD7E /* LampSort.swift */; };
 		317E186924065A7100D5DD7E /* LampSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317E18662406551600D5DD7E /* LampSort.swift */; };
@@ -54,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		310D16AC2404157C00EB1863 /* SortCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCoordinator.swift; sourceTree = "<group>"; };
+		31469E892422392B00C6E864 /* ShellSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellSort.swift; sourceTree = "<group>"; };
 		317E18662406551600D5DD7E /* LampSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LampSort.swift; sourceTree = "<group>"; };
 		317E186A24065FD800D5DD7E /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		86276FE923FD1CD600E339EC /* SortSpectacle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SortSpectacle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,6 +182,7 @@
 				310D16AC2404157C00EB1863 /* SortCoordinator.swift */,
 				317E18662406551600D5DD7E /* LampSort.swift */,
 				317E186A24065FD800D5DD7E /* Stack.swift */,
+				31469E892422392B00C6E864 /* ShellSort.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -313,6 +318,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31469E8A2422392B00C6E864 /* ShellSort.swift in Sources */,
 				86276FED23FD1CD600E339EC /* AppDelegate.swift in Sources */,
 				317E186B24065FD800D5DD7E /* Stack.swift in Sources */,
 				86276FEF23FD1CD600E339EC /* SceneDelegate.swift in Sources */,
@@ -331,6 +337,7 @@
 			files = (
 				310D16B02404158400EB1863 /* SortMethod.swift in Sources */,
 				310D16AE2404157C00EB1863 /* SortCoordinator.swift in Sources */,
+				31469E8B2422393700C6E864 /* ShellSort.swift in Sources */,
 				317E186C24065FDB00D5DD7E /* Stack.swift in Sources */,
 				310D16B22404158A00EB1863 /* BubbleSort.swift in Sources */,
 				8627701F23FD201F00E339EC /* NumberCollection.swift in Sources */,
@@ -345,6 +352,7 @@
 			files = (
 				310D16B12404158400EB1863 /* SortMethod.swift in Sources */,
 				310D16AF2404157C00EB1863 /* SortCoordinator.swift in Sources */,
+				31469E8C2422393700C6E864 /* ShellSort.swift in Sources */,
 				317E186D24065FDC00D5DD7E /* Stack.swift in Sources */,
 				310D16B32404158A00EB1863 /* BubbleSort.swift in Sources */,
 				8627702023FD201F00E339EC /* NumberCollection.swift in Sources */,

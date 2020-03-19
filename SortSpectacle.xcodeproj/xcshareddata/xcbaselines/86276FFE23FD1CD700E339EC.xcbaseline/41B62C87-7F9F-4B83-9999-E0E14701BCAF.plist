@@ -11,9 +11,11 @@
 				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
 				<dict>
 					<key>baselineAverage</key>
-					<real>0.023545</real>
+					<real>0.0235</real>
 					<key>baselineIntegrationDisplayName</key>
 					<string>Local Baseline</string>
+					<key>maxPercentRelativeStandardDeviation</key>
+					<real>1000</real>
 				</dict>
 			</dict>
 			<key>testLampSort()</key>
@@ -22,6 +24,26 @@
 				<dict>
 					<key>baselineAverage</key>
 					<real>0.0013869</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>Local Baseline</string>
+				</dict>
+			</dict>
+			<key>testShellSort()</key>
+			<dict>
+				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.00112</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>Local Baseline</string>
+				</dict>
+			</dict>
+			<key>testShellSortReal()</key>
+			<dict>
+				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.000123</real>
 					<key>baselineIntegrationDisplayName</key>
 					<string>Local Baseline</string>
 				</dict>

@@ -61,4 +61,16 @@ extension Array where Element == Int {
       }
    }
    
+   mutating func handleSortOperation(operation : SwappedItems) {
+      if operation.operation == .moveValue {
+         if operation.second >= 0 && operation.second < count {
+            self[operation.second] = operation.first
+         }
+      } else {
+         if operation.first >= 0 && operation.second >= 0 && operation.first < count && operation.second < count {
+            swapAt(operation.first, operation.second)
+         }
+      }
+   }
+   
 }

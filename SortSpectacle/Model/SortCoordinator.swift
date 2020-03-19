@@ -18,8 +18,10 @@ class SortCoordinator : ObservableObject {
    @Published var array : [Int]!
    @Published var methodName = String("Start sorting")
    
+   var originalArray : [Int]!
+   
    enum TimerIntervals : Double {
-      case waitingForNextSortMethod = 1.0
+      case waitingForNextSortMethod = 1.5
       case waitingForNextSortStep = 0.001
    }
    
@@ -34,11 +36,13 @@ class SortCoordinator : ObservableObject {
    private var sortingMethods = [SortMethod]()
    
    required init() {
-      array = [Int]()
-      prepare(range: -150...150)
-      array.shuffle()
+      originalArray = [Int]()
+      originalArray.prepare(range: -100...100)
+      originalArray.shuffle()
+      array = originalArray
       sortingMethods.append(BubbleSort(arraySize: array.count))
       sortingMethods.append(LampSort(arraySize: array.count))
+      sortingMethods.append(ShellSort(arraySize: array.count))
       currentMethodIndex = 0
       currentMethod = sortingMethods[currentMethodIndex]
       methodName = "Next: \(currentMethod!.name)"
@@ -70,7 +74,7 @@ class SortCoordinator : ObservableObject {
             if self.currentMethodIndex < self.sortingMethods.count - 1 {
                self.currentMethodIndex += 1
                self.currentMethod = self.sortingMethods[self.currentMethodIndex]
-               self.array.shuffle()
+               self.array = self.originalArray
                self.currentMethod?.restart()
                let method = self.currentMethod?.name ?? "No method selected"
                self.methodName = "Next: \(method)"
@@ -102,9 +106,7 @@ class SortCoordinator : ObservableObject {
    func nextStep() -> Bool {
       var returnValue = false
       returnValue = currentMethod!.nextStep(array: array, swappedItems: &swappedItems)
-      if self.swappedItems.first >= 0 && self.swappedItems.second >= 0 {
-         self.array.swapAt(self.swappedItems.first, self.swappedItems.second)
-      }
+      self.array.handleSortOperation(operation: swappedItems)
       return returnValue
    }
    

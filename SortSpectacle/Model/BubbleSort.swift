@@ -8,44 +8,36 @@
 
 import Foundation
 
-class BubbleSort : SortMethod {   
+class BubbleSort : SortBase {
    
-   let size : Int
-   var innerIndex : Int = 0
-   var outerIndex : Int = 0
    private var done : Bool = false
    private var swappedInInnerLoop : Bool = false
 
-   var name : String {
+   override var name : String {
       get {
          "BubbleSort"
       }
    }
    
    required init(arraySize : Int) {
-      size = arraySize
-      self.restart()
+      super.init(arraySize: arraySize)
    }
    
-   func restart() -> Void {
-      innerIndex = 0;
-      outerIndex = 0;
+   override func restart() -> Void {
+      super.restart()
       done = size < 2 ? true : false
       swappedInInnerLoop = false
    }
       
-   func nextStep(array: [Int], swappedItems : inout SwappedItems) -> Bool {
-      swappedItems.first = -1
-      swappedItems.second = -1
-
+   override func nextStep(array: [Int], swappedItems : inout SwappedItems) -> Bool {
+      super.nextStep(array: array, swappedItems: &swappedItems)
+      
       if done {
          return true
       }
-      //TODO: loop until you find something to swap, that is one step (I guess?)
       if array[innerIndex] > array[innerIndex+1] {
          swappedItems.first = innerIndex
          swappedItems.second = innerIndex+1
-         // array.swapAt(innerIndex, innerIndex+1)
          swappedInInnerLoop = true
       }
       innerIndex += 1

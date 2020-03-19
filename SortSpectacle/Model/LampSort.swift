@@ -8,12 +8,7 @@
 
 import Foundation
 
-class LampSort : SortMethod {
-   
-   let size : Int
-   var innerIndex = 0
-   var outerIndex = 0
-   var done = false
+class LampSort : SortBase {
    
    var lows = Stack<Int>()
    var highs = Stack<Int>()
@@ -36,7 +31,7 @@ class LampSort : SortMethod {
    var inRepeatLoop = true
    var inInnerLoop = false
 
-   var name : String {
+   override var name : String {
       get {
          "LampSort"
       }
@@ -44,14 +39,11 @@ class LampSort : SortMethod {
    
    
    required init(arraySize: Int) {
-      size = arraySize
-      self.restart()
+      super.init(arraySize: arraySize)
    }
    
-   func restart() {
-      innerIndex = 0;
-      outerIndex = 0;
-      done = false
+   override func restart() {
+      super.restart()
       while !lows.isEmpty {
          _ = lows.pop()
       }
@@ -69,10 +61,8 @@ class LampSort : SortMethod {
       state = .outerLoopFirstPart
    }
    
-   func nextStep(array : [Int], swappedItems: inout SwappedItems) -> Bool {
-      
-      swappedItems.first = -1
-      swappedItems.second = -1
+   override func nextStep(array : [Int], swappedItems: inout SwappedItems) -> Bool {
+      super.nextStep(array: array, swappedItems: &swappedItems)
 
       if size < 2 || (state == .outerLoopFirstPart && lows.isEmpty) {
          state = .finished
@@ -193,16 +183,7 @@ class LampSort : SortMethod {
             }
          }
       } while !lows.isEmpty
-      var index = 0
-      for number in array {
-         if index < array.count - 1 {
-            if number >= array[index+1] {
-               return false
-            }
-         }
-         index += 1
-      }
-      return true
+      return testArrayOrder(array: array)
    }
    
 }

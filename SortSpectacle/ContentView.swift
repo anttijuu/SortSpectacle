@@ -80,10 +80,10 @@ struct ContentView: View {
       return VStack {
          Text("Sort it out")
             .font(.largeTitle)
-            .gesture(tap)
          Text(sortEngine.methodName)
          NumbersShape(sourceArray: sortEngine.getArray())
             .stroke(Color.red, style: StrokeStyle(lineWidth: 1, lineCap: .round, lineJoin: .round, miterLimit: 3))
+            .gesture(tap)
       }
    }
 }

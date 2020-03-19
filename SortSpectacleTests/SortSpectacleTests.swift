@@ -88,22 +88,42 @@ class SortSpectacleCollectionTests: XCTestCase {
       XCTAssertTrue(checkArrayIsSorted(), "Array was not sorted correctly")
    }
    
-//   func testLampSortReal() {
-//      intArray.prepare(count: 10)
-//      let lampSort = LampSort(arraySize: intArray.count)
-//      self.measure {
-//         intArray.shuffle()
-//         XCTAssertTrue(lampSort.realAlgorithm(arrayCopy: intArray), "Array was not sorted correctly")
-//      }
-//   }
+   func testShellSort() {
+      intArray.prepare(range: -10...10)
+      let copy = intArray
+      intArray.shuffle()
+      let shellSort = ShellSort(arraySize: intArray.count)
+      self.measure {
+         doSortTest(sortAlgorithm: shellSort)
+      }
+      XCTAssertTrue(checkArrayIsSorted(), "Array was not sorted correctly")
+      print(intArray)
+      print(copy)
+   }
+   
+   //   func testLampSortReal() {
+   //      intArray.prepare(count: 10)
+   //      let lampSort = LampSort(arraySize: intArray.count)
+   //      self.measure {
+   //         intArray.shuffle()
+   //         XCTAssertTrue(lampSort.realAlgorithm(arrayCopy: intArray), "Array was not sorted correctly")
+   //      }
+   //   }
+   
+   func testShellSortReal() {
+      intArray.prepare(range: -100...100)
+      let sort = ShellSort(arraySize: intArray.count)
+      self.measure {
+         intArray.shuffle()
+         XCTAssertTrue(sort.realAlgorithm(arrayCopy: intArray), "realAlgorithm did not manage to sort correctly.")
+      }
+   }
    
    func doSortTest(sortAlgorithm : SortMethod) {
       var swappedItems = SwappedItems(first: -1, second: -1)
       while true {
          let finished = sortAlgorithm.nextStep(array: intArray, swappedItems: &swappedItems)
-         if (swappedItems.first >= 0 && swappedItems.second >= 0) {
-            intArray.swapAt(swappedItems.first, swappedItems.second)
-         }
+         intArray.handleSortOperation(operation: swappedItems)
          if finished {
             break
          }
