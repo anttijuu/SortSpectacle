@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+var lineWidth : CGFloat = 1.0
+
 struct NumbersShape : Shape {
    private var array : [Int]
    private var maxAbsValue = 1
@@ -21,10 +23,8 @@ struct NumbersShape : Shape {
             maxAbsValue = abs(array.max()!) > abs(array.min()!) ? array.max()! : array.min()!
             maxAbsValue = abs(maxAbsValue)
             minValue = array.min()!
-            //print("NumbersShape max and min values: \(maxAbsValue) \(minValue).")
          }
       } else {
-         //print("NumbersShape with empty array")
          array = [Int]()
       }
    }
@@ -32,6 +32,8 @@ struct NumbersShape : Shape {
    func path(in rect: CGRect) -> Path {
       var path = Path()
       path.addRect(rect)
+      
+      lineWidth = rect.height / CGFloat(array.count)
       
       var xOrigin = rect.origin.x
       if (minValue >= 0) {
@@ -52,7 +54,7 @@ struct NumbersShape : Shape {
          path.move(to: CGPoint(x: xOrigin, y: yOrigin))
          xTarget = CGFloat(number) * pixelsPerLineUnit
          path.addLine(to: CGPoint(x: xOrigin + xTarget, y: yOrigin))
-         yOrigin += 2
+         yOrigin += lineWidth
       }
       return path
    }
@@ -82,7 +84,7 @@ struct ContentView: View {
             .font(.largeTitle)
          Text(sortEngine.methodName)
          NumbersShape(sourceArray: sortEngine.getArray())
-            .stroke(Color.red, style: StrokeStyle(lineWidth: 1, lineCap: .round, lineJoin: .round, miterLimit: 3))
+            .stroke(Color.red, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round, lineJoin: .round, miterLimit: 3))
             .gesture(tap)
       }
    }

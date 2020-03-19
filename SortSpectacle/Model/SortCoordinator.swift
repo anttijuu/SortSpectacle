@@ -37,15 +37,15 @@ class SortCoordinator : ObservableObject {
    
    required init() {
       originalArray = [Int]()
-      originalArray.prepare(range: -100...100)
+      originalArray.prepare(range: -150...150)
       originalArray.shuffle()
       array = originalArray
       sortingMethods.append(BubbleSort(arraySize: array.count))
-      sortingMethods.append(LampSort(arraySize: array.count))
       sortingMethods.append(ShellSort(arraySize: array.count))
+      sortingMethods.append(LampSort(arraySize: array.count))
       currentMethodIndex = 0
       currentMethod = sortingMethods[currentMethodIndex]
-      methodName = "Next: \(currentMethod!.name)"
+      methodName = "Next sort method: \(currentMethod!.name)"
    }
    
    func getName() -> String {
@@ -65,9 +65,7 @@ class SortCoordinator : ObservableObject {
       array.shuffle()
       currentMethod!.restart()
       methodName = "Now sorting with \(currentMethod!.name)"
-      
-      print("Starting the sorting...")
-      
+            
       timer = Timer.scheduledTimer(withTimeInterval: timerInterval.rawValue, repeats: true) { _ in
          self.timerInterval = TimerIntervals.waitingForNextSortStep
          if self.nextStep() {
@@ -77,7 +75,7 @@ class SortCoordinator : ObservableObject {
                self.array = self.originalArray
                self.currentMethod?.restart()
                let method = self.currentMethod?.name ?? "No method selected"
-               self.methodName = "Next: \(method)"
+               self.methodName = "Next method: \(method)"
                self.timerInterval = TimerIntervals.waitingForNextSortMethod
                self.timer?.fire()
             } else {
@@ -100,7 +98,7 @@ class SortCoordinator : ObservableObject {
       self.currentMethodIndex = 0
       self.currentMethod = self.sortingMethods[self.currentMethodIndex]
       let method = self.currentMethod?.name ?? "No method selected"
-      self.methodName = "Next: \(method)"
+      self.methodName = "Next sort method: \(method)"
    }
    
    func nextStep() -> Bool {
