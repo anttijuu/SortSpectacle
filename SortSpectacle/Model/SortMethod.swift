@@ -36,7 +36,7 @@ protocol SortMethod {
 
    func restart() -> Void
    func nextStep(array: [Int], swappedItems : inout SwappedItems) -> Bool
-   
+   func realAlgorithm(arrayCopy : [Int]) -> Bool
 }
 
 /**
@@ -86,6 +86,11 @@ class SortBase : SortMethod {
          }
          index += 1
       }
+      return true
+   }
+   
+   func realAlgorithm(arrayCopy : [Int]) -> Bool {
+      size = arrayCopy.count
       return true
    }
    

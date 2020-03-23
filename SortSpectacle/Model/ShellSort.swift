@@ -86,7 +86,7 @@ class ShellSort : SortBase {
    }
    
    
-   func realAlgorithm(arrayCopy : [Int]) -> Bool {
+   override func realAlgorithm(arrayCopy : [Int]) -> Bool {
       var array = arrayCopy
       var gap = array.count / 2
       repeat {

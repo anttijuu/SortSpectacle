@@ -110,6 +110,15 @@ class SortSpectacleCollectionTests: XCTestCase {
    //      }
    //   }
    
+   func testBubbleSortReal() {
+      intArray.prepare(range: -100...100)
+      let sort = BubbleSort(arraySize: intArray.count)
+      self.measure {
+         intArray.shuffle()
+         XCTAssertTrue(sort.realAlgorithm(arrayCopy: intArray), "realAlgorithm did not manage to sort correctly.")
+      }
+   }
+   
    func testShellSortReal() {
       intArray.prepare(range: -100...100)
       let sort = ShellSort(arraySize: intArray.count)

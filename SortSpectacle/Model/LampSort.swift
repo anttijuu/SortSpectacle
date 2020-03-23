@@ -124,7 +124,7 @@ class LampSort : SortBase {
    }
    
    
-   func realAlgorithm(arrayCopy : [Int]) -> Bool {
+   override func realAlgorithm(arrayCopy : [Int]) -> Bool {
       var array = arrayCopy
       var low : Int
       var high : Int
