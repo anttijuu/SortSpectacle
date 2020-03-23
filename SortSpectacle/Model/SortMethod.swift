@@ -8,6 +8,12 @@
 
 import Foundation
 
+/**
+ Structure defining the operation when sorting an Int array.
+ There are two kinds of operations. You can either *swap* the values, indicated
+ by the *indexes* first and second. Or you can *move* the *value* in *first* variable to the *index*
+ specified by the second *index* value.
+ */
 struct SwappedItems {
    enum Operation {
       case swap
@@ -20,7 +26,6 @@ struct SwappedItems {
 
 /**
  A common protocol for all sorting methods.
- TODO: Prepare a base class with skeleton implementation of init, restart and nextStep.
  TODO: Interface also includes a method for the "original" algorithm to implement for perf tests/comparisons.
  */
 protocol SortMethod {
@@ -34,8 +39,16 @@ protocol SortMethod {
    
 }
 
+/**
+ A base class for sort methods. Base class includes the common features all sorting methods use.
+ Subclasses must call *init()*, *restart()* and *nextStep()* methods in their implementations first, then
+ execute subclass specific code.
+ */
 class SortBase : SortMethod {
    
+   /**
+    Each sort method has a name, shown on the screen. Specify a name for a method, overriding this property.
+    */
    var name: String {
       get {
          "Unnamed"

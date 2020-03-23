@@ -58,6 +58,7 @@
 /* Begin PBXFileReference section */
 		310D16AC2404157C00EB1863 /* SortCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCoordinator.swift; sourceTree = "<group>"; };
 		31469E892422392B00C6E864 /* ShellSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellSort.swift; sourceTree = "<group>"; };
+		3159E6B52428AC4F00315192 /* SortSpectacle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SortSpectacle.entitlements; sourceTree = "<group>"; };
 		317E18662406551600D5DD7E /* LampSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LampSort.swift; sourceTree = "<group>"; };
 		317E186A24065FD800D5DD7E /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		86276FE923FD1CD600E339EC /* SortSpectacle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SortSpectacle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,6 +136,7 @@
 		86276FEB23FD1CD600E339EC /* SortSpectacle */ = {
 			isa = PBXGroup;
 			children = (
+				3159E6B52428AC4F00315192 /* SortSpectacle.entitlements */,
 				8627701C23FD1FF600E339EC /* Model */,
 				86276FEC23FD1CD600E339EC /* AppDelegate.swift */,
 				86276FEE23FD1CD600E339EC /* SceneDelegate.swift */,
@@ -506,7 +508,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SortSpectacle/SortSpectacle.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"SortSpectacle/Preview Content\"";
 				DEVELOPMENT_TEAM = 2CFVP6JHU6;
 				ENABLE_PREVIEWS = YES;
@@ -517,6 +521,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.anttijuustila.SortSpectacle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -526,7 +531,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SortSpectacle/SortSpectacle.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"SortSpectacle/Preview Content\"";
 				DEVELOPMENT_TEAM = 2CFVP6JHU6;
 				ENABLE_PREVIEWS = YES;
@@ -537,6 +544,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.anttijuustila.SortSpectacle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

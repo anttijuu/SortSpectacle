@@ -61,6 +61,12 @@ extension Array where Element == Int {
       }
    }
    
+   /**
+    Does the sort operation to the array, depending on the operation parameter.
+    If operation is .moveValue, moves the value in the "first" item to index in the second item.
+    If operation is .swap, swaps the values indicated by the indexes in first and second.
+    - parameter operation: The indexes in the array to operate on, depending on the operation type.
+    */
    mutating func handleSortOperation(operation : SwappedItems) {
       if operation.operation == .moveValue {
          if operation.second >= 0 && operation.second < count {
