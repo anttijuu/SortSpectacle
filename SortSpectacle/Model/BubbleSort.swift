@@ -10,7 +10,7 @@ import Foundation
 
 class BubbleSort : SortBase {
    
-   private var done : Bool = false
+   private var newSize : Int = 0
    private var swappedInInnerLoop : Bool = false
 
    override var name : String {
@@ -25,30 +25,33 @@ class BubbleSort : SortBase {
    
    override func restart() -> Void {
       super.restart()
-      done = size < 2 ? true : false
       swappedInInnerLoop = false
+      innerIndex = 1
    }
       
    override func nextStep(array: [Int], swappedItems : inout SwappedItems) -> Bool {
       super.nextStep(array: array, swappedItems: &swappedItems)
       
-      if done {
+      if size <= 1 {
          return true
       }
-      if array[innerIndex] > array[innerIndex+1] {
-         swappedItems.first = innerIndex
-         swappedItems.second = innerIndex+1
+      if array[innerIndex-1] > array[innerIndex] {
+         swappedItems.first = innerIndex-1
+         swappedItems.second = innerIndex
          swappedInInnerLoop = true
+         newSize = innerIndex
       }
-      innerIndex += 1
-      if innerIndex >= size-outerIndex-1 {
-         innerIndex = 0
-         outerIndex += 1
-         if outerIndex >= size - 1 {
-            done = true
-         }
+      if innerIndex >= size-1 {
+
+         swappedInInnerLoop = false
+
+         size = newSize
+         innerIndex = 1
+         newSize = 0
+      } else {
+         innerIndex += 1
       }
-      return done
+      return false
    }
  
    override func realAlgorithm(arrayCopy : [Int]) -> Bool {
