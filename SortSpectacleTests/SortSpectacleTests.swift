@@ -69,7 +69,7 @@ class SortSpectacleCollectionTests: XCTestCase {
    }
    
    func testBubbleSort() {
-      intArray.prepare(count: 1000)
+      intArray.prepare(range: -1000...1000)
       intArray.shuffle()
       let bubbleSort = BubbleSort(arraySize: intArray.count)
       self.measure {

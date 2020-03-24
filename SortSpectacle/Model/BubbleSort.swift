@@ -11,7 +11,6 @@ import Foundation
 class BubbleSort : SortBase {
    
    private var newSize : Int = 0
-   private var swappedInInnerLoop : Bool = false
 
    override var name : String {
       get {
@@ -25,7 +24,6 @@ class BubbleSort : SortBase {
    
    override func restart() -> Void {
       super.restart()
-      swappedInInnerLoop = false
       innerIndex = 1
    }
       
@@ -38,13 +36,9 @@ class BubbleSort : SortBase {
       if array[innerIndex-1] > array[innerIndex] {
          swappedItems.first = innerIndex-1
          swappedItems.second = innerIndex
-         swappedInInnerLoop = true
          newSize = innerIndex
       }
       if innerIndex >= size-1 {
-
-         swappedInInnerLoop = false
-
          size = newSize
          innerIndex = 1
          newSize = 0
@@ -69,21 +63,6 @@ class BubbleSort : SortBase {
          }
          size = newSize
       } while size > 1
-      /*
-       procedure bubbleSort(A : list of sortable items)
-          n := length(A)
-          repeat
-             newn := 0
-             for i := 1 to n - 1 inclusive do
-                if A[i - 1] > A[i] then
-                   swap(A[i - 1], A[i])
-                   newn := i
-                end if
-             end for
-             n := newn
-          until n ≤ 1
-       end procedure
-       */
       return testArrayOrder(array: array)
    }
 }
