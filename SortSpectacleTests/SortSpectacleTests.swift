@@ -68,6 +68,48 @@ class SortSpectacleCollectionTests: XCTestCase {
       }
    }
    
+   func testEmptyArray() {
+      intArray.removeAll()
+      var sort : SortMethod
+      sort = BubbleSort(arraySize: intArray.count)
+      doSortTest(sortAlgorithm: sort)
+      sort = LampSort(arraySize: intArray.count)
+      doSortTest(sortAlgorithm: sort)
+      sort = ShellSort(arraySize: intArray.count)
+      doSortTest(sortAlgorithm: sort)
+   }
+   
+   func testOneElementArray() {
+      intArray.removeAll()
+      intArray.append(1)
+      var sort : SortMethod
+      sort = BubbleSort(arraySize: intArray.count)
+      doSortTest(sortAlgorithm: sort)
+      sort = LampSort(arraySize: intArray.count)
+      doSortTest(sortAlgorithm: sort)
+      sort = ShellSort(arraySize: intArray.count)
+      doSortTest(sortAlgorithm: sort)
+   }
+   
+   func testTwoElementArray() {
+      intArray.removeAll()
+      intArray.append(2)
+      intArray.append(1)
+      var sort : SortMethod
+      sort = BubbleSort(arraySize: intArray.count)
+      doSortTest(sortAlgorithm: sort)
+      intArray.removeAll()
+      intArray.append(2)
+      intArray.append(1)
+      sort = LampSort(arraySize: intArray.count)
+      doSortTest(sortAlgorithm: sort)
+      intArray.removeAll()
+      intArray.append(2)
+      intArray.append(1)
+      sort = ShellSort(arraySize: intArray.count)
+      doSortTest(sortAlgorithm: sort)
+   }
+   
    func testBubbleSort() {
       intArray.prepare(range: -1000...1000)
       intArray.shuffle()
@@ -137,6 +179,7 @@ class SortSpectacleCollectionTests: XCTestCase {
             break
          }
       }
+      XCTAssertTrue(checkArrayIsSorted())
    }
    
    func checkArrayIsSorted() -> Bool {
