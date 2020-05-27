@@ -123,7 +123,7 @@ class SortCoordinator : ObservableObject {
    
    
    
-}
+} // class
 
 
 //// Dispatch queues
