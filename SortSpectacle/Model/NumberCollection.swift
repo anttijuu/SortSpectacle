@@ -79,4 +79,21 @@ extension Array where Element == Int {
       }
    }
    
+   /**
+    Utility function to test if an array is already in order.
+    - returns Returns true if the array is in order, otherwise false.
+    */
+   func testArrayOrder() -> Bool {
+      var index = 0
+      for number in self {
+         if index < self.count - 1 {
+            if number >= self[index+1] {
+               return false
+            }
+         }
+         index += 1
+      }
+      return true
+   }
+   
 }

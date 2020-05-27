@@ -8,7 +8,7 @@
 
 import Foundation
 
-//TODO: Find the original post in stackoverflow and credit the person who provided this code.
+//See https://stackoverflow.com/questions/31462272/stack-implementation-in-swift
 protocol Stackable {
    associatedtype Element
    func peek() -> Element?
