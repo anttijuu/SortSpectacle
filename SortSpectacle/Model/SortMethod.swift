@@ -26,7 +26,7 @@ struct SwappedItems {
 
 /**
  A common protocol for all sorting methods.
- TODO: Interface also includes a method for the "original" algorithm to implement for perf tests/comparisons.
+ TODO: add a description property to show a longer description of the sort method in the UI.
  */
 protocol SortMethod {
    
@@ -55,20 +55,34 @@ class SortBase : SortMethod {
       }
    }
    
+   /// Size of the array
    var size : Int = 0
+   /// Current inner loop index to the array, used by some sorting methods.
    var innerIndex : Int = 0
+   /// Current outer loop index to the array, used by some sorting methods.
    var outerIndex : Int = 0
 
+   /** Initializes the array with the specified size and resets the loop counters to zero.
+    - parameter arraySize: The size of the array to sort.
+   */
    required init(arraySize : Int) {
       size = arraySize
       restart()
    }
    
+   /// Restarts the sort by setting the loop counters to zero.
    func restart() -> Void {
       innerIndex = 0;
       outerIndex = 0;
    }
    
+   /**
+    Base class version of the step of the sorting algorithm on the array. Subclasses must always first call the baseclass
+    implementation and then execute their own step code.
+    - parameter array: The array being sorted
+    - parameter swappedItems: Contains the result of the sort step, which elements to swap in the array
+    - returns: Returns true if items were swapped, base class returns false always.
+    */
    @discardableResult func nextStep(array: [Int], swappedItems : inout SwappedItems) -> Bool {
       swappedItems.first = -1
       swappedItems.second = -1
@@ -76,19 +90,14 @@ class SortBase : SortMethod {
       return false
    }
    
-   func testArrayOrder(array : [Int]) -> Bool {
-      var index = 0
-      for number in array {
-         if index < array.count - 1 {
-            if number >= array[index+1] {
-               return false
-            }
-         }
-         index += 1
-      }
-      return true
-   }
-   
+   /**
+    Sorts the array with the same method as the steppable version but in a tight loop without stepping.
+    This is to demonstrate the "real" speed of the sorting algorithm, compared to the others.
+    Base class implementation just stores the size to a member variable, subclasses must implement the actual
+    sorting algorithm.
+    - parameter arrayCopy: The array that is to be sorted.
+    - returns: Base class implementation always returns true.
+    */
    func realAlgorithm(arrayCopy : [Int]) -> Bool {
       size = arrayCopy.count
       return true
