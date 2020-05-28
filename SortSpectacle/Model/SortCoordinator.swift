@@ -6,17 +6,25 @@
 //  Copyright © 2020 Antti Juustila. All rights reserved.
 //
 
+
+//TODO: Fix: at the end, cannot start from the beginning.
+//TODO: After speed test, sort the array fastest > slowest
+
 import Foundation
+
+struct TimingResult: Hashable {
+   let methodName : String
+   let timing : Double
+}
 
 class SortCoordinator : ObservableObject {
    
-   //TODO: Two arrays, one original and one for sorters to use -- all methods start from the same shuffled data.
-   // That way results are comparable between sorters.
    //TODO: Each method has an implementation with "original" loops that is used in performance testing.
    //TODO: After showing animations of methods, comes a summary view where results of performance are shown.
    
    @Published var array : [Int]!
    @Published var methodName = String("Start sorting")
+   @Published var performanceTable = [TimingResult]()
    
    var originalArray : [Int]!
    
@@ -34,10 +42,19 @@ class SortCoordinator : ObservableObject {
    
    private var currentMethodIndex = 0
    private var sortingMethods = [SortMethod]()
+
+
+   enum State {
+      case atStart
+      case animating
+      case measuring
+      case atEnd
+   }
+   var state = State.atStart
    
    required init() {
       originalArray = [Int]()
-      originalArray.prepare(range: -170...170)
+      originalArray.prepare(range: -100...100)
       originalArray.shuffle()
       array = originalArray
       sortingMethods.append(BubbleSort(arraySize: array.count))
@@ -61,19 +78,41 @@ class SortCoordinator : ObservableObject {
    }
    
    func start() -> Void {
-      running = true
-      array = originalArray
-      currentMethod!.restart()
-      methodName = "Now sorting with \(currentMethod!.name)"
-            
       timerInterval = TimerIntervals.waitingForNextSortStep
       timer = Timer.scheduledTimer(withTimeInterval: timerInterval.rawValue, repeats: true) { _ in
-         if self.nextStep() {
-            if self.currentMethodIndex < self.sortingMethods.count - 1 {
+         switch self.state {
+            case .atStart:
+               self.state = .animating
+               self.originalArray.prepare(range: -100...100)
+               self.originalArray.shuffle()
+               self.array = self.originalArray
+               self.currentMethod!.restart()
+               self.methodName = "Now sorting with \(self.currentMethod!.name)"
+               self.running = true
+
+            case .animating:
+               if self.nextStep() {
+                  self.nextMethod()
+               }
+
+            case .measuring:
+               // Take timestamp
+               let now = Date()
+               // Do sorting with real algo
+               let success = self.currentMethod?.realAlgorithm(arrayCopy: self.array)
+               if success! {
+                  // Take timestamp
+                  // Calculate duration
+                  let duration = Date().timeIntervalSince(now)
+                  // Add to performanceTable
+                  let result = TimingResult(methodName: self.currentMethod!.name, timing: duration)
+                  self.performanceTable.append(result)
+                  print(self.performanceTable)
+               }
                self.nextMethod()
-            } else {
-               self.stop()
-            }
+
+            case .atEnd:
+               self.state = .atStart
          }
       }
       
@@ -87,11 +126,36 @@ class SortCoordinator : ObservableObject {
       if let clock = timer {
          clock.invalidate()
       }
-      running = false
+
       self.currentMethodIndex = 0
       self.currentMethod = self.sortingMethods[self.currentMethodIndex]
       let method = self.currentMethod?.name ?? "No method selected"
       self.methodName = "Next sort method: \(method)"
+
+      switch state {
+         case .animating:
+            
+            //TODO: use a really big array with real sorting.
+            originalArray.prepare(range: -1000...1000)
+            originalArray.shuffle()
+            array = originalArray
+            self.state = .measuring
+            self.methodName = "Comparing algorithms in real time"
+            self.performanceTable.removeAll(keepingCapacity: true)
+            timer = Timer.scheduledTimer(withTimeInterval: TimerIntervals.waitingForNextSortMethod.rawValue, repeats: false) { _ in
+               self.start()
+            }
+
+         case .measuring:
+            self.state = .atEnd
+            originalArray.prepare(range: -100...100)
+            originalArray.shuffle()
+            array = originalArray
+            running = false
+
+         default:
+            break
+      }
    }
    
    func nextStep() -> Bool {
@@ -105,67 +169,26 @@ class SortCoordinator : ObservableObject {
       if let clock = timer {
          clock.invalidate()
       }
-      self.currentMethodIndex += 1
-      self.currentMethod = self.sortingMethods[self.currentMethodIndex]
-      self.currentMethod?.restart()
-      let method = self.currentMethod?.name ?? "No method selected"
-      self.methodName = "Next method: \(method)"
-      timer = Timer.scheduledTimer(withTimeInterval: TimerIntervals.waitingForNextSortMethod.rawValue, repeats: false) { _ in
-         self.start()
+      array = originalArray
+      currentMethodIndex += 1
+      if self.currentMethodIndex < self.sortingMethods.count {
+         currentMethod = sortingMethods[self.currentMethodIndex]
+         currentMethod?.restart()
+         if state != .measuring {
+            let method = currentMethod?.name ?? "No method selected"
+            methodName = "Next method: \(method)"
+         }
+         timer = Timer.scheduledTimer(withTimeInterval: TimerIntervals.waitingForNextSortMethod.rawValue, repeats: false) { _ in
+            self.start()
+         }
+      } else {
+         stop()
       }
-      
-
    }
    
    func getArray() -> [Int] {
       return array
    }
    
-   
-   
-} // class
-
-
-//// Dispatch queues
-//let dispatchGroup = DispatchGroup()
-//let dispatchQueue = DispatchQueue(label: "com.juustila.antti.SortCoordinator", qos: .userInitiated, attributes: .concurrent)
-//let dispatchSemafore = DispatchSemaphore(value: 0)
-
-
-// Sync works but does not update display while sorting
-//            dispatchQueue.sync {
-//               if self.nextStep() {
-//                  self.running = false
-//               }
-//            }
-
-// Trying out async
-//            dispatchQueue.asyncAfter(deadline: .now() + .milliseconds(10), qos: .userInitiated, flags: .barrier) {
-//               print("Async task initiated")
-//               self.dispatchGroup.enter()
-//
-//               if self.nextStep() {
-//                  self.running = false
-//               }
-//               self.dispatchGroup.leave()
-//               self.dispatchSemafore.wait()
-//            }
-//            print("After asyncAfter")
-//            self.dispatchSemafore.signal()
-//
-//            dispatchGroup.notify(queue: dispatchQueue) {
-//               print("At dispatchGroup.notify")
-//
-//               print("At DispatchQueue.main.async block")
-//               if self.swappedItems.first >= 0 && self.swappedItems.second >= 0 {
-//                  print("Decided to swap items")
-//                  DispatchQueue.main.async(execute: {
-//                     print(">> Actually swapping here")
-//                     self.array.swapAt(self.swappedItems.first, self.swappedItems.second)
-//                  })
-//                  self.swappedItems.first = -1
-//                  self.swappedItems.second = -1
-//               }
-//
-//            }
+}
 

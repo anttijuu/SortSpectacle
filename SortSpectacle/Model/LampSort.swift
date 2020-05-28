@@ -38,6 +38,14 @@ class LampSort : SortBase {
    }
    
    
+   override var description: String {
+      get {
+         """
+          Quick sort is a recursive sorting algorithm. The recursion is not fundamental to the algorithm. Lamp sort is an implementation of Quick sort without recursion.
+         """
+      }
+   }
+   
    required init(arraySize: Int) {
       super.init(arraySize: arraySize)
    }

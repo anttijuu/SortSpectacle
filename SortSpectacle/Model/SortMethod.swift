@@ -33,6 +33,7 @@ protocol SortMethod {
    init(arraySize : Int)
 
    var name : String { get }
+   var description : String { get }
 
    func restart() -> Void
    func nextStep(array: [Int], swappedItems : inout SwappedItems) -> Bool
@@ -52,6 +53,12 @@ class SortBase : SortMethod {
    var name: String {
       get {
          "Unnamed"
+      }
+   }
+   
+   var description: String {
+      get {
+         "No description"
       }
    }
    

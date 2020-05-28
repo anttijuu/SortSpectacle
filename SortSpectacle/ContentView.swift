@@ -10,6 +10,8 @@ import SwiftUI
 
 var lineWidth : CGFloat = 1.0
 
+//TODO: Speed test fonts too small. Change alignments and remove unnecessary decimals
+
 struct NumbersShape : Shape {
    private var array : [Int]
    private var maxAbsValue = 1
@@ -60,6 +62,27 @@ struct NumbersShape : Shape {
    }
 }
 
+struct ResultsView: View {
+   var results : [TimingResult]
+   
+   var body: some View {
+      VStack {
+         ForEach(results, id: \.self) { item in
+            HStack {
+               Spacer()
+               Text(item.methodName)
+                  .font(.subheadline)
+                  .bold()
+               Spacer()
+               Text(String(item.timing))
+                  .font(.subheadline)
+               Spacer()
+            }
+         }
+      }
+   }
+}
+
 struct ContentView: View {
    
    @ObservedObject private var sortEngine = SortCoordinator()
@@ -83,9 +106,16 @@ struct ContentView: View {
          Text("Sort it out")
             .font(.largeTitle)
          Text(sortEngine.methodName)
-         NumbersShape(sourceArray: sortEngine.getArray())
-            .stroke(Color.red, style: StrokeStyle(lineWidth: lineWidth, lineCap: .butt, lineJoin: .miter, miterLimit: 1))
-            .gesture(tap)
+            .font(.subheadline)
+         Spacer()
+         if sortEngine.state == SortCoordinator.State.atStart || sortEngine.state == SortCoordinator.State.animating {
+            NumbersShape(sourceArray: sortEngine.getArray())
+               .stroke(Color.red, style: StrokeStyle(lineWidth: lineWidth, lineCap: .butt, lineJoin: .miter, miterLimit: 1))
+               .gesture(tap)
+         } else {
+            ResultsView(results: sortEngine.performanceTable)
+            Spacer()
+         }
       }
    }
 }

@@ -27,6 +27,14 @@ class ShellSort : SortBase {
       }
    }
    
+   override var description: String {
+      get {
+         """
+         Shell sort is an in-place comparison sort. The method starts by sorting pairs of elements far apart from each other, then progressively reducing the gap between elements to be compared. Donald Shell published the first version of this sort in 1959.
+         """
+      }
+   }
+   
    required init(arraySize : Int) {
       super.init(arraySize: arraySize)
    }
@@ -98,10 +106,7 @@ class ShellSort : SortBase {
                array[index3] = array[index3-gap]
                index3 -= gap
             }
-            
-//            if index2 != index3 {
-               array[index3] = temp
-//            }
+            array[index3] = temp
          }
          gap /= 2
       } while gap > 0

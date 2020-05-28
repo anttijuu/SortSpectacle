@@ -15,8 +15,6 @@ import Foundation
  
  - Author:
    Antti Juustila
- - Version:
-   0.2.0
  - Copyright:
    © 2020 Antti Juustila, all rights reserved.
  */
