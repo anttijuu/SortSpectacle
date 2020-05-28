@@ -18,7 +18,7 @@ class SortCoordinator : ObservableObject {
    @Published var array : [Int]!
    @Published var methodName = String("Start sorting")
    
-   private var originalArray : [Int]!
+   var originalArray : [Int]!
    
    enum TimerIntervals : Double {
       case waitingForNextSortMethod = 1.0
@@ -123,4 +123,49 @@ class SortCoordinator : ObservableObject {
    
    
    
-}
+} // class
+
+
+//// Dispatch queues
+//let dispatchGroup = DispatchGroup()
+//let dispatchQueue = DispatchQueue(label: "com.juustila.antti.SortCoordinator", qos: .userInitiated, attributes: .concurrent)
+//let dispatchSemafore = DispatchSemaphore(value: 0)
+
+
+// Sync works but does not update display while sorting
+//            dispatchQueue.sync {
+//               if self.nextStep() {
+//                  self.running = false
+//               }
+//            }
+
+// Trying out async
+//            dispatchQueue.asyncAfter(deadline: .now() + .milliseconds(10), qos: .userInitiated, flags: .barrier) {
+//               print("Async task initiated")
+//               self.dispatchGroup.enter()
+//
+//               if self.nextStep() {
+//                  self.running = false
+//               }
+//               self.dispatchGroup.leave()
+//               self.dispatchSemafore.wait()
+//            }
+//            print("After asyncAfter")
+//            self.dispatchSemafore.signal()
+//
+//            dispatchGroup.notify(queue: dispatchQueue) {
+//               print("At dispatchGroup.notify")
+//
+//               print("At DispatchQueue.main.async block")
+//               if self.swappedItems.first >= 0 && self.swappedItems.second >= 0 {
+//                  print("Decided to swap items")
+//                  DispatchQueue.main.async(execute: {
+//                     print(">> Actually swapping here")
+//                     self.array.swapAt(self.swappedItems.first, self.swappedItems.second)
+//                  })
+//                  self.swappedItems.first = -1
+//                  self.swappedItems.second = -1
+//               }
+//
+//            }
+
