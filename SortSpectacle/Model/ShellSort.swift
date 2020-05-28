@@ -105,6 +105,6 @@ class ShellSort : SortBase {
          }
          gap /= 2
       } while gap > 0
-      return array.testArrayOrder()
+      return array.isSorted()
    }
 }

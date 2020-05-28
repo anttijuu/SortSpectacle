@@ -80,10 +80,10 @@ extension Array where Element == Int {
    }
    
    /**
-    Utility function to test if an array is already in order.
-    - returns Returns true if the array is in order, otherwise false.
+    Utility function to test if an array is sorted.
+    - returns Returns true if the array is sorted, otherwise false.
     */
-   func testArrayOrder() -> Bool {
+   func isSorted() -> Bool {
       var index = 0
       for number in self {
          if index < self.count - 1 {

@@ -183,7 +183,7 @@ class LampSort : SortBase {
             }
          }
       } while !lows.isEmpty
-      return array.testArrayOrder()
+      return array.isSorted()
    }
    
 }

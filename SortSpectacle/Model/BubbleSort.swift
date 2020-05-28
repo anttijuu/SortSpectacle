@@ -63,6 +63,6 @@ class BubbleSort : SortBase {
          }
          size = newSize
       } while size > 1
-      return array.testArrayOrder()
+      return array.isSorted()
    }
 }
