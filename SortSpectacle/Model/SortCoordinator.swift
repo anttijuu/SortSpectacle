@@ -17,6 +17,8 @@ struct TimingResult: Hashable {
    let timing : Double
 }
 
+let defaultMaxMinValueOfElements = 100
+
 class SortCoordinator : ObservableObject {
    
    //TODO: Each method has an implementation with "original" loops that is used in performance testing.
@@ -54,7 +56,7 @@ class SortCoordinator : ObservableObject {
    
    required init() {
       originalArray = [Int]()
-      originalArray.prepare(range: -100...100)
+      originalArray.prepare(range: -defaultMaxMinValueOfElements...defaultMaxMinValueOfElements)
       originalArray.shuffle()
       array = originalArray
       sortingMethods.append(BubbleSort(arraySize: array.count))
@@ -83,7 +85,7 @@ class SortCoordinator : ObservableObject {
          switch self.state {
             case .atStart:
                self.state = .animating
-               self.originalArray.prepare(range: -100...100)
+               self.originalArray.prepare(range: -defaultMaxMinValueOfElements...defaultMaxMinValueOfElements)
                self.originalArray.shuffle()
                self.array = self.originalArray
                self.currentMethod!.restart()
@@ -148,7 +150,7 @@ class SortCoordinator : ObservableObject {
 
          case .measuring:
             self.state = .atEnd
-            originalArray.prepare(range: -100...100)
+            originalArray.prepare(range: -defaultMaxMinValueOfElements...defaultMaxMinValueOfElements)
             originalArray.shuffle()
             array = originalArray
             running = false
