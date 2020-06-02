@@ -38,9 +38,9 @@ let defaultMaxMinValueOfElements = 100
  SortCoordinator is to be used so that the client (a SwiftUI View):
  
  1. creates the SortCoordinator object
- 1. calls execute() when user is tapping some element in the UI
+ 1. calls `execute()` when user is tapping some element in the UI
  1. reacts to the events in the SortCoordinator when the array within changes, by updating the UI
- 1. calls stop() if user wants to stop the sorting by tapping in the View.
+ 1. calls `stop()` if user wants to stop the sorting by tapping in the View.
  
  For details, see the properties and methods in this class as well as the `SortMethod` protocol which all the sorting methods implement.
  

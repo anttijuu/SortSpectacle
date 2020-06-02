@@ -9,7 +9,7 @@
 import Foundation
 
 /**
- An implementation of stack data structure needed by e.g. LampSort.
+ An interface for stack data structure needed by e.g. LampSort.
  
  Based on an example from Stack overlow.
  
@@ -26,17 +26,20 @@ protocol Stackable {
    @discardableResult mutating func pop() -> Element?
 }
 
-/// An extension of stack to check if it is empty.
+/// An extension of Stackable to check if it is empty.
 extension Stackable {
    var isEmpty: Bool { peek() == nil }
 }
 
-/// The actual stack data structure, implementing Stackable protocol.
+/// A Stack data structure, implementing Stackable protocol.
 struct Stack<Element>: Stackable where Element: Equatable {
    /// Uses an array to store the elements of the stack.
    private var storage = [Element]()
+   /// Peek to check if there are elements in the underlying data structure.
    func peek() -> Element? { storage.first }
+   /// Pushes an element into the data structure.
    mutating func push(_ element: Element) { storage.append(element)  }
+   /// Gets the topmost element from the storage.
    mutating func pop() -> Element? { storage.popLast() }
 }
 
