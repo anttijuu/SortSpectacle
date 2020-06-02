@@ -43,10 +43,6 @@ class LampSort: SortBase {
    }
    var state = State.outerLoopFirstPart
 
-// These not needed? Remove after tests.
-//   var inRepeatLoop = true
-//   var inInnerLoop = false
-
    /// The name of the sort method.
    override var name: String {
       "LampSort"
@@ -78,7 +74,6 @@ class LampSort: SortBase {
       span = 0
       innerForLoopIndex = -1
       pivotIndex = -1
-//      inRepeatLoop = true
       lows.push(0)
       highs.push(size-1)
       state = .outerLoopFirstPart
