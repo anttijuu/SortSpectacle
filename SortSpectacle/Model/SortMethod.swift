@@ -19,7 +19,7 @@ struct SwappedItems {
       case swap
       case moveValue
    }
-   var operation : Operation = .swap
+   var operation: Operation = .swap
    var first = -1
    var second = -1
 }
@@ -29,15 +29,15 @@ struct SwappedItems {
  TODO: add a description property to show a longer description of the sort method in the UI.
  */
 protocol SortMethod {
-   
-   init(arraySize : Int)
 
-   var name : String { get }
-   var description : String { get }
+   init(arraySize: Int)
 
-   func restart() -> Void
+   var name: String { get }
+   var description: String { get }
+
+   func restart()
    func nextStep(array: [Int], swappedItems : inout SwappedItems) -> Bool
-   func realAlgorithm(arrayCopy : [Int]) -> Bool
+   func realAlgorithm(arrayCopy: [Int]) -> Bool
 }
 
 /**
@@ -45,44 +45,40 @@ protocol SortMethod {
  Subclasses must call *init()*, *restart()* and *nextStep()* methods in their implementations first, then
  execute subclass specific code.
  */
-class SortBase : SortMethod {
-   
+class SortBase: SortMethod {
+
    /**
     Each sort method has a name, shown on the screen. Specify a name for a method, overriding this property.
     */
    var name: String {
-      get {
-         "Unnamed"
-      }
+      "Unnamed"
    }
-   
+
    var description: String {
-      get {
-         "No description"
-      }
+      "No description"
    }
-   
+
    /// Size of the array
-   var size : Int = 0
+   var size: Int = 0
    /// Current inner loop index to the array, used by some sorting methods.
-   var innerIndex : Int = 0
+   var innerIndex: Int = 0
    /// Current outer loop index to the array, used by some sorting methods.
-   var outerIndex : Int = 0
+   var outerIndex: Int = 0
 
    /** Initializes the array with the specified size and resets the loop counters to zero.
     - parameter arraySize: The size of the array to sort.
    */
-   required init(arraySize : Int) {
+   required init(arraySize: Int) {
       size = arraySize
       restart()
    }
-   
+
    /// Restarts the sort by setting the loop counters to zero.
-   func restart() -> Void {
-      innerIndex = 0;
-      outerIndex = 0;
+   func restart() {
+      innerIndex = 0
+      outerIndex = 0
    }
-   
+
    /**
     Base class version of the step of the sorting algorithm on the array. Subclasses must always first call the baseclass
     implementation and then execute their own step code.
@@ -96,7 +92,7 @@ class SortBase : SortMethod {
       swappedItems.operation = .swap
       return false
    }
-   
+
    /**
     Sorts the array with the same method as the steppable version but in a tight loop without stepping.
     This is to demonstrate the "real" speed of the sorting algorithm, compared to the others.
@@ -105,9 +101,9 @@ class SortBase : SortMethod {
     - parameter arrayCopy: The array that is to be sorted.
     - returns: Base class implementation always returns true.
     */
-   func realAlgorithm(arrayCopy : [Int]) -> Bool {
+   func realAlgorithm(arrayCopy: [Int]) -> Bool {
       size = arrayCopy.count
       return true
    }
-   
+
 }

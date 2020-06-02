@@ -8,36 +8,32 @@
 
 import Foundation
 
-class BubbleSort : SortBase {
-   
-   private var newSize : Int = 0
+class BubbleSort: SortBase {
 
-   override var name : String {
-      get {
-         "BubbleSort"
-      }
+   private var newSize: Int = 0
+
+   override var name: String {
+      "BubbleSort"
    }
-   
+
    override var description: String {
-      get {
-         """
-         Bubble sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order. The pass through the list is repeated until the list is sorted. Bubble sort performs poorly in real world use and is used primarily as an educational tool.
-         """
-      }
+      """
+      Bubble sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order. The pass through the list is repeated until the list is sorted. Bubble sort performs poorly in real world use and is used primarily as an educational tool.
+      """
    }
-   
-   required init(arraySize : Int) {
+
+   required init(arraySize: Int) {
       super.init(arraySize: arraySize)
    }
-   
-   override func restart() -> Void {
+
+   override func restart() {
       super.restart()
       innerIndex = 1
    }
-      
+
    override func nextStep(array: [Int], swappedItems : inout SwappedItems) -> Bool {
       super.nextStep(array: array, swappedItems: &swappedItems)
-      
+
       if size <= 1 {
          return true
       }
@@ -55,19 +51,17 @@ class BubbleSort : SortBase {
       }
       return false
    }
- 
-   override func realAlgorithm(arrayCopy : [Int]) -> Bool {
+
+   override func realAlgorithm(arrayCopy: [Int]) -> Bool {
       if !super.realAlgorithm(arrayCopy: arrayCopy) {
          return false
       }
       var array = arrayCopy
       repeat {
          var newSize = 0
-         for index in 1...size-1 {
-            if array[index-1] > array[index] {
-               array.swapAt(index-1, index)
-               newSize = index
-            }
+         for index in 1...size-1 where array[index-1] > array[index] {
+            array.swapAt(index-1, index)
+            newSize = index
          }
          size = newSize
       } while size > 1
