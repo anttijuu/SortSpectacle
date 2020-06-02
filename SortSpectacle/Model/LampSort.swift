@@ -1,5 +1,5 @@
 //
-//  QuickSortIterative.swift
+//  LampSort.swift
 //  SortSpectacle
 //
 //  Created by Antti Juustila on 26.2.2020.
@@ -8,9 +8,19 @@
 
 import Foundation
 
+/**
+ LampSort implements the non-recursive version of QuickSort.
+ 
+ The algorithm uses two stacks to keep lower and higher indexes between which sorting
+ happens, and sorts these ranges. See the animation in action on how this method behaves.
+ 
+ For more information, see e.g. https://medium.com/concerning-pharo/lampsort-a-non-recursive-quicksort-implementation-4d4891b217bd
+ */
 class LampSort: SortBase {
 
+   /// Holds the indexes to the lower indexes of areas to sort.
    var lows = Stack<Int>()
+   /// Holds the indexes to the higher indes values to sort.
    var highs = Stack<Int>()
 
    var low: Int = 0
@@ -20,31 +30,41 @@ class LampSort: SortBase {
    var pivotIndex = -1
    var pivot = 0
 
+   /// The state variable used in step by step sorting.
    enum State {
+      /// The outer loop' first steps to execute.
       case outerLoopFirstPart
+      /// The inner loop area to execute.
       case innerForLoop
+      // The inner loop second part to execute.
       case outerLoopSecondPart
+      /// Algorithm is done sorting.
       case finished
    }
    var state = State.outerLoopFirstPart
 
-   var inRepeatLoop = true
-   var inInnerLoop = false
+// These not needed? Remove after tests.
+//   var inRepeatLoop = true
+//   var inInnerLoop = false
 
+   /// The name of the sort method.
    override var name: String {
       "LampSort"
    }
 
+   /// Short description for the sort method.
    override var description: String {
       """
        Quick sort is a recursive sorting algorithm. The recursion is not fundamental to the algorithm. Lamp sort is an implementation of Quick sort without recursion.
       """
    }
 
+   /// Initializes the sorting method. Calls `SortBase.init(...)`.
    required init(arraySize: Int) {
       super.init(arraySize: arraySize)
    }
 
+   /// Restarts the method by resetting all members to initial state.
    override func restart() {
       super.restart()
       while !lows.isEmpty {
@@ -58,12 +78,18 @@ class LampSort: SortBase {
       span = 0
       innerForLoopIndex = -1
       pivotIndex = -1
-      inRepeatLoop = true
+//      inRepeatLoop = true
       lows.push(0)
       highs.push(size-1)
       state = .outerLoopFirstPart
    }
 
+   /**
+    Peforms a step in Lampsort. Caller will do the actual moving/swapping of values in the array.
+    - parameter array: The array containing the elements to sort.
+    - parameter swappedItems: The object which will have the indexes to swap after step has been executed.
+    - returns: Returns true if after this step, the array has been sorted.
+    */
    override func nextStep(array: [Int], swappedItems: inout SwappedItems) -> Bool {
       super.nextStep(array: array, swappedItems: &swappedItems)
 
@@ -123,6 +149,11 @@ class LampSort: SortBase {
       return false
    }
 
+   /**
+    Executes the "real" Lampsort algoritm in one go using loops.
+    - parameter arrayCopy: The array to sort.
+    - returns: Returns true if the array was successfully sorted.
+    */
    override func realAlgorithm(arrayCopy: [Int]) -> Bool {
       var array = arrayCopy
       var low: Int

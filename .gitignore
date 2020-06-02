@@ -24,4 +24,5 @@ build/
 *.dat
 *.dep
 
-
+# The documentation folder
+docs/

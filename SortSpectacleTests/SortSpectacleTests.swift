@@ -179,7 +179,6 @@ class SortSpectacleCollectionTests: XCTestCase {
       }
    }
 
-   
    func doSortTest(sortAlgorithm: SortMethod) {
       var swappedItems = SwappedItems(first: -1, second: -1)
       while true {

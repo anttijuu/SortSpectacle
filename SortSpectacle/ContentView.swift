@@ -12,11 +12,22 @@ var lineWidth: CGFloat = 1.0
 
 //TODO: Speed test fonts too small. Change alignments and remove unnecessary decimals
 
+/**
+ A shape which draws the numbers in an array of integers as lines.
+ 
+ The area to draw is adjusted to the Rect in the parameter to the `path` function. Line
+ lengths are adjusted to the range of numbers so that the largest (abs) value determines the length
+ of the tallest line. Line widht is also calculated based on the number of lines to draw adjusted to the available space.
+ */
 struct NumbersShape: Shape {
    private var array: [Int]
    private var maxAbsValue = 1
    private var minValue = 0
 
+   /**
+    Initializes the shape by providing the array which contains the numbers to be drawn.
+    - parameter sourceArray: The array to draw.
+   */
    init(sourceArray: [Int]?) {
       if let arr = sourceArray {
          //print("Init NumbersShape with \(arr.count) numbers.")
@@ -31,6 +42,11 @@ struct NumbersShape: Shape {
       }
    }
 
+   /**
+    Creates the `Path` shape from the numbers in the array
+    - parameter rect: The rectangle to draw the lines.
+    - returns: Returnst the path to draw to the View.
+   */
    func path(in rect: CGRect) -> Path {
       var path = Path()
       // path.addRect(rect)
@@ -62,7 +78,12 @@ struct NumbersShape: Shape {
    }
 }
 
+/**
+ The view displaying the results from executing the "real" sorting algorithms without the delays
+ caused by the animations and step by step execution of the algorithms.
+ */
 struct ResultsView: View {
+   /// The timing results for each of the algorithm executed.
    var results: [TimingResult]
 
    var body: some View {
@@ -82,6 +103,18 @@ struct ResultsView: View {
    }
 }
 
+/**
+ The main view of the app.
+ 
+ The view displays, depending on the state of the `SortCoordinator`:
+ 
+ - either the animation of the sorting being executed, or
+ - the timing results of the "real" algorithms being executed.
+ 
+ Tapping the view starts the animation, executing all the supported sorting algorithms. After the
+ animations are done, the same algorithms are again executed without animations nor delays. Execution
+ time is measured and then displayed as each algorithm finishes. After this, user can restart the whole thing again by tapping the screen.
+ */
 struct ContentView: View {
 
    @ObservedObject private var sortEngine = SortCoordinator()
@@ -89,12 +122,12 @@ struct ContentView: View {
    var tap: some Gesture {
       TapGesture(count: 1)
          .onEnded { _ in
-            if self.sortEngine.isRunning() {
+            if self.sortEngine.isExecuting() {
                print("Stopped sorter")
                self.sortEngine.stop()
             } else {
                print("Starting sorter")
-               self.sortEngine.start()
+               self.sortEngine.execute()
             }
       }
    }
@@ -108,7 +141,7 @@ struct ContentView: View {
             .font(.subheadline)
          Spacer()
          if sortEngine.state == SortCoordinator.State.atStart || sortEngine.state == SortCoordinator.State.animating {
-            NumbersShape(sourceArray: sortEngine.getArray())
+            NumbersShape(sourceArray: sortEngine.array)
                .stroke(Color.red, style: StrokeStyle(lineWidth: lineWidth, lineCap: .butt, lineJoin: .miter, miterLimit: 1))
                .gesture(tap)
          } else {

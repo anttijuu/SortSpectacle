@@ -8,33 +8,49 @@
 
 import Foundation
 
-//See https://stackoverflow.com/questions/31462272/stack-implementation-in-swift
+/**
+ An implementation of stack data structure needed by e.g. LampSort.
+ 
+ Based on an example from Stack overlow.
+ 
+ See https://stackoverflow.com/questions/31462272/stack-implementation-in-swift
+ */
 protocol Stackable {
+   /// Type of elements to put into a stack.
    associatedtype Element
+   /// To peek if stack has an element to pop.
    func peek() -> Element?
+   /// Push new element on top of the stack.
    mutating func push(_ element: Element)
+   /// Pop an element from the top of the stack.
    @discardableResult mutating func pop() -> Element?
 }
 
+/// An extension of stack to check if it is empty.
 extension Stackable {
    var isEmpty: Bool { peek() == nil }
 }
 
+/// The actual stack data structure, implementing Stackable protocol.
 struct Stack<Element>: Stackable where Element: Equatable {
+   /// Uses an array to store the elements of the stack.
    private var storage = [Element]()
    func peek() -> Element? { storage.first }
    mutating func push(_ element: Element) { storage.append(element)  }
    mutating func pop() -> Element? { storage.popLast() }
 }
 
+/// Stacks are equal if their arrays are equal.
 extension Stack: Equatable {
    static func == (lhs: Stack<Element>, rhs: Stack<Element>) -> Bool { lhs.storage == rhs.storage }
 }
 
+/// Helps to print out the stack contents.
 extension Stack: CustomStringConvertible {
    var description: String { "\(storage)" }
 }
 
+/// Helper to initialize the stack from an array literal.
 extension Stack: ExpressibleByArrayLiteral {
    init(arrayLiteral elements: Self.Element...) { storage = elements }
 }
