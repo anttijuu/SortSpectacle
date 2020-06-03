@@ -113,7 +113,8 @@ struct ResultsView: View {
  
  Tapping the view starts the animation, executing all the supported sorting algorithms. After the
  animations are done, the same algorithms are again executed without animations nor delays. Execution
- time is measured and then displayed as each algorithm finishes. After this, user can restart the whole thing again by tapping the screen.
+ time is measured and then displayed as each algorithm finishes. After this, user can restart the whole
+ thing again by tapping the screen.
  */
 struct ContentView: View {
 

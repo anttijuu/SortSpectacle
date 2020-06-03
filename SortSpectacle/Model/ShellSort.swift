@@ -16,7 +16,9 @@ import Foundation
  
  In this implementation, gap is taken to be the middle point of the array to sort.
  
- Note that this method uses the `SwappedItem` `Operation.move` rather than `Operation.swap` -- it moves the value in the first number to the index specified in the second number in SwappedItems. Using .swap operation is more common in the current implementations, as .move is used currently only by ShellSort.
+ Note that this method uses the `SwappedItem` `Operation.move` rather than `Operation.swap` -- it moves the value in the
+ first number to the index specified in the second number in SwappedItems. Using .swap operation is more common in the
+ current implementations, as .move is used currently only by ShellSort.
  
  See https://en.wikipedia.org/wiki/Shellsort
  */

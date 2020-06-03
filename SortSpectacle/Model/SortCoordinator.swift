@@ -26,7 +26,9 @@ struct TimingResult: Hashable {
 let defaultMaxMinValueOfElements = 100
 
 /**
- SortCoordinator coordinates, as the name implies, sorting of arrays using different sorting methods. It is an `ObservableObject`, being observerd by a `View` that holds the coordinator as an `@ObservedObject` to show the state of the sorting in the UI.
+ SortCoordinator coordinates, as the name implies, sorting of arrays using different sorting methods.
+ It is an `ObservableObject`, being observerd by a `View` that holds the coordinator as an `@ObservedObject`
+ to show the state of the sorting in the UI.
  
  SortCoordinator:
   - holds the array to be sorted, giving it to each sort method by calling SortMethod.nextStep().

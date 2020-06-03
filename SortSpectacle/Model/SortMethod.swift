@@ -89,7 +89,9 @@ protocol SortMethod {
  Subclasses must override these methods and then call `init()`, `restart()` and `nextStep()` methods in their
  implementations first, then execute subclass specific code.
  
- If the base class is not needed or conflicts with your sort method implementation, just implement your method on the `SortMethod` protocol. The `SortCoordinator` instantiates the methods on an array of SortMethods so inheriting from SortBase is not compulsory.
+ If the base class is not needed or conflicts with your sort method implementation, just implement your method on
+ the `SortMethod` protocol. The `SortCoordinator` instantiates the methods on an array of SortMethods so inheriting
+ from SortBase is not compulsory.
  */
 class SortBase: SortMethod {
 
@@ -126,7 +128,8 @@ class SortBase: SortMethod {
    }
 
    /**
-    Base class version of the step of the sorting algorithm on the array. Subclasses must always first call the baseclass implementation and then execute their own step code.
+    Base class version of the step of the sorting algorithm on the array. Subclasses must always first call the baseclass
+    implementation and then execute their own step code.
     - parameter array: The array being sorted
     - parameter swappedItems: Contains the result of the sort step, which elements to swap in the array
     - returns: Returns true if items were swapped, base class returns false always.

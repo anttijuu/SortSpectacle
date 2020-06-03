@@ -11,7 +11,8 @@ import Foundation
 /**
  Implementation of the Bubble sort algorithm.
  
- Bubble sort performs poorly in real world use and is used primarily as an educational tool. Note that using very large arrays slows down the sorting using BubbleSort considerably.
+ Bubble sort performs poorly in real world use and is used primarily as an educational tool. Note that using very large
+ arrays slows down the sorting using BubbleSort considerably.
  
  See https://en.wikipedia.org/wiki/Bubble_sort
  */
@@ -28,7 +29,9 @@ class BubbleSort: SortBase {
    /// A short description of the Bubblesort.
    override var description: String {
       """
-      Bubble sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order. The pass through the list is repeated until the list is sorted. Bubble sort performs poorly in real world use and is used primarily as an educational tool. Do not use large arrays (>1000) elements unless you have time to wait and see how the sorting goes.
+      Bubble sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.
+      The pass through the list is repeated until the list is sorted. Bubble sort performs poorly in real world use and is used primarily as an educational tool.
+      Do not use large arrays (>1000) elements unless you have time to wait and see how the sorting goes.
       """
    }
 
