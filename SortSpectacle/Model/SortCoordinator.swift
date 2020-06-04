@@ -88,11 +88,11 @@ class SortCoordinator: ObservableObject {
    /// All the supported sorting methods are placed in the array before starting the execution.
    private var sortingMethods = [SortMethod]()
 
-   /// When running, holds the state of the execution.
+   /// The different states of the execution of the sort coordinator.
    enum State {
       /// Starting phase, where preparation for the execution is done
       case atStart
-      /// The animating phase, where sorting methods are executed one by one, calling the nextStep() method.
+      /// The animating phase, where sorting methods are executed one by one, step by step, by calling the nextStep() method.
       case animating
       /// After animation, all sorting methods are executed using the realAlgorithm() method to time the "actual" perfomance of the methods.
       case measuring
@@ -141,13 +141,12 @@ class SortCoordinator: ObservableObject {
    }
 
    /**
-    Starts the execution of different sorting methods, and executes the sorting using a repeating
-    timer with a closure.
+    Executes the different sorting methods, using a repeating timer within a closure.
     
-    See also nextStep() and nextMethod() as well as stop(), which all contribute to the state manamement of
+    See also `nextStep()` and `nextMethod()` as well as `stop()`, which all contribute to the state manamement of
     the coordinator.
     
-    See the State enum and state member, which coordinate the execution of the sorting in different phases.
+    See the State enum values, coordinating the execution of the sorting in different phases.
     */
    func execute() {
       timerInterval = TimerIntervals.waitingForNextSortStep
@@ -163,20 +162,22 @@ class SortCoordinator: ObservableObject {
             self.executing = true
 
          case .animating:
+            // If nextStep returns true, array is sorted and it is time to switch to the next supported method, if any.
             if self.nextStep() {
                self.nextMethod()
             }
 
          case .measuring:
-            // Take timestamp
+            // Measure the time performance of each of the methods, without animation and loops.
+            // 1. Take timestamp
             let now = Date()
-            // Do sorting with real algo
+            // 2. Do sorting with real algo
             let success = self.currentMethod?.realAlgorithm(arrayCopy: self.array)
             if success! {
-               // Take timestamp
-               // Calculate duration
+               // 3. Take timestamp
+               // 4. Calculate duration
                let duration = Date().timeIntervalSince(now)
-               // Add to performanceTable
+               // 5. Add to performanceTable
                let result = TimingResult(methodName: self.currentMethod!.name, timing: duration)
                self.performanceTable.append(result)
                print(self.performanceTable)
