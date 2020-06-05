@@ -23,6 +23,7 @@
 		317E186B24065FD800D5DD7E /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317E186A24065FD800D5DD7E /* Stack.swift */; };
 		317E186C24065FDB00D5DD7E /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317E186A24065FD800D5DD7E /* Stack.swift */; };
 		317E186D24065FDC00D5DD7E /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317E186A24065FD800D5DD7E /* Stack.swift */; };
+		8613E0D7248A6E160082F255 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8613E0D6248A6E160082F255 /* ResultsView.swift */; };
 		86276FED23FD1CD600E339EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86276FEC23FD1CD600E339EC /* AppDelegate.swift */; };
 		86276FEF23FD1CD600E339EC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86276FEE23FD1CD600E339EC /* SceneDelegate.swift */; };
 		86276FF123FD1CD600E339EC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86276FF023FD1CD600E339EC /* ContentView.swift */; };
@@ -61,6 +62,7 @@
 		3159E6B52428AC4F00315192 /* SortSpectacle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SortSpectacle.entitlements; sourceTree = "<group>"; };
 		317E18662406551600D5DD7E /* LampSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LampSort.swift; sourceTree = "<group>"; };
 		317E186A24065FD800D5DD7E /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		8613E0D6248A6E160082F255 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResultsView.swift; path = SortSpectacle/ResultsView.swift; sourceTree = SOURCE_ROOT; };
 		86276FE923FD1CD600E339EC /* SortSpectacle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SortSpectacle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86276FEC23FD1CD600E339EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86276FEE23FD1CD600E339EC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				86276FEC23FD1CD600E339EC /* AppDelegate.swift */,
 				86276FEE23FD1CD600E339EC /* SceneDelegate.swift */,
 				86276FF023FD1CD600E339EC /* ContentView.swift */,
+				8613E0D6248A6E160082F255 /* ResultsView.swift */,
 				86276FF223FD1CD700E339EC /* Assets.xcassets */,
 				86276FF723FD1CD700E339EC /* LaunchScreen.storyboard */,
 				86276FFA23FD1CD700E339EC /* Info.plist */,
@@ -346,6 +349,7 @@
 				317E186B24065FD800D5DD7E /* Stack.swift in Sources */,
 				86276FEF23FD1CD600E339EC /* SceneDelegate.swift in Sources */,
 				86BFEF2E2403D9310016690A /* SortMethod.swift in Sources */,
+				8613E0D7248A6E160082F255 /* ResultsView.swift in Sources */,
 				310D16AD2404157C00EB1863 /* SortCoordinator.swift in Sources */,
 				8627701E23FD201F00E339EC /* NumberCollection.swift in Sources */,
 				317E18672406551600D5DD7E /* LampSort.swift in Sources */,

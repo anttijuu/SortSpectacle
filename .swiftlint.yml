@@ -2,3 +2,4 @@ disabled_rules:
  - multiple_closures_with_trailing_closure
  - line_length
  - todo
+ - trailing_whitespace

@@ -78,27 +78,15 @@ struct NumbersShape: Shape {
    }
 }
 
-/**
- The view displaying the results from executing the "real" sorting algorithms without the delays
- caused by the animations and step by step execution of the algorithms.
- */
-struct ResultsView: View {
-   /// The timing results for each of the algorithm executed.
-   var results: [TimingResult]
+struct IntroView: View {
+
+   var engine: SortCoordinator
 
    var body: some View {
-      VStack {
-         ForEach(results, id: \.self) { item in
-            HStack {
-               Text(item.methodName)
-                  .font(.subheadline)
-                  .bold()
-               Spacer()
-               Text(String(item.timing))
-                  .font(.subheadline)
-               Spacer()
-            }
-         }
+      Button(action: {
+         self.engine.execute()
+      }) {
+         Text("Tap to start")
       }
    }
 }
@@ -135,19 +123,20 @@ struct ContentView: View {
 
    var body: some View {
 
-      return VStack {
+      VStack {
          Text("Sort it out")
             .font(.largeTitle)
-         Text(sortEngine.methodName)
+         Text(sortEngine.description)
             .font(.subheadline)
          Spacer()
-         if sortEngine.state == SortCoordinator.State.atStart || sortEngine.state == SortCoordinator.State.animating {
+         if sortEngine.state == SortCoordinator.State.atStart {
+            IntroView(engine: sortEngine)
+         } else if sortEngine.state == SortCoordinator.State.animating {
             NumbersShape(sourceArray: sortEngine.array)
                .stroke(Color.red, style: StrokeStyle(lineWidth: lineWidth, lineCap: .butt, lineJoin: .miter, miterLimit: 1))
                .gesture(tap)
          } else {
-            ResultsView(results: sortEngine.performanceTable)
-            Spacer()
+            ResultsView(engine: sortEngine)
          }
       }
    }

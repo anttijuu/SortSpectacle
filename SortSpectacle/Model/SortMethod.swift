@@ -8,7 +8,7 @@
 
 import Foundation
 
-let debug = true
+let debug = false
 
 /**
  Structure defining the operation when sorting an Int array.
