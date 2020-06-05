@@ -23,6 +23,8 @@ class SortSpectacleCollectionTests: XCTestCase {
          range = -100...100
       }
       count = Int.random(in: 2...1000)
+      print("Testing with \(count) elements from range \(range)")
+      intArray.prepare(range: range, count: count)
    }
 
    override func tearDown() {
@@ -30,7 +32,7 @@ class SortSpectacleCollectionTests: XCTestCase {
    }
 
    func testNumbersSetupRandomRange() {
-      intArray.prepare(range: range, count: count)
+      // intArray.prepare(range: range, count: count)
       XCTAssertEqual(intArray.count, count)
       XCTAssertNotNil(intArray.max())
       XCTAssertNotNil(intArray.min())
@@ -72,11 +74,11 @@ class SortSpectacleCollectionTests: XCTestCase {
       intArray.removeAll()
       var sort: SortMethod
       sort = BubbleSort(arraySize: intArray.count)
-      doSortTest(sortAlgorithm: sort)
+      doSortTest(sortAlgorithm: &sort)
       sort = LampSort(arraySize: intArray.count)
-      doSortTest(sortAlgorithm: sort)
+      doSortTest(sortAlgorithm: &sort)
       sort = ShellSort(arraySize: intArray.count)
-      doSortTest(sortAlgorithm: sort)
+      doSortTest(sortAlgorithm: &sort)
    }
 
    func testOneElementArray() {
@@ -84,11 +86,11 @@ class SortSpectacleCollectionTests: XCTestCase {
       intArray.append(1)
       var sort: SortMethod
       sort = BubbleSort(arraySize: intArray.count)
-      doSortTest(sortAlgorithm: sort)
+      doSortTest(sortAlgorithm: &sort)
       sort = LampSort(arraySize: intArray.count)
-      doSortTest(sortAlgorithm: sort)
+      doSortTest(sortAlgorithm: &sort)
       sort = ShellSort(arraySize: intArray.count)
-      doSortTest(sortAlgorithm: sort)
+      doSortTest(sortAlgorithm: &sort)
    }
 
    func testTwoElementArray() {
@@ -97,50 +99,44 @@ class SortSpectacleCollectionTests: XCTestCase {
       intArray.append(1)
       var sort: SortMethod
       sort = BubbleSort(arraySize: intArray.count)
-      doSortTest(sortAlgorithm: sort)
+      doSortTest(sortAlgorithm: &sort)
       intArray.removeAll()
       intArray.append(2)
       intArray.append(1)
       sort = LampSort(arraySize: intArray.count)
-      doSortTest(sortAlgorithm: sort)
+      doSortTest(sortAlgorithm: &sort)
       intArray.removeAll()
       intArray.append(2)
       intArray.append(1)
       sort = ShellSort(arraySize: intArray.count)
-      doSortTest(sortAlgorithm: sort)
+      doSortTest(sortAlgorithm: &sort)
    }
 
    func testBubbleSort() {
-      intArray.prepare(range: -1000...1000)
+      // intArray.prepare(range: -10...10)
       intArray.shuffle()
-      let bubbleSort = BubbleSort(arraySize: intArray.count)
+      var bubbleSort: SortMethod = BubbleSort(arraySize: intArray.count)
       self.measure {
-         doSortTest(sortAlgorithm: bubbleSort)
+         doSortTest(sortAlgorithm: &bubbleSort)
       }
-      XCTAssertTrue(intArray.isSorted(), "Array was not sorted correctly")
    }
 
    func testLampSort() {
-      intArray.prepare(count: 1000)
+      // intArray.prepare(range: -10...10)
       intArray.shuffle()
-      let lampSort = LampSort(arraySize: intArray.count)
+      var lampSort: SortMethod = LampSort(arraySize: intArray.count)
       self.measure {
-         doSortTest(sortAlgorithm: lampSort)
+         doSortTest(sortAlgorithm: &lampSort)
       }
-      XCTAssertTrue(intArray.isSorted(), "Array was not sorted correctly")
    }
 
    func testShellSort() {
-      intArray.prepare(range: -1000...1000)
-      let copy = intArray
+      // intArray.prepare(range: -10...10)
       intArray.shuffle()
-      let shellSort = ShellSort(arraySize: intArray.count)
+      var shellSort: SortMethod = ShellSort(arraySize: intArray.count)
       self.measure {
-         doSortTest(sortAlgorithm: shellSort)
+         doSortTest(sortAlgorithm: &shellSort)
       }
-      XCTAssertTrue(intArray.isSorted(), "Array was not sorted correctly")
-      print(intArray)
-      print(copy)
    }
 
    //   func testLampSortReal() {
@@ -153,42 +149,42 @@ class SortSpectacleCollectionTests: XCTestCase {
    //   }
 
    func testBubbleSortReal() {
-      intArray.prepare(range: -100...100)
-      let sort = BubbleSort(arraySize: intArray.count)
+      // intArray.prepare(range: -100...100)
+      var sort = BubbleSort(arraySize: intArray.count)
+      intArray.shuffle()
       self.measure {
-         intArray.shuffle()
          XCTAssertTrue(sort.realAlgorithm(arrayCopy: intArray), "realAlgorithm BubbleSort did not manage to sort correctly.")
       }
    }
 
    func testShellSortReal() {
-      intArray.prepare(range: -100...100)
-      let sort = ShellSort(arraySize: intArray.count)
+      // intArray.prepare(range: -100...100)
+      var sort = ShellSort(arraySize: intArray.count)
+      intArray.shuffle()
       self.measure {
-         intArray.shuffle()
          XCTAssertTrue(sort.realAlgorithm(arrayCopy: intArray), "realAlgorithm ShellSort did not manage to sort correctly.")
       }
    }
 
    func testLampSortReal() {
-      intArray.prepare(range: -100...100)
-      let sort = LampSort(arraySize: intArray.count)
+      // intArray.prepare(range: -100...100)
+      var sort = LampSort(arraySize: intArray.count)
+      intArray.shuffle()
       self.measure {
-         intArray.shuffle()
          XCTAssertTrue(sort.realAlgorithm(arrayCopy: intArray), "realAlgorithm LampSort did not manage to sort correctly.")
       }
    }
 
-   func doSortTest(sortAlgorithm: SortMethod) {
-      var swappedItems = SwappedItems(first: -1, second: -1)
+   func doSortTest(sortAlgorithm: inout SortMethod) {
+      var swappedItems = SwappedItems()
       while true {
          let finished = sortAlgorithm.nextStep(array: intArray, swappedItems: &swappedItems)
-         intArray.handleSortOperation(operation: swappedItems)
          if finished {
             break
          }
+         intArray.handleSortOperation(operation: swappedItems)
       }
-      XCTAssertTrue(intArray.isSorted())
+      XCTAssertTrue(intArray.isSorted(), "Algorithm \(sortAlgorithm.name) failed to sort correctly.")
    }
 
 }

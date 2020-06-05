@@ -81,7 +81,7 @@ class SortCoordinator: ObservableObject {
    private var executing = false
 
    /// Sorting methods indicate which array elements (if any) are to be swapped or moved with each step of the sorting method.
-   private var swappedItems = SwappedItems(first: -1, second: -1)
+   private var swappedItems = SwappedItems()
 
    /// Which of the sorting methods in the sortingMethod array is currently executed.
    private var currentMethodIndex = 0

@@ -85,7 +85,7 @@ extension Array where Element == Int {
       var index = 0
       for number in self {
          if index < self.count - 1 {
-            if number >= self[index+1] {
+            if number > self[index+1] {
                return false
             }
          }

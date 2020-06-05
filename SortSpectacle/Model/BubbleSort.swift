@@ -16,18 +16,15 @@ import Foundation
  
  See https://en.wikipedia.org/wiki/Bubble_sort
  */
-class BubbleSort: SortBase {
-
-   /// A variable to keep track where sorting has advanced to.
-   private var newSize: Int = 0
+struct BubbleSort: SortMethod {
 
    /// Name of the BubbleSort is "BubbleSort".
-   override var name: String {
+   var name: String {
       "BubbleSort"
    }
 
    /// A short description of the Bubblesort.
-   override var description: String {
+   var description: String {
       """
       Bubble sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.
       The pass through the list is repeated until the list is sorted. Bubble sort performs poorly in real world use and is used primarily as an educational tool.
@@ -35,15 +32,28 @@ class BubbleSort: SortBase {
       """
    }
 
+   /// Implements the size property declared in the `SortMethod` protocol. This is the size of the array to sort.
+   let size: Int
+
+   /// A varible to address the sortable (not yet sorted) size of the array.
+   private var sortSize: Int = 0
+
+   /// A variable to keep track where sorting has advanced to.
+   private var newSize: Int = 0
+
+   /// Loop index variable for sorting the array.
+   private var innerIndex: Int = 1
+
    /// Initializes the BubbleSort by calling base class implementation. Nothing else is needed here.
-   required init(arraySize: Int) {
-      super.init(arraySize: arraySize)
+   init(arraySize: Int) {
+      size = arraySize
+      sortSize = size
    }
 
-   /// Restarts the bubble sort, calls super.restart() and resets the inner index.
-   override func restart() {
-      super.restart()
+   /// Restarts the bubble sort, calls super.restart() and resets the inner index. Note that array is not modified, caller must do that if necessary.
+   mutating func restart() {
       innerIndex = 1
+      sortSize = size
    }
 
    /** Implements the SortMethod protocol and overrides the base class implementation.
@@ -51,19 +61,18 @@ class BubbleSort: SortBase {
     cause the method returning true. Until that, false is always returned at the end of the method.
     See base class and protocol documentation for details of the method.
     */
-   override func nextStep(array: [Int], swappedItems : inout SwappedItems) -> Bool {
-      super.nextStep(array: array, swappedItems: &swappedItems)
-
-      if size <= 1 {
+   mutating func nextStep(array: [Int], swappedItems : inout SwappedItems) -> Bool {
+      if sortSize <= 1 {
          return true
       }
+      swappedItems.reset()
       if array[innerIndex-1] > array[innerIndex] {
          swappedItems.first = innerIndex-1
          swappedItems.second = innerIndex
          newSize = innerIndex
       }
-      if innerIndex >= size-1 {
-         size = newSize
+      if innerIndex >= sortSize - 1 {
+         sortSize = newSize
          innerIndex = 1
          newSize = 0
       } else {
@@ -75,19 +84,17 @@ class BubbleSort: SortBase {
    /**
     Implementation of the BubbleSort in two tight loops.
     */
-   override func realAlgorithm(arrayCopy: [Int]) -> Bool {
-      if !super.realAlgorithm(arrayCopy: arrayCopy) {
-         return false
-      }
+   mutating func realAlgorithm(arrayCopy: [Int]) -> Bool {
       var array = arrayCopy
+      sortSize = array.count
       repeat {
-         var newSize = 0
-         for index in 1...size-1 where array[index-1] > array[index] {
+         newSize = 0
+         for index in 1...sortSize-1 where array[index-1] > array[index] {
             array.swapAt(index-1, index)
             newSize = index
          }
-         size = newSize
-      } while size > 1
+         sortSize = newSize
+      } while sortSize > 1
       return array.isSorted()
    }
 }

@@ -22,7 +22,27 @@ import Foundation
  
  See https://en.wikipedia.org/wiki/Shellsort
  */
-class ShellSort: SortBase {
+struct ShellSort: SortMethod {
+
+   /// The size of the array to sort.
+   var size: Int
+
+   /// The name of the sort method.
+   var name: String {
+      "ShellSort"
+   }
+
+   /// The description of the Shellsort method.
+   var description: String {
+      """
+      Shell sort is an in-place comparison sort. The method starts by sorting pairs of elements far apart from each other, then progressively reducing the gap between elements to be compared. Donald Shell published the first version of this sort in 1959.
+      """
+   }
+
+   /// Inner loop index counter.
+   private var innerIndex: Int = 0
+   // Outer loop index counter.
+   private var outerIndex: Int = 0
 
    /// The gap, divides the sorted array to sublist(s) to be sorted one at a time.
    private var gap = 0
@@ -48,29 +68,17 @@ class ShellSort: SortBase {
    /// The state variable holding the current state of the sorting.
    private var state: State = .inLevel2LoopStart
 
-   /// The name of the sort method.
-   override var name: String {
-      "ShellSort"
-   }
-
-   /// The description of the Shellsort method.
-   override var description: String {
-      """
-      Shell sort is an in-place comparison sort. The method starts by sorting pairs of elements far apart from each other, then progressively reducing the gap between elements to be compared. Donald Shell published the first version of this sort in 1959.
-      """
-   }
-
    /**
     Initializes the sorter to handle arrays of specific size.
     - parameter arraySize: The size of the array that is sorted.
     */
-   required init(arraySize: Int) {
-      super.init(arraySize: arraySize)
+   init(arraySize: Int) {
+      size = arraySize
+      restart()
    }
 
    /// Restarts the sorter to start from beginning.
-   override func restart() {
-      super.restart()
+   mutating func restart() {
       gap = size / 2
       outerIndex = gap
       innerIndex = outerIndex
@@ -86,13 +94,14 @@ class ShellSort: SortBase {
     - parameter swappedItems: Will hold the indexes to swap if any.
     - returns: Returns true if the array is sorted.
     */
-   override func nextStep(array: [Int], swappedItems : inout SwappedItems) -> Bool {
-      super.nextStep(array: array, swappedItems: &swappedItems)
+   mutating func nextStep(array: [Int], swappedItems : inout SwappedItems) -> Bool {
 
       // When gap is zero, the whole array should have been sorted.
       if gap == 0 {
          return true
       }
+
+      swappedItems.reset()
 
       switch state {
       case .gapUpdate:
@@ -139,7 +148,7 @@ class ShellSort: SortBase {
     - parameter arrayCopy: The array containing the elements to sort.
     - returns: Returns if the array was successfully sorted.
     */
-   override func realAlgorithm(arrayCopy: [Int]) -> Bool {
+   mutating func realAlgorithm(arrayCopy: [Int]) -> Bool {
       var array = arrayCopy
       var gap = array.count / 2
       // This is the level 1 "gap update" loop, see nextStep()

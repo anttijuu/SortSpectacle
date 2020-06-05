@@ -16,7 +16,9 @@ import Foundation
  
  For more information, see e.g. https://medium.com/concerning-pharo/lampsort-a-non-recursive-quicksort-implementation-4d4891b217bd
  */
-class LampSort: SortBase {
+struct LampSort: SortMethod {
+
+   let size: Int
 
    /// Holds the indexes to the lower indexes of areas to sort.
    var lows = Stack<Int>()
@@ -44,25 +46,25 @@ class LampSort: SortBase {
    var state = State.outerLoopFirstPart
 
    /// The name of the sort method.
-   override var name: String {
+   var name: String {
       "LampSort"
    }
 
    /// Short description for the sort method.
-   override var description: String {
+   var description: String {
       """
        Quick sort is a recursive sorting algorithm. The recursion is not fundamental to the algorithm. Lamp sort is an implementation of Quick sort without recursion.
       """
    }
 
    /// Initializes the sorting method. Calls `SortBase.init(...)`.
-   required init(arraySize: Int) {
-      super.init(arraySize: arraySize)
+   init(arraySize: Int) {
+      size = arraySize
+      restart()
    }
 
    /// Restarts the method by resetting all members to initial state.
-   override func restart() {
-      super.restart()
+   mutating func restart() {
       while !lows.isEmpty {
          _ = lows.pop()
       }
@@ -85,13 +87,14 @@ class LampSort: SortBase {
     - parameter swappedItems: The object which will have the indexes to swap after step has been executed.
     - returns: Returns true if after this step, the array has been sorted.
     */
-   override func nextStep(array: [Int], swappedItems: inout SwappedItems) -> Bool {
-      super.nextStep(array: array, swappedItems: &swappedItems)
+   mutating func nextStep(array: [Int], swappedItems: inout SwappedItems) -> Bool {
 
       if size < 2 || (state == .outerLoopFirstPart && lows.isEmpty) {
          state = .finished
          return true
       }
+
+      swappedItems.reset()
 
       switch state {
       case .outerLoopFirstPart:
@@ -140,7 +143,6 @@ class LampSort: SortBase {
       case .finished:
          return true
       }
-
       return false
    }
 
@@ -149,7 +151,7 @@ class LampSort: SortBase {
     - parameter arrayCopy: The array to sort.
     - returns: Returns true if the array was successfully sorted.
     */
-   override func realAlgorithm(arrayCopy: [Int]) -> Bool {
+   mutating func realAlgorithm(arrayCopy: [Int]) -> Bool {
       var array = arrayCopy
       var low: Int
       var high: Int
@@ -160,7 +162,7 @@ class LampSort: SortBase {
 
       lows.push(0)
       highs.push(size-1)
-      var swappedItems = SwappedItems(first: -1, second: -1)
+      var swappedItems = SwappedItems()
 
       repeat {
          low = lows.pop()!

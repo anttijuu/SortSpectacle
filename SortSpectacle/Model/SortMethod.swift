@@ -8,6 +8,8 @@
 
 import Foundation
 
+let debug = true
+
 /**
  Structure defining the operation when sorting an Int array.
  There are two kinds of operations. You can either *swap* the values, indicated
@@ -28,6 +30,12 @@ struct SwappedItems {
    var first = -1
    /// The index to swap or move values to. Value less than zero means that no move should be performed.
    var second = -1
+
+   mutating func reset() {
+      operation = .swap
+      first = -1
+      second = -1
+   }
 }
 
 /**
@@ -47,6 +55,9 @@ protocol SortMethod {
     */
    init(arraySize: Int)
 
+   /// The size of the array to sort.
+   var size: Int { get }
+
    /**
     The name of the sorting method. Should return a short descriptive name, like "BubbleSort".
     */
@@ -60,11 +71,13 @@ protocol SortMethod {
    /**
     Restarts the sorting by resetting all loop counters, etc.
     */
-   func restart()
+   mutating func restart()
 
    /**
     Does the next step in the sort, moving or switching two values in the array.
     Caller will do the actual swapping of values in the array.
+    
+    **Note**: it is **required** that the implementations call `swappedItems.reset()` before using the parameter in the method.
     
     This method is called repeatedly until it returns true. After each step, the UI is updated to
     visualize the process of sorting.
@@ -72,7 +85,7 @@ protocol SortMethod {
     - parameter swappedItems: The two items to swap or move, if any. Method sets the values and caller does the moving.
     - returns: Returns true if the array is sorted. Caller should stop sorting (calling nextStep).
     */
-   func nextStep(array: [Int], swappedItems : inout SwappedItems) -> Bool
+   mutating func nextStep(array: [Int], swappedItems : inout SwappedItems) -> Bool
 
    /**
     Implementation of the sorting method without any steps, sorting the data in one go in a loop/loops.
@@ -81,77 +94,5 @@ protocol SortMethod {
     - parameter arrayCopy: The array to sort.
     - returns: Returns true if the array was successfully sorted.
     */
-   func realAlgorithm(arrayCopy: [Int]) -> Bool
-}
-
-/**
- A helper base class for sort methods. Base class includes the common features (nearly) all sorting methods use.
- Subclasses must override these methods and then call `init()`, `restart()` and `nextStep()` methods in their
- implementations first, then execute subclass specific code.
- 
- If the base class is not needed or conflicts with your sort method implementation, just implement your method on
- the `SortMethod` protocol. The `SortCoordinator` instantiates the methods on an array of SortMethods so inheriting
- from SortBase is not compulsory.
- */
-class SortBase: SortMethod {
-
-   /**
-    Each sort method has a name, shown on the screen. Specify a name for a method, overriding this property.
-    */
-   var name: String {
-      "Unnamed"
-   }
-
-   var description: String {
-      "No description"
-   }
-
-   /// Size of the array
-   var size: Int = 0
-   /// Current inner loop index to the array, used by some sorting methods.
-   var innerIndex: Int = 0
-   /// Current outer loop index to the array, used by some sorting methods.
-   var outerIndex: Int = 0
-
-   /** Initializes the array with the specified size and resets the loop counters to zero.
-    - parameter arraySize: The size of the array to sort.
-   */
-   required init(arraySize: Int) {
-      size = arraySize
-      restart()
-   }
-
-   /// Restarts the sort by setting the loop counters to zero.
-   func restart() {
-      innerIndex = 0
-      outerIndex = 0
-   }
-
-   /**
-    Base class version of the step of the sorting algorithm on the array. Subclasses must always first call the baseclass
-    implementation and then execute their own step code.
-    - parameter array: The array being sorted
-    - parameter swappedItems: Contains the result of the sort step, which elements to swap in the array
-    - returns: Returns true if items were swapped, base class returns false always.
-    */
-   @discardableResult func nextStep(array: [Int], swappedItems : inout SwappedItems) -> Bool {
-      swappedItems.first = -1
-      swappedItems.second = -1
-      swappedItems.operation = .swap
-      return false
-   }
-
-   /**
-    Sorts the array with the same method as the steppable version but in a tight loop without stepping.
-    This is to demonstrate the "real" speed of the sorting algorithm, compared to the others.
-    Base class implementation just stores the size to a member variable, subclasses must implement the actual
-    sorting algorithm.
-    - parameter arrayCopy: The array that is to be sorted.
-    - returns: Base class implementation always returns true.
-    */
-   func realAlgorithm(arrayCopy: [Int]) -> Bool {
-      size = arrayCopy.count
-      return true
-   }
-
+   mutating func realAlgorithm(arrayCopy: [Int]) -> Bool
 }
