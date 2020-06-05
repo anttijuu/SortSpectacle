@@ -80,9 +80,6 @@ class SortCoordinator: ObservableObject {
    /// Is true, if sorting is ongoing, otherwise false.
    private var executing = false
 
-   /// Sorting methods indicate which array elements (if any) are to be swapped or moved with each step of the sorting method.
-   private var swappedItems = SwappedItems()
-
    /// Which of the sorting methods in the sortingMethod array is currently executed.
    private var currentMethodIndex = 0
    /// All the supported sorting methods are placed in the array before starting the execution.
@@ -244,6 +241,7 @@ class SortCoordinator: ObservableObject {
     */
    private func nextStep() -> Bool {
       var returnValue = false
+      var swappedItems = SwappedItems()
       returnValue = currentMethod!.nextStep(array: array, swappedItems: &swappedItems)
       self.array.handleSortOperation(operation: swappedItems)
       return returnValue

@@ -94,8 +94,6 @@ struct LampSort: SortMethod {
          return true
       }
 
-      swappedItems.reset()
-
       switch state {
       case .outerLoopFirstPart:
          low = lows.pop()!

@@ -101,8 +101,6 @@ struct ShellSort: SortMethod {
          return true
       }
 
-      swappedItems.reset()
-
       switch state {
       case .gapUpdate:
          gap /= 2

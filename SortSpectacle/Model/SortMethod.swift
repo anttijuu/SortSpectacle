@@ -30,12 +30,6 @@ struct SwappedItems {
    var first = -1
    /// The index to swap or move values to. Value less than zero means that no move should be performed.
    var second = -1
-
-   mutating func reset() {
-      operation = .swap
-      first = -1
-      second = -1
-   }
 }
 
 /**
@@ -77,10 +71,12 @@ protocol SortMethod {
     Does the next step in the sort, moving or switching two values in the array.
     Caller will do the actual swapping of values in the array.
     
-    **Note**: it is **required** that the implementations call `swappedItems.reset()` before using the parameter in the method.
-    
     This method is called repeatedly until it returns true. After each step, the UI is updated to
     visualize the process of sorting.
+    
+    Note that caller should have swappedItems as a local variable *within* a loop so that it is resetted before each
+    call to nextStep.
+    
     - parameter array: The array containing the elements to sort.
     - parameter swappedItems: The two items to swap or move, if any. Method sets the values and caller does the moving.
     - returns: Returns true if the array is sorted. Caller should stop sorting (calling nextStep).

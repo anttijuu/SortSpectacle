@@ -65,7 +65,7 @@ struct BubbleSort: SortMethod {
       if sortSize <= 1 {
          return true
       }
-      swappedItems.reset()
+
       if array[innerIndex-1] > array[innerIndex] {
          swappedItems.first = innerIndex-1
          swappedItems.second = innerIndex

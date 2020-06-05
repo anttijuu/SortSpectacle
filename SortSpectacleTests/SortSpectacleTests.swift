@@ -176,8 +176,8 @@ class SortSpectacleCollectionTests: XCTestCase {
    }
 
    func doSortTest(sortAlgorithm: inout SortMethod) {
-      var swappedItems = SwappedItems()
       while true {
+         var swappedItems = SwappedItems()
          let finished = sortAlgorithm.nextStep(array: intArray, swappedItems: &swappedItems)
          if finished {
             break
