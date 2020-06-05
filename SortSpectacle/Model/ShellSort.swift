@@ -35,7 +35,11 @@ struct ShellSort: SortMethod {
    /// The description of the Shellsort method.
    var description: String {
       """
-      Shell sort is an in-place comparison sort. The method starts by sorting pairs of elements far apart from each other, then progressively reducing the gap between elements to be compared. Donald Shell published the first version of this sort in 1959.
+      Shell sort is an in-place comparison sort.
+      
+      The method starts by sorting pairs of elements far apart from each other, then progressively reducing the gap between elements to be compared.
+      
+      Donald Shell published the first version of this sort in 1959.
       """
    }
 

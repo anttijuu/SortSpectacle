@@ -113,7 +113,7 @@ struct ContentView: View {
          .onEnded { _ in
             if self.sortEngine.isExecuting() {
                print("Stopped sorter")
-               self.sortEngine.stop()
+               self.sortEngine.nextMethod()
             } else {
                print("Starting sorter")
                self.sortEngine.execute()
@@ -127,7 +127,7 @@ struct ContentView: View {
          Text("Sort it out")
             .font(.largeTitle)
          Text(sortEngine.description)
-            .font(.subheadline)
+            .font(.headline)
          Spacer()
          if sortEngine.state == SortCoordinator.State.atStart {
             IntroView(engine: sortEngine)

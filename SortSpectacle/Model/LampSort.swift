@@ -53,7 +53,9 @@ struct LampSort: SortMethod {
    /// Short description for the sort method.
    var description: String {
       """
-       Quick sort is a recursive sorting algorithm. The recursion is not fundamental to the algorithm. Lamp sort is an implementation of Quick sort without recursion.
+      Quick sort is a recursive sorting algorithm. The recursion is not fundamental to the algorithm.
+      
+      Lamp sort is an implementation of Quick sort without recursion.
       """
    }
 

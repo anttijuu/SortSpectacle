@@ -22,7 +22,7 @@ struct TimingResult: Hashable, Comparable {
    let timing: Double
    /// Timing as string
    var timingAsString: String {
-      String(format: "%.5f", timing)
+      String(format: "%.5f secs", timing)
    }
 
    static func < (lhs: TimingResult, rhs: TimingResult) -> Bool {
@@ -31,7 +31,7 @@ struct TimingResult: Hashable, Comparable {
 }
 
 /// Minimum default value of elements to generate to the array for sorting.
-let defaultMaxMinValueOfElements = 150
+let defaultMaxMinValueOfElements = 350
 
 /**
  SortCoordinator coordinates, as the name implies, sorting of arrays using different sorting methods.
@@ -145,6 +145,13 @@ class SortCoordinator: ObservableObject {
       array.prepare(range: range)
    }
 
+   func getDescription(for methodName: String) -> String {
+      for method in sortingMethods where method.name == methodName {
+         return method.description
+      }
+      return ""
+   }
+   
    /**
     Executes the different sorting methods, using a repeating timer within a closure.
     
@@ -264,7 +271,7 @@ class SortCoordinator: ObservableObject {
       return returnValue
    }
 
-   private func nextMethod() {
+   func nextMethod() {
       if let clock = timer {
          clock.invalidate()
       }

@@ -27,7 +27,9 @@ struct BubbleSort: SortMethod {
    var description: String {
       """
       Bubble sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.
+      
       The pass through the list is repeated until the list is sorted. Bubble sort performs poorly in real world use and is used primarily as an educational tool.
+      
       Do not use large arrays (>1000) elements unless you have time to wait and see how the sorting goes.
       """
    }
