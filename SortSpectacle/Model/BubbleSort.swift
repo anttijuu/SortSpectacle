@@ -44,22 +44,22 @@ struct BubbleSort: SortMethod {
    /// Loop index variable for sorting the array.
    private var innerIndex: Int = 1
 
-   /// Initializes the BubbleSort by calling base class implementation. Nothing else is needed here.
+   /// Initializes the BubbleSort.
    init(arraySize: Int) {
       size = arraySize
       sortSize = size
    }
 
-   /// Restarts the bubble sort, calls super.restart() and resets the inner index. Note that array is not modified, caller must do that if necessary.
+   /// Restarts the bubble sort, resets the member variables.
    mutating func restart() {
       innerIndex = 1
       sortSize = size
    }
 
-   /** Implements the SortMethod protocol and overrides the base class implementation.
+   /** Implements the SortMethod protocol with bubble sort method.
     Note that the algorithm modifies the array size member variable, and that will eventually
     cause the method returning true. Until that, false is always returned at the end of the method.
-    See base class and protocol documentation for details of the method.
+    See protocol documentation for details of the method.
     */
    mutating func nextStep(array: [Int], swappedItems : inout SwappedItems) -> Bool {
       if sortSize <= 1 {

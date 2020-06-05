@@ -38,8 +38,6 @@ struct SwappedItems {
  Note that the array to be sorted is hosted in an external object, and provided
  to the sorting methods as a parameter to the `nextStep()` method.
  
- The protocol is implemented by the `SortBase`, which provides common functionality for further
- sorting methods. Implementations of SortMethod do not have to inherit from SortBase.
  */
 protocol SortMethod {
 

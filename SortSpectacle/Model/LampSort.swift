@@ -57,7 +57,7 @@ struct LampSort: SortMethod {
       """
    }
 
-   /// Initializes the sorting method. Calls `SortBase.init(...)`.
+   /// Initializes the sorting method.
    init(arraySize: Int) {
       size = arraySize
       restart()
