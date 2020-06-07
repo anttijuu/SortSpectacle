@@ -78,6 +78,9 @@ struct NumbersShape: Shape {
    }
 }
 
+// TODO: Intro view has a blurred background where a repeating sorting animation can
+// be seen repeating, until user starts the animation.
+
 struct IntroView: View {
 
    var engine: SortCoordinator

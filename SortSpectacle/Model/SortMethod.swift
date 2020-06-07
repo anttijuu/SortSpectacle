@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Set debug to true to print debug output where implemented.
 let debug = false
 
 /**

@@ -56,6 +56,8 @@ struct LampSort: SortMethod {
       Quick sort is a recursive sorting algorithm. The recursion is not fundamental to the algorithm.
       
       Lamp sort is an implementation of Quick sort without recursion.
+      
+      Implementation uses two stacks to control the areas to be sorted in different passes.
       """
    }
 
