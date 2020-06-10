@@ -21,19 +21,19 @@ struct LampSort: SortMethod {
    let size: Int
 
    /// Holds the indexes to the lower indexes of areas to sort.
-   var lows = Stack<Int>()
+   private var lows = Stack<Int>()
    /// Holds the indexes to the higher indes values to sort.
-   var highs = Stack<Int>()
+   private var highs = Stack<Int>()
 
-   var low: Int = 0
-   var high: Int = 0
-   var span: Int = 0
-   var innerForLoopIndex = -1
-   var pivotIndex = -1
-   var pivot = 0
+   private var low: Int = 0
+   private var high: Int = 0
+   private var span: Int = 0
+   private var innerForLoopIndex = -1
+   private var pivotIndex = -1
+   private var pivot = 0
 
    /// The state variable used in step by step sorting.
-   enum State {
+   private enum State {
       /// The outer loop' first steps to execute.
       case outerLoopFirstPart
       /// The inner loop area to execute.
@@ -43,7 +43,7 @@ struct LampSort: SortMethod {
       /// Algorithm is done sorting.
       case finished
    }
-   var state = State.outerLoopFirstPart
+   private var state = State.outerLoopFirstPart
 
    /// The name of the sort method.
    var name: String {

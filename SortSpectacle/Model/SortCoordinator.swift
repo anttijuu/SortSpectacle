@@ -22,16 +22,13 @@ struct TimingResult: Hashable, Comparable {
    let timing: Double
    /// Timing as string
    var timingAsString: String {
-      String(format: "%.5f secs", timing)
+      String(format: "%.5f s", timing)
    }
 
    static func < (lhs: TimingResult, rhs: TimingResult) -> Bool {
       lhs.timing < rhs.timing
    }
 }
-
-/// Minimum default value of elements to generate to the array for sorting.
-let defaultMaxMinValueOfElements = 350
 
 /**
  SortCoordinator coordinates, as the name implies, sorting of arrays using different sorting methods.
@@ -72,12 +69,15 @@ class SortCoordinator: ObservableObject {
    @Published var performanceTable = [TimingResult]()
 
    /// These timer interval values are used in different phases of the sorting to control timing the execution.
-   enum TimerIntervals: Double {
+   private enum TimerIntervals: Double {
       /// A longer gap in between the sorting methods is used.
       case waitingForNextSortMethod = 1.5
       /// A very short gap is used in between the steps of the sorting methods to keep the animation going swiftly.
       case waitingForNextSortStep = 0.0005
    }
+
+   /// Minimum default value of elements to generate to the array for sorting.
+   private let defaultMaxMinValueOfElements = 350
 
    /// The currently executing sorthing method reference.
    private var currentMethod: SortMethod?
@@ -105,7 +105,7 @@ class SortCoordinator: ObservableObject {
       case atEnd
    }
    /// The state variable, holding the execution state.
-   var state = State.atStart
+   private(set) var state = State.atStart
 
    /// Initializes the coordinator by preparing the arrays with data and appending all the supported methods to the sorting array.
    required init() {
@@ -168,7 +168,7 @@ class SortCoordinator: ObservableObject {
          case .atStart:
             if debug { print("Engine atStart") }
             self.state = .animating
-            self.originalArray.prepare(range: -defaultMaxMinValueOfElements...defaultMaxMinValueOfElements-1)
+            self.originalArray.prepare(range: -self.defaultMaxMinValueOfElements...self.defaultMaxMinValueOfElements-1)
             self.originalArray.shuffle()
             self.array = self.originalArray
             self.currentMethod!.restart()

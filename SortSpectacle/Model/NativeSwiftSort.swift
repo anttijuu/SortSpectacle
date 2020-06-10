@@ -14,10 +14,10 @@ struct NativeSwiftSort: SortMethod {
       size = arraySize
    }
    
-   var size: Int
+   let size: Int
    
    var name: String {
-      "Swift sort"
+      "Native Swift sort"
    }
    
    var description: String {

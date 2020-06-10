@@ -19,7 +19,7 @@ var lineWidth: CGFloat = 1.0
  lengths are adjusted to the range of numbers so that the largest (abs) value determines the length
  of the tallest line. Line widht is also calculated based on the number of lines to draw adjusted to the available space.
  */
-struct NumbersShape: Shape {
+struct NumbersLineShape: Shape {
    private var array: [Int]
    private var maxAbsValue = 1
    private var minValue = 0
@@ -78,22 +78,6 @@ struct NumbersShape: Shape {
    }
 }
 
-// TODO: Intro view has a blurred background where a repeating sorting animation can
-// be seen repeating, until user starts the animation.
-
-struct IntroView: View {
-
-   var engine: SortCoordinator
-
-   var body: some View {
-      Button(action: {
-         self.engine.execute()
-      }) {
-         Text("Tap to start")
-      }
-   }
-}
-
 /**
  The main view of the app.
  
@@ -135,7 +119,7 @@ struct ContentView: View {
          if sortEngine.state == SortCoordinator.State.atStart {
             IntroView(engine: sortEngine)
          } else if sortEngine.state == SortCoordinator.State.animating {
-            NumbersShape(sourceArray: sortEngine.array)
+            NumbersLineShape(sourceArray: sortEngine.array)
                .stroke(Color.red, style: StrokeStyle(lineWidth: lineWidth, lineCap: .butt, lineJoin: .miter, miterLimit: 1))
                .gesture(tap)
          } else {

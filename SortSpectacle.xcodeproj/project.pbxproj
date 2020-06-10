@@ -23,6 +23,7 @@
 		317E186B24065FD800D5DD7E /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317E186A24065FD800D5DD7E /* Stack.swift */; };
 		317E186C24065FDB00D5DD7E /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317E186A24065FD800D5DD7E /* Stack.swift */; };
 		317E186D24065FDC00D5DD7E /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317E186A24065FD800D5DD7E /* Stack.swift */; };
+		31989D9B249134D100FD7A88 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31989D9A249134D100FD7A88 /* IntroView.swift */; };
 		31EC2A51248D2BED00193A87 /* NativeSwiftSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EC2A50248D2BED00193A87 /* NativeSwiftSort.swift */; };
 		31EC2A52248D2BED00193A87 /* NativeSwiftSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EC2A50248D2BED00193A87 /* NativeSwiftSort.swift */; };
 		31EC2A53248D2BED00193A87 /* NativeSwiftSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EC2A50248D2BED00193A87 /* NativeSwiftSort.swift */; };
@@ -35,9 +36,9 @@
 		86276FF923FD1CD700E339EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86276FF723FD1CD700E339EC /* LaunchScreen.storyboard */; };
 		8627700423FD1CD700E339EC /* SortSpectacleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8627700323FD1CD700E339EC /* SortSpectacleTests.swift */; };
 		8627700F23FD1CD700E339EC /* SortSpectacleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8627700E23FD1CD700E339EC /* SortSpectacleUITests.swift */; };
-		8627701E23FD201F00E339EC /* NumberCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8627701D23FD201F00E339EC /* NumberCollection.swift */; };
-		8627701F23FD201F00E339EC /* NumberCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8627701D23FD201F00E339EC /* NumberCollection.swift */; };
-		8627702023FD201F00E339EC /* NumberCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8627701D23FD201F00E339EC /* NumberCollection.swift */; };
+		8627701E23FD201F00E339EC /* Array+SortOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8627701D23FD201F00E339EC /* Array+SortOperations.swift */; };
+		8627701F23FD201F00E339EC /* Array+SortOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8627701D23FD201F00E339EC /* Array+SortOperations.swift */; };
+		8627702023FD201F00E339EC /* Array+SortOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8627701D23FD201F00E339EC /* Array+SortOperations.swift */; };
 		86BFEF2E2403D9310016690A /* SortMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BFEF2D2403D9310016690A /* SortMethod.swift */; };
 		86BFEF302403DA210016690A /* BubbleSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BFEF2F2403DA210016690A /* BubbleSort.swift */; };
 /* End PBXBuildFile section */
@@ -65,6 +66,7 @@
 		3159E6B52428AC4F00315192 /* SortSpectacle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SortSpectacle.entitlements; sourceTree = "<group>"; };
 		317E18662406551600D5DD7E /* LampSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LampSort.swift; sourceTree = "<group>"; };
 		317E186A24065FD800D5DD7E /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		31989D9A249134D100FD7A88 /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IntroView.swift; path = SortSpectacle/IntroView.swift; sourceTree = SOURCE_ROOT; };
 		31EC2A50248D2BED00193A87 /* NativeSwiftSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeSwiftSort.swift; sourceTree = "<group>"; };
 		8613E0D6248A6E160082F255 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResultsView.swift; path = SortSpectacle/ResultsView.swift; sourceTree = SOURCE_ROOT; };
 		86276FE923FD1CD600E339EC /* SortSpectacle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SortSpectacle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,7 +83,7 @@
 		8627700A23FD1CD700E339EC /* SortSpectacleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SortSpectacleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8627700E23FD1CD700E339EC /* SortSpectacleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortSpectacleUITests.swift; sourceTree = "<group>"; };
 		8627701023FD1CD700E339EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8627701D23FD201F00E339EC /* NumberCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberCollection.swift; sourceTree = "<group>"; };
+		8627701D23FD201F00E339EC /* Array+SortOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+SortOperations.swift"; sourceTree = "<group>"; };
 		86BFEF2D2403D9310016690A /* SortMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortMethod.swift; sourceTree = "<group>"; };
 		86BFEF2F2403DA210016690A /* BubbleSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleSort.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -146,6 +148,7 @@
 				8627701C23FD1FF600E339EC /* Model */,
 				86276FEC23FD1CD600E339EC /* AppDelegate.swift */,
 				86276FEE23FD1CD600E339EC /* SceneDelegate.swift */,
+				31989D9A249134D100FD7A88 /* IntroView.swift */,
 				86276FF023FD1CD600E339EC /* ContentView.swift */,
 				8613E0D6248A6E160082F255 /* ResultsView.swift */,
 				86276FF223FD1CD700E339EC /* Assets.xcassets */,
@@ -185,7 +188,7 @@
 		8627701C23FD1FF600E339EC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8627701D23FD201F00E339EC /* NumberCollection.swift */,
+				8627701D23FD201F00E339EC /* Array+SortOperations.swift */,
 				86BFEF2D2403D9310016690A /* SortMethod.swift */,
 				86BFEF2F2403DA210016690A /* BubbleSort.swift */,
 				310D16AC2404157C00EB1863 /* SortCoordinator.swift */,
@@ -353,10 +356,11 @@
 				86276FED23FD1CD600E339EC /* AppDelegate.swift in Sources */,
 				317E186B24065FD800D5DD7E /* Stack.swift in Sources */,
 				86276FEF23FD1CD600E339EC /* SceneDelegate.swift in Sources */,
+				31989D9B249134D100FD7A88 /* IntroView.swift in Sources */,
 				86BFEF2E2403D9310016690A /* SortMethod.swift in Sources */,
 				8613E0D7248A6E160082F255 /* ResultsView.swift in Sources */,
 				310D16AD2404157C00EB1863 /* SortCoordinator.swift in Sources */,
-				8627701E23FD201F00E339EC /* NumberCollection.swift in Sources */,
+				8627701E23FD201F00E339EC /* Array+SortOperations.swift in Sources */,
 				31EC2A51248D2BED00193A87 /* NativeSwiftSort.swift in Sources */,
 				317E18672406551600D5DD7E /* LampSort.swift in Sources */,
 				86276FF123FD1CD600E339EC /* ContentView.swift in Sources */,
@@ -374,7 +378,7 @@
 				317E186C24065FDB00D5DD7E /* Stack.swift in Sources */,
 				310D16B22404158A00EB1863 /* BubbleSort.swift in Sources */,
 				31EC2A52248D2BED00193A87 /* NativeSwiftSort.swift in Sources */,
-				8627701F23FD201F00E339EC /* NumberCollection.swift in Sources */,
+				8627701F23FD201F00E339EC /* Array+SortOperations.swift in Sources */,
 				8627700423FD1CD700E339EC /* SortSpectacleTests.swift in Sources */,
 				317E186824065A7000D5DD7E /* LampSort.swift in Sources */,
 			);
@@ -390,7 +394,7 @@
 				317E186D24065FDC00D5DD7E /* Stack.swift in Sources */,
 				310D16B32404158A00EB1863 /* BubbleSort.swift in Sources */,
 				31EC2A53248D2BED00193A87 /* NativeSwiftSort.swift in Sources */,
-				8627702023FD201F00E339EC /* NumberCollection.swift in Sources */,
+				8627702023FD201F00E339EC /* Array+SortOperations.swift in Sources */,
 				8627700F23FD1CD700E339EC /* SortSpectacleUITests.swift in Sources */,
 				317E186924065A7100D5DD7E /* LampSort.swift in Sources */,
 			);

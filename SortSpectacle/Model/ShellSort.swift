@@ -25,7 +25,7 @@ import Foundation
 struct ShellSort: SortMethod {
 
    /// The size of the array to sort.
-   var size: Int
+   let size: Int
 
    /// The name of the sort method.
    var name: String {
