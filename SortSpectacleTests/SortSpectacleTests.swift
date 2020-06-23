@@ -13,7 +13,7 @@ import XCTest
 let timeout = 30.0
 let maxArraySize = 2_000
 
-class SortSpectacleCollectionTests: XCTestCase {
+class SortSpectacleTests: XCTestCase {
 
    private var intArray = [Int]()
    private var range = 0...10
@@ -112,6 +112,18 @@ class SortSpectacleCollectionTests: XCTestCase {
       intArray.removeAll()
       intArray.append(2)
       intArray.append(1)
+      sort = ShellSort(arraySize: intArray.count)
+      doSortTest(sortAlgorithm: sort)
+   }
+
+   func testAlreadySortedArray() {
+      intArray.removeAll()
+      intArray.prepare(count: count)
+      var sort: SortMethod
+      sort = BubbleSort(arraySize: intArray.count)
+      doSortTest(sortAlgorithm: sort)
+      sort = LampSort(arraySize: intArray.count)
+      doSortTest(sortAlgorithm: sort)
       sort = ShellSort(arraySize: intArray.count)
       doSortTest(sortAlgorithm: sort)
    }
