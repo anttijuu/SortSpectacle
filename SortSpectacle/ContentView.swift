@@ -10,8 +10,6 @@ import SwiftUI
 
 var lineWidth: CGFloat = 1.0
 
-//TODO: Speed test fonts too small. Change alignments and remove unnecessary decimals
-
 /**
  A shape which draws the numbers in an array of integers as lines.
  
@@ -48,8 +46,7 @@ struct NumbersLineShape: Shape {
     - returns: Returnst the path to draw to the View.
    */
    func path(in rect: CGRect) -> Path {
-      var path = Path()
-      // path.addRect(rect)
+      var path = Path(rect)
 
       lineWidth = rect.height / CGFloat(array.count)
 
@@ -71,7 +68,8 @@ struct NumbersLineShape: Shape {
       for number in array {
          path.move(to: CGPoint(x: xOrigin, y: yOrigin))
          xTarget = CGFloat(number) * pixelsPerLineUnit
-         path.addLine(to: CGPoint(x: xOrigin + xTarget, y: yOrigin))
+         // path.addLine(to: CGPoint(x: xOrigin + xTarget, y: yOrigin))
+         path.addEllipse(in: CGRect(origin: CGPoint(x: xOrigin + xTarget, y: yOrigin-1), size: CGSize(width: 3, height: 3)))
          yOrigin += lineWidth
       }
       return path
@@ -108,6 +106,9 @@ struct ContentView: View {
       }
    }
 
+   // TODO: IntroView has longer text explaining the app
+   // TODO: ContentView is a ZStack where text about the current sort method is transparent and floating atop of the shapes
+   // TODO: ResultsView is a list where clicking a line takes to details.
    var body: some View {
 
       VStack {
@@ -120,7 +121,7 @@ struct ContentView: View {
             IntroView(engine: sortEngine)
          } else if sortEngine.state == SortCoordinator.State.animating {
             NumbersLineShape(sourceArray: sortEngine.array)
-               .stroke(Color.red, style: StrokeStyle(lineWidth: lineWidth, lineCap: .butt, lineJoin: .miter, miterLimit: 1))
+               .stroke(Color.red, style: StrokeStyle(lineWidth: 1.0, lineCap: .butt, lineJoin: .miter, miterLimit: 1))
                .gesture(tap)
          } else {
             ResultsView(engine: sortEngine)

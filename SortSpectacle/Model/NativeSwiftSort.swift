@@ -22,7 +22,7 @@ struct NativeSwiftSort: SortMethod {
    
    var description: String {
       """
-      The sorting method implemented in Swift. This is Tim sort, AFAIK.
+      The sorting method implemented in Swift. This is Timsort.
       """
    }
    

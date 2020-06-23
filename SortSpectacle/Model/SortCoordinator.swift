@@ -22,7 +22,7 @@ struct TimingResult: Hashable, Comparable {
    let timing: Double
    /// Timing as string
    var timingAsString: String {
-      String(format: "%.5f s", timing)
+      String(format: "%.5fs", timing)
    }
 
    static func < (lhs: TimingResult, rhs: TimingResult) -> Bool {
@@ -77,7 +77,7 @@ class SortCoordinator: ObservableObject {
    }
 
    /// Minimum default value of elements to generate to the array for sorting.
-   private let defaultMaxMinValueOfElements = 350
+   private let defaultMaxMinValueOfElements = 100
 
    /// The currently executing sorthing method reference.
    private var currentMethod: SortMethod?

@@ -45,7 +45,7 @@ struct ResultsView: View {
    @State var description = ""
       
    var body: some View {
-      VStack(alignment: .leading) {
+      VStack {
          VStack(alignment: .leading, spacing: 20) {
             Text("Sorting speed in seconds")
                .font(.headline)
