@@ -107,9 +107,7 @@ struct ContentView: View {
       }
    }
 
-   // TODO: IntroView has longer text explaining the app
    // TODO: ContentView is a ZStack where text about the current sort method is transparent and floating atop of the shapes
-   // TODO: ResultsView is a list where clicking a line takes to details.
    var body: some View {
 
       VStack {
