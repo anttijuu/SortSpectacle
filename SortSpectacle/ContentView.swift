@@ -46,7 +46,7 @@ struct NumbersLineShape: Shape {
     - returns: Returnst the path to draw to the View.
    */
    func path(in rect: CGRect) -> Path {
-      var path = Path(rect)
+      var path = Path()
 
       lineWidth = rect.height / CGFloat(array.count)
 
@@ -69,7 +69,8 @@ struct NumbersLineShape: Shape {
          path.move(to: CGPoint(x: xOrigin, y: yOrigin))
          xTarget = CGFloat(number) * pixelsPerLineUnit
          // path.addLine(to: CGPoint(x: xOrigin + xTarget, y: yOrigin))
-         path.addEllipse(in: CGRect(origin: CGPoint(x: xOrigin + xTarget, y: yOrigin-1), size: CGSize(width: 3, height: 3)))
+         path.addRect(CGRect(origin: CGPoint(x: xOrigin + xTarget, y: yOrigin-1), size: CGSize(width: 3, height: 3)))
+         // path.addEllipse(in: CGRect(origin: CGPoint(x: xOrigin + xTarget, y: yOrigin-1), size: CGSize(width: 3, height: 3)))
          yOrigin += lineWidth
       }
       return path
@@ -97,10 +98,10 @@ struct ContentView: View {
       TapGesture(count: 1)
          .onEnded { _ in
             if self.sortEngine.isExecuting() {
-               print("Stopped sorter")
+               if debug { print("Stopped sorter") }
                self.sortEngine.nextMethod()
             } else {
-               print("Starting sorter")
+               if debug { print("Starting sorter") }
                self.sortEngine.execute()
             }
       }

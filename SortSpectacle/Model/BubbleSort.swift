@@ -34,6 +34,10 @@ struct BubbleSort: SortMethod {
       """
    }
 
+   var webLinks: [(String, String)] {
+      [("Wikipedia on BubbleSort", "https://en.wikipedia.org/wiki/Bubble_sort")]
+   }
+
    /// Implements the size property declared in the `SortMethod` protocol. This is the size of the array to sort.
    let size: Int
 

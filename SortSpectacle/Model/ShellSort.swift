@@ -43,6 +43,10 @@ struct ShellSort: SortMethod {
       """
    }
 
+   var webLinks: [(String, String)] {
+      [("Wikipedia on ShellSort", "https://en.wikipedia.org/wiki/Shellsort"), ("Rosetta code on ShellSort", "https://rosettacode.org/wiki/Sorting_algorithms/Shell_sort")]
+   }
+
    /// Inner loop index counter.
    private var innerIndex: Int = 0
    // Outer loop index counter.

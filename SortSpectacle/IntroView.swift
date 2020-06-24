@@ -16,10 +16,22 @@ struct IntroView: View {
    var engine: SortCoordinator
    
    var body: some View {
-      Button(action: {
-         self.engine.execute()
-      }) {
-         Text("Tap to start")
+      VStack {
+         VStack(alignment: .leading) {
+            Text("This application demonstrates different sorting methods.\n")
+            Text("There are \(engine.getCountOfSupportedMethods()) sorting methods supported currently.\n")
+            Text("When you start, the methods are first animated to show how they do their job of sorting numbers.\n")
+            Text("You can tap the animation screen to stop sorting and move to the next method.\n")
+            Text("After animations, sorting methods are used to sort a large array and execution time is recorded. You will be able to see the results after this.\n")
+            Text("You can adjust the count of numbers to sort as well as the animations in the application settings.")
+         }
+         .padding()
+         Spacer()
+         Button(action: {
+            self.engine.execute()
+         }) {
+            Text("Tap to start")
+         }
       }
    }
 }

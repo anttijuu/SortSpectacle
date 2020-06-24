@@ -6,9 +6,6 @@
 //  Copyright © 2020 Antti Juustila. All rights reserved.
 //
 
-//TODO: Fix: at the end, cannot start from the beginning.
-//TODO: After speed test, sort the array fastest > slowest
-
 import Foundation
 
 /**
@@ -22,7 +19,7 @@ struct TimingResult: Hashable, Comparable {
    let timing: Double
    /// Timing as string
    var timingAsString: String {
-      String(format: "%.5fs", timing)
+      String(format: "%.5f", timing).trimmingCharacters(in: .whitespacesAndNewlines) + "s"
    }
 
    static func < (lhs: TimingResult, rhs: TimingResult) -> Bool {
@@ -77,7 +74,7 @@ class SortCoordinator: ObservableObject {
    }
 
    /// Minimum default value of elements to generate to the array for sorting.
-   private let defaultMaxMinValueOfElements = 100
+   private let defaultMaxMinValueOfElements = 250
 
    /// The currently executing sorthing method reference.
    private var currentMethod: SortMethod?
@@ -123,6 +120,14 @@ class SortCoordinator: ObservableObject {
    }
 
    /**
+    Gets the count of supported sorting methods
+    - returns: The count of implemented sorting methods
+    */
+   func getCountOfSupportedMethods() -> Int {
+      return sortingMethods.count
+   }
+
+   /**
     Gets the name of the currently executing sorting method.
     - returns: The name of the currently executing sorting method.
     */
@@ -146,13 +151,30 @@ class SortCoordinator: ObservableObject {
       array.prepare(range: range)
    }
 
+   /**
+    Gets a description for the sorting method by method name
+    - parameter methodName: The name of the sorting method.
+    - returns: The description for the sorting method.
+    */
    func getDescription(for methodName: String) -> String {
       for method in sortingMethods where method.name == methodName {
          return method.description
       }
       return ""
    }
-   
+
+   /**
+    Gets the sorting method by the method's name.
+    - parameter methodName: The name of the sorting method.
+    - returns: The sorting method protocol referring to the method struct, nil if not found.
+    */
+   func getMethod(for methodName: String) -> SortMethod? {
+      for method in sortingMethods where method.name == methodName {
+         return method
+      }
+      return nil
+   }
+
    /**
     Executes the different sorting methods, using a repeating timer within a closure.
     
@@ -235,11 +257,10 @@ class SortCoordinator: ObservableObject {
 
       case .animating:
          if debug { print("in stop, moving to measuring state") }
-         //TODO: use a really big array with real sorting.
+         state = .measuring
          originalArray.prepare(range: -3000...999)
          originalArray.shuffle()
          array = originalArray
-         state = .measuring
          description = "Comparing algorithms with \(array.count) numbers..."
          performanceTable.removeAll(keepingCapacity: true)
          timer = Timer.scheduledTimer(withTimeInterval: TimerIntervals.waitingForNextSortMethod.rawValue, repeats: false) { _ in

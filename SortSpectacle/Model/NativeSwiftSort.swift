@@ -25,6 +25,10 @@ struct NativeSwiftSort: SortMethod {
       The sorting method implemented in Swift. This is Timsort.
       """
    }
+
+   var webLinks: [(String, String)] {
+      [("Wikipedia on TimSort", "https://en.wikipedia.org/wiki/Timsort")]
+   }
    
    mutating func restart() {
       // Nada

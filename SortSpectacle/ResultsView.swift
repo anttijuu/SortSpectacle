@@ -11,26 +11,16 @@ import SwiftUI
 struct PerformanceRow: View {
    
    var rowData: TimingResult
+   var method: SortMethod
    
    var body: some View {
-      HStack {
-//         Button(action: {
-//            self.showDetails.toggle()
-//         }) {
-//            Image(systemName: "info.circle")
-//               .frame(minWidth: 20, maxWidth: 20, minHeight: 50, maxHeight: 50)
-//               .font(Font.system(.title))
-//         }
-         Image(systemName: "info.circle")
-//            .frame(minWidth: 20, maxWidth: 20, minHeight: 20, maxHeight: 20)
-            .font(Font.system(.headline))
-         Text(self.rowData.methodName)
-            .font(.headline)
-            .multilineTextAlignment(.leading)
-         Spacer()
-         Text(self.rowData.timingAsString)
-            .font(.system(.headline, design: .monospaced))
-            .multilineTextAlignment(.trailing)
+      NavigationLink(destination: SortMethodDetailView(sortMethod: method)) {
+         VStack(alignment: .leading) {
+            Text(self.rowData.methodName)
+               .font(.headline)
+            Text(self.rowData.timingAsString)
+               .font(.system(.subheadline, design: .monospaced))
+         }
       }
    }
 }
@@ -42,33 +32,29 @@ struct PerformanceRow: View {
 struct ResultsView: View {
    /// The timing results for each of the algorithm executed.
    @ObservedObject var engine: SortCoordinator
-   @State var description = ""
-      
+
    var body: some View {
-      VStack {
-         VStack(alignment: .leading, spacing: 20) {
-            Text("Sorting speed in seconds")
-               .font(.headline)
-            Divider()
-            ForEach(engine.performanceTable, id: \.self) { item in
-               PerformanceRow(rowData: item)
-//                  .padding(.all, 1.0)
-                  .onTapGesture {
-                     self.description = self.engine.getDescription(for: item.methodName)
-                  }
+      NavigationView {
+         VStack {
+            List {
+               ForEach(engine.performanceTable, id: \.self) { item in
+                  PerformanceRow(rowData: item, method: self.engine.getMethod(for: item.methodName)!)
+               }
+            }
+            Button(action: {
+               self.engine.stop()
+            }) {
+               Text("Back to start")
             }
          }
-         Spacer()
-         if description.count > 0 {
-            Text(description)
-            Spacer()
-         }
-         Button(action: {
-            self.engine.stop()
-         }) {
-            Text("Back to start")
-         }
       }
-      .padding()
+      .navigationBarTitle("Sorting speed in secs")
+   }
+}
+
+struct ResultsView_Previews: PreviewProvider {
+   static var previews: some View {
+      let engine = SortCoordinator()
+      return ResultsView(engine: engine)
    }
 }

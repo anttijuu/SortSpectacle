@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3102DC6F24A3577B0082D3B8 /* SortMethodDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3102DC6E24A3577B0082D3B8 /* SortMethodDetailView.swift */; };
+		3102DC7024A3577B0082D3B8 /* SortMethodDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3102DC6E24A3577B0082D3B8 /* SortMethodDetailView.swift */; };
 		310D16AD2404157C00EB1863 /* SortCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D16AC2404157C00EB1863 /* SortCoordinator.swift */; };
 		310D16AE2404157C00EB1863 /* SortCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D16AC2404157C00EB1863 /* SortCoordinator.swift */; };
 		310D16AF2404157C00EB1863 /* SortCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D16AC2404157C00EB1863 /* SortCoordinator.swift */; };
@@ -61,6 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3102DC6E24A3577B0082D3B8 /* SortMethodDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortMethodDetailView.swift; sourceTree = "<group>"; };
 		310D16AC2404157C00EB1863 /* SortCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCoordinator.swift; sourceTree = "<group>"; };
 		31469E892422392B00C6E864 /* ShellSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellSort.swift; sourceTree = "<group>"; };
 		3159E6B52428AC4F00315192 /* SortSpectacle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SortSpectacle.entitlements; sourceTree = "<group>"; };
@@ -151,6 +154,7 @@
 				31989D9A249134D100FD7A88 /* IntroView.swift */,
 				86276FF023FD1CD600E339EC /* ContentView.swift */,
 				8613E0D6248A6E160082F255 /* ResultsView.swift */,
+				3102DC6E24A3577B0082D3B8 /* SortMethodDetailView.swift */,
 				86276FF223FD1CD700E339EC /* Assets.xcassets */,
 				86276FF723FD1CD700E339EC /* LaunchScreen.storyboard */,
 				86276FFA23FD1CD700E339EC /* Info.plist */,
@@ -364,6 +368,7 @@
 				31EC2A51248D2BED00193A87 /* NativeSwiftSort.swift in Sources */,
 				317E18672406551600D5DD7E /* LampSort.swift in Sources */,
 				86276FF123FD1CD600E339EC /* ContentView.swift in Sources */,
+				3102DC6F24A3577B0082D3B8 /* SortMethodDetailView.swift in Sources */,
 				86BFEF302403DA210016690A /* BubbleSort.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,6 +401,7 @@
 				31EC2A53248D2BED00193A87 /* NativeSwiftSort.swift in Sources */,
 				8627702023FD201F00E339EC /* Array+SortOperations.swift in Sources */,
 				8627700F23FD1CD700E339EC /* SortSpectacleUITests.swift in Sources */,
+				3102DC7024A3577B0082D3B8 /* SortMethodDetailView.swift in Sources */,
 				317E186924065A7100D5DD7E /* LampSort.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

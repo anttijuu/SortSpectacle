@@ -62,6 +62,11 @@ protocol SortMethod {
    var description: String { get }
 
    /**
+    A collection of a description and a link to a website with more information about the sort method.
+    */
+   var webLinks: [(String, String)] { get }
+
+   /**
     Restarts the sorting by resetting all loop counters, etc.
     */
    mutating func restart()
