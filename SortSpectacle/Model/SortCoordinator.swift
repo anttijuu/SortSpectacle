@@ -19,7 +19,7 @@ struct TimingResult: Hashable, Comparable {
    let timing: Double
    /// Timing as string
    var timingAsString: String {
-      String(format: "%.5f", timing).trimmingCharacters(in: .whitespacesAndNewlines) + "s"
+      String(format: "%.5f", timing) + "s"
    }
 
    static func < (lhs: TimingResult, rhs: TimingResult) -> Bool {
