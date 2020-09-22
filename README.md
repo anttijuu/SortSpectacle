@@ -32,7 +32,8 @@ See the docs generated from the code. If you want to add a new sorting method:
 
 ## License
 
-GPL 
+MIT License
+
 ## Who did this
 
 (c) Antti Juustila, 2020 All Rights Reserved.
