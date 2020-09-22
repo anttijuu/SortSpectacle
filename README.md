@@ -4,6 +4,9 @@ Sort Spectacle is a Swift/SwiftUI app demonstrating visually how different sorti
 
 Currently Bubble sort, Lamp sort and Quick sort are implemented. Additionally, Swift Foundation array's sort() is called, to compare performance in the final step of the demonstration. Array.sort() implements Timsort (AFAIK).
 
+See a short [demo video](https://youtu.be/T1ImYlaGTsE) of the app running on iPhone 11.
+
+
 ## How to use
 
 Clone the repo, build using Xcode and run either in simulator or in a real device (iPhone, iPad, macOS). 
