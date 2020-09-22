@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Array Extension Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Extension/Array" class="dashAnchor"></a>
+    <a title="Array Extension Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">SortSpectacle Docs</a> (81% documented)</p>
+        <p class="header-right"><a href="https://github.com/anttijuu/SortSpectacle"><img src="../img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">SortSpectacle Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Array Extension Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/SortCoordinator.html">SortCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SortCoordinator/State.html">– State</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Global%20Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Global%20Variables.html#/s:13SortSpectacle5debugSbvp">debug</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Array.html">Array</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/SortMethod.html">SortMethod</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Stackable.html">Stackable</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/BubbleSort.html">BubbleSort</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ContentView.html">ContentView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/LampSort.html">LampSort</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/LampSort/State.html">– State</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NativeSwiftSort.html">NativeSwiftSort</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NumbersLineShape.html">NumbersLineShape</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ResultsView.html">ResultsView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ShellSort.html">ShellSort</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ShellSort/State.html">– State</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Stack.html">Stack</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SwappedItems.html">SwappedItems</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SwappedItems/Operation.html">– Operation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/TimingResult.html">TimingResult</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Array</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Array</span> <span class="k">where</span> <span class="kt">Element</span> <span class="o">==</span> <span class="kt">Int</span></code></pre>
+
+                </div>
+              </div>
+            <p>Declare an extension to Int array to be able to easily prepare an array either</p>
+
+<ul>
+<li>with integers from a specified range and count of numbers, or</li>
+<li><p>with sequence of integers from 1 to count of numbers.</p></li>
+</ul><div class="aside aside-author">
+    <p class="aside-title">Author</p>
+    <p>Antti Juustila</p>
+
+</div><div class="aside aside-copyright">
+    <p class="aside-title">Copyright</p>
+    <p>© 2020 Antti Juustila, all rights reserved.</p>
+
+</div>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Available%20where%20%60Element%60%20%3D%3D%20%60Int%60"></a>
+                <a name="//apple_ref/swift/Section/Available where `Element` == `Int`" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Available%20where%20%60Element%60%20%3D%3D%20%60Int%60"></a>
+                  <h3 class="section-name"><p>Available where <code>Element</code> == <code>Int</code></p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sa13SortSpectacleSiRszlE7prepare5range5countySNySiG_SitF"></a>
+                    <a name="//apple_ref/swift/Method/prepare(range:count:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sa13SortSpectacleSiRszlE7prepare5range5countySNySiG_SitF">prepare(range:<wbr>count:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Prepare an array with a count of random numbers from a specified range.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">mutating</span> <span class="kd">func</span> <span class="nf">prepare</span><span class="p">(</span><span class="nv">range</span><span class="p">:</span> <span class="kt">ClosedRange</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">count</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>range</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The range of values the array is holding, e.g. -10..-10.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>count</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The count of numbers to generate to the array, randomly.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sa13SortSpectacleSiRszlE7prepare5rangeySNySiG_tF"></a>
+                    <a name="//apple_ref/swift/Method/prepare(range:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sa13SortSpectacleSiRszlE7prepare5rangeySNySiG_tF">prepare(range:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Prepare an array from a specified range sequentially.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">mutating</span> <span class="kd">func</span> <span class="nf">prepare</span><span class="p">(</span><span class="nv">range</span><span class="p">:</span> <span class="kt">ClosedRange</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>range</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The range of values the array is holding, e.g. -10..-10.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sa13SortSpectacleSiRszlE7prepare5countySi_tF"></a>
+                    <a name="//apple_ref/swift/Method/prepare(count:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sa13SortSpectacleSiRszlE7prepare5countySi_tF">prepare(count:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Prepare an array of numbers from 1 to <code>count</code> sequentially.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">mutating</span> <span class="kd">func</span> <span class="nf">prepare</span><span class="p">(</span><span class="nv">count</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>count</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The count of numbers to generate.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sa13SortSpectacleSiRszlE06handleA9Operation9operationyAA12SwappedItemsV_tF"></a>
+                    <a name="//apple_ref/swift/Method/handleSortOperation(operation:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sa13SortSpectacleSiRszlE06handleA9Operation9operationyAA12SwappedItemsV_tF">handleSortOperation(operation:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Does the sort operation to the array, depending on the operation parameter.
+If operation is .moveValue, moves the value in the &ldquo;first&rdquo; item to index in the second item.
+If operation is .swap, swaps the values indicated by the indexes in first and second.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">mutating</span> <span class="kd">func</span> <span class="nf">handleSortOperation</span><span class="p">(</span><span class="nv">operation</span><span class="p">:</span> <span class="kt"><a href="../Structs/SwappedItems.html">SwappedItems</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>operation</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The indexes in the array to operate on, depending on the operation type.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:Sa13SortSpectacleSiRszlE8isSortedSbyF"></a>
+                    <a name="//apple_ref/swift/Method/isSorted()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:Sa13SortSpectacleSiRszlE8isSortedSbyF">isSorted()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Utility function to test if an array is sorted.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">isSorted</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external">Antti</a>. All rights reserved. (Last updated: 2020-09-22)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

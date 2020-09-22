@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Stackable Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Protocol/Stackable" class="dashAnchor"></a>
+    <a title="Stackable Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">SortSpectacle Docs</a> (81% documented)</p>
+        <p class="header-right"><a href="https://github.com/anttijuu/SortSpectacle"><img src="../img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">SortSpectacle Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Stackable Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/SortCoordinator.html">SortCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SortCoordinator/State.html">– State</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Global%20Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Global%20Variables.html#/s:13SortSpectacle5debugSbvp">debug</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Array.html">Array</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/SortMethod.html">SortMethod</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Stackable.html">Stackable</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/BubbleSort.html">BubbleSort</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ContentView.html">ContentView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/LampSort.html">LampSort</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/LampSort/State.html">– State</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NativeSwiftSort.html">NativeSwiftSort</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NumbersLineShape.html">NumbersLineShape</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ResultsView.html">ResultsView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ShellSort.html">ShellSort</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ShellSort/State.html">– State</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Stack.html">Stack</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SwappedItems.html">SwappedItems</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SwappedItems/Operation.html">– Operation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/TimingResult.html">TimingResult</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Stackable</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">Stackable</span></code></pre>
+
+                </div>
+              </div>
+            <p>An interface for stack data structure needed by e.g. LampSort.</p>
+
+<p>Based on an example from Stack overlow.</p>
+
+<p>See <a href="https://stackoverflow.com/questions/31462272/stack-implementation-in-swift">https://stackoverflow.com/questions/31462272/stack-implementation-in-swift</a></p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SortSpectacle9StackableP7ElementQa"></a>
+                    <a name="//apple_ref/swift/Alias/Element" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle9StackableP7ElementQa">Element</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Type of elements to put into a stack.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">associatedtype</span> <span class="kt">Element</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SortSpectacle9StackableP4peek7ElementQzSgyF"></a>
+                    <a name="//apple_ref/swift/Method/peek()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle9StackableP4peek7ElementQzSgyF">peek()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>To peek if stack has an element to pop.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">peek</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/Stackable.html#/s:13SortSpectacle9StackableP7ElementQa">Element</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SortSpectacle9StackableP4pushyy7ElementQzF"></a>
+                    <a name="//apple_ref/swift/Method/push(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle9StackableP4pushyy7ElementQzF">push(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Push new element on top of the stack.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">mutating</span> <span class="kd">func</span> <span class="nf">push</span><span class="p">(</span><span class="n">_</span> <span class="nv">element</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Stackable.html#/s:13SortSpectacle9StackableP7ElementQa">Element</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SortSpectacle9StackableP3pop7ElementQzSgyF"></a>
+                    <a name="//apple_ref/swift/Method/pop()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle9StackableP3pop7ElementQzSgyF">pop()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Pop an element from the top of the stack.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="k">mutating</span> <span class="kd">func</span> <span class="nf">pop</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/Stackable.html#/s:13SortSpectacle9StackableP7ElementQa">Element</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external">Antti</a>. All rights reserved. (Last updated: 2020-09-22)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
