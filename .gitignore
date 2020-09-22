@@ -25,5 +25,4 @@ build/
 *.dep
 
 # The documentation folders
-docs/
 Documentation/
