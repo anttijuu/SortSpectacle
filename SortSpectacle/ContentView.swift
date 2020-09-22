@@ -68,9 +68,9 @@ struct NumbersLineShape: Shape {
       for number in array {
          path.move(to: CGPoint(x: xOrigin, y: yOrigin))
          xTarget = CGFloat(number) * pixelsPerLineUnit
-         // path.addLine(to: CGPoint(x: xOrigin + xTarget, y: yOrigin))
-         path.addRect(CGRect(origin: CGPoint(x: xOrigin + xTarget, y: yOrigin-1), size: CGSize(width: 3, height: 3)))
-         // path.addEllipse(in: CGRect(origin: CGPoint(x: xOrigin + xTarget, y: yOrigin-1), size: CGSize(width: 3, height: 3)))
+         path.addLine(to: CGPoint(x: xOrigin + xTarget, y: yOrigin))
+//          path.addRect(CGRect(origin: CGPoint(x: xOrigin + xTarget, y: yOrigin-1), size: CGSize(width: 3, height: 3)))
+//          path.addEllipse(in: CGRect(origin: CGPoint(x: xOrigin + xTarget, y: yOrigin-1), size: CGSize(width: 3, height: 3)))
          yOrigin += lineWidth
       }
       return path
@@ -109,7 +109,6 @@ struct ContentView: View {
 
    // TODO: ContentView is a ZStack where text about the current sort method is transparent and floating atop of the shapes
    var body: some View {
-
       VStack {
          Text("Sort it out")
             .font(.largeTitle)

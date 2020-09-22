@@ -2,26 +2,27 @@
 
 Sort Spectacle is a Swift/SwiftUI app demonstrating visually how different sorting algorithms behave.
 
-Currently Bubble sort, Lamp sort and Quick sort are implemented.
+Currently Bubble sort, Lamp sort and Quick sort are implemented. Additionally, Swift Foundation array's sort() is called, to compare performance in the final step of the demonstration. Array.sort() implements Timsort (AFAIK).
+
+## How to use
+
+Clone the repo, build using Xcode and run either in simulator or in a real device (iPhone, iPad, macOS). 
+
+Please note that you should build the app in Release configuration to make it run full speed without debugging stuff inside. 
 
 ## To do
 
-Another view for app settings:
+More sorting methods. E.g. restructure Timsort from Foundation source code to execute step by step.
 
-* How many numbers to sort (slider?)
-* Range of numbers to sort, from 1 > or -n...n
-* Random numbers or sequences
-* Visuals; lines (currently implemented) or dots being animated.
+Better settings / configuration to select: 
 
-Also, more functionality:
-
-1. More sorting algorithms
-1. Better visuals, like line width, highlighting the numbers compared just now
-1. Sounds, generated from sort status data.
-1. Adjusting speed, depending on array size and animations
+- count of numbers to sort
+- fancy graphics to display
+- adjusting speed, depending on array size
 
 
-## About
+## Who did this
 
 (c) Antti Juustila, 2020 All Rights Reserved.
+INTERACT Research Group, University of Oulu, Finland
 

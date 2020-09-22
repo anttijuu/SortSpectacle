@@ -65,23 +65,18 @@ class SortCoordinator: ObservableObject {
    /// This table will include the real time performance metrics of the sorting methods after the measuring phase.
    @Published var performanceTable = [TimingResult]()
 
-   /// These timer interval values are used in different phases of the sorting to control timing the execution.
-   private enum TimerIntervals: Double {
-      /// A longer gap in between the sorting methods is used.
-      case waitingForNextSortMethod = 1.5
-      /// A very short gap is used in between the steps of the sorting methods to keep the animation going swiftly.
-      case waitingForNextSortStep = 0.0005
-   }
+   private let waitingForNextSortMethod = 1.5
+   private let waitingForNextSortStep = 0.0005
 
-   /// Minimum default value of elements to generate to the array for sorting.
-   private let defaultMaxMinValueOfElements = 250
+   // Make sure the value here is one of the values in IntroView's array.
+   @Published var countOfNumbers = 200
 
    /// The currently executing sorthing method reference.
    private var currentMethod: SortMethod?
    /// A timer is used to control the execution of the sorting.
    private var timer: Timer?
    /// Holds the current interval used in the timing.
-   private var timerInterval = TimerIntervals.waitingForNextSortStep
+   private var timerInterval = 1.5
    /// Is true, if sorting is ongoing, otherwise false.
    private var executing = false
 
@@ -104,21 +99,9 @@ class SortCoordinator: ObservableObject {
    /// The state variable, holding the execution state.
    private(set) var state = State.atStart
 
-   /// Initializes the coordinator by preparing the arrays with data and appending all the supported methods to the sorting array.
-   required init() {
-      originalArray = [Int]()
-      originalArray.prepare(range: -defaultMaxMinValueOfElements...defaultMaxMinValueOfElements-1)
-      originalArray.shuffle()
-      array = originalArray
-      sortingMethods.append(BubbleSort(arraySize: array.count))
-      sortingMethods.append(ShellSort(arraySize: array.count))
-      sortingMethods.append(LampSort(arraySize: array.count))
-      sortingMethods.append(NativeSwiftSort(arraySize: array.count))
-      currentMethodIndex = 0
-      currentMethod = sortingMethods[currentMethodIndex]
-      description = "Next sort method: \(currentMethod!.name)"
+   init() {
+      prepare(count: countOfNumbers * 2)
    }
-
    /**
     Gets the count of supported sorting methods
     - returns: The count of implemented sorting methods
@@ -136,19 +119,23 @@ class SortCoordinator: ObservableObject {
    }
 
    /**
-    Prepares the coordinator for sorting. Currently not used, so consider removing.
+    Prepares the coordinator for sorting.
     - parameter count: The number of elements to hold in the array to be sorted.
     */
    func prepare(count: Int) {
-      array.prepare(count: count)
-   }
-
-   /**
-    Prepares the coordinator for sorting. Check that if not actually called, remove this.
-    - parameter range: The range of numbers to populate the array with.
-    */
-   func prepare(range: ClosedRange<Int>) {
-      array.prepare(range: range)
+      countOfNumbers = count
+      originalArray = [Int]()
+      originalArray.prepare(range: -count/2...count/2)
+      originalArray.shuffle()
+      array = originalArray
+      sortingMethods.removeAll()
+      sortingMethods.append(BubbleSort(arraySize: array.count))
+      sortingMethods.append(ShellSort(arraySize: array.count))
+      sortingMethods.append(LampSort(arraySize: array.count))
+      sortingMethods.append(NativeSwiftSort(arraySize: array.count))
+      currentMethodIndex = 0
+      currentMethod = sortingMethods[currentMethodIndex]
+      description = "Next sort method: \(currentMethod!.name)"
    }
 
    /**
@@ -184,13 +171,22 @@ class SortCoordinator: ObservableObject {
     See the State enum values, coordinating the execution of the sorting in different phases.
     */
    func execute() {
-      timerInterval = TimerIntervals.waitingForNextSortStep
-      timer = Timer.scheduledTimer(withTimeInterval: timerInterval.rawValue, repeats: true) { _ in
+      var slowFactor = 1.0
+      switch countOfNumbers {
+      case 0...50:
+         slowFactor = 75.0
+      case 51...150:
+         slowFactor = 50.0
+      default:
+         slowFactor = 1.0
+      }
+      self.timerInterval = self.waitingForNextSortStep * slowFactor
+      timer = Timer.scheduledTimer(withTimeInterval: timerInterval, repeats: true) { _ in
          switch self.state {
          case .atStart:
             if debug { print("Engine atStart") }
             self.state = .animating
-            self.originalArray.prepare(range: -self.defaultMaxMinValueOfElements...self.defaultMaxMinValueOfElements-1)
+            self.originalArray.prepare(range: -self.countOfNumbers/2...self.countOfNumbers/2)
             self.originalArray.shuffle()
             self.array = self.originalArray
             self.currentMethod!.restart()
@@ -258,20 +254,20 @@ class SortCoordinator: ObservableObject {
       case .animating:
          if debug { print("in stop, moving to measuring state") }
          state = .measuring
-         originalArray.prepare(range: -3000...999)
+         originalArray.prepare(range: -2500...2499)
          originalArray.shuffle()
          array = originalArray
          description = "Comparing algorithms with \(array.count) numbers..."
          performanceTable.removeAll(keepingCapacity: true)
-         timer = Timer.scheduledTimer(withTimeInterval: TimerIntervals.waitingForNextSortMethod.rawValue, repeats: false) { _ in
+         timer = Timer.scheduledTimer(withTimeInterval: waitingForNextSortMethod, repeats: false) { _ in
             self.execute()
          }
 
       case .measuring:
          if debug { print("in stop, moving to atEnd state") }
          state = .atEnd
-         description = "Compare results in performance"
-         originalArray.prepare(range: -defaultMaxMinValueOfElements...defaultMaxMinValueOfElements)
+         description = "Compare results in sorting \(array.count) numbers"
+         originalArray.prepare(range: -countOfNumbers/2...countOfNumbers/2)
          originalArray.shuffle()
          array = originalArray
          executing = false
@@ -307,7 +303,7 @@ class SortCoordinator: ObservableObject {
             let method = currentMethod?.name ?? "No method selected"
             description = "Next method: \(method)"
 //         }
-         timer = Timer.scheduledTimer(withTimeInterval: TimerIntervals.waitingForNextSortMethod.rawValue, repeats: false) { _ in
+         timer = Timer.scheduledTimer(withTimeInterval: waitingForNextSortMethod, repeats: false) { _ in
             self.description = "Sorting with: \(self.currentMethod?.name ?? "")"
             self.execute()
          }

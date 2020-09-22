@@ -53,13 +53,13 @@ struct LampSort: SortMethod {
    /// Short description for the sort method.
    var description: String {
       """
-      Quick sort is a recursive sorting algorithm. The recursion is not fundamental to the algorithm. Lamp sort is an implementation of Quick sort without recursion.
+      Recursion is not fundamental to the Quick sort algorithm. Lamp sort is an implementation of Quick sort without recursion.
 
-      The implementation here uses two stacks to control the areas to be sorted in different passes.
+      This implementation uses two stacks to control the areas to be sorted in different passes.
 
-      The fundamental step of the sort is the partition operation. Given an interval [start, stop] over the data array that we have to sort, partitioning picks a pivot, any element inside the interval. Then split the interval in two subintervals: one containing the elements smaller than the pivot and one containing the elements larger than the pivot.
+      The fundamental step of the sort is the partition operation. Given an interval [start, stop] over the data array, partitioning picks a pivot, any element inside the interval. Then split the interval in two: one containing the elements smaller than the pivot and one containing the elements larger than the pivot.
 
-      After this, continue on the 2 sub intervals. Obviously, intervals with zero or one element are sorted by default. The third step, instead of using recursion, can utilize stacks: start by adding the complete interval to the stacks. Each time we partition, we take an interval out of the set, split it and add the 2 sub intervals. Empty intervals with one value only need no further work and get removed. Eventually the stacks will be empty, sorting done.
+      After this, continue on the 2 sub intervals. Intervals with zero or one element are sorted by default. The third step utilizes stacks: start by adding the complete interval to the stacks. Each time we partition, we take an interval out of the set, split it and add the 2 sub intervals. Empty intervals with one value need no further work and get removed. Eventually the stacks will be empty, sorting done.
       """
    }
 

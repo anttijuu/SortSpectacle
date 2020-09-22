@@ -36,6 +36,8 @@ struct ResultsView: View {
    var body: some View {
       NavigationView {
          VStack {
+            Text("Hall of Fame")
+               .font(.title2)
             List {
                ForEach(engine.performanceTable, id: \.self) { item in
                   PerformanceRow(rowData: item, method: self.engine.getMethod(for: item.methodName)!)
@@ -48,6 +50,7 @@ struct ResultsView: View {
             }
          }
       }
+      .frame(alignment: .top)
       .navigationBarTitle("Sorting speed in secs")
    }
 }

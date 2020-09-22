@@ -27,7 +27,9 @@ struct SortMethodDetailView: View {
                }
             }
          }
+         .padding(.bottom)
       }
+      .padding()
       .navigationBarTitle(sortMethod.name)
    }
 
