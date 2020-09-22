@@ -127,29 +127,41 @@
 
 <p>Sort Spectacle is a Swift/SwiftUI app demonstrating visually how different sorting algorithms behave.</p>
 
-<p>Currently Bubble sort, Lamp sort and Quick sort are implemented.</p>
+<p>Currently Bubble sort, Lamp sort and Quick sort are implemented. Additionally, Swift Foundation array&rsquo;s sort() is called, to compare performance in the final step of the demonstration. Array.sort() implements Timsort (AFAIK).</p>
+<h2 id='how-to-use' class='heading'>How to use</h2>
+
+<p>Clone the repo, build using Xcode and run either in simulator or in a real device (iPhone, iPad, macOS). </p>
+
+<p>Please note that you should build the app in Release configuration to make it run full speed without debugging stuff inside. </p>
 <h2 id='to-do' class='heading'>To do</h2>
 
-<p>Another view for app settings:</p>
+<p>More sorting methods. E.g. restructure Timsort from Foundation source code to execute step by step.</p>
+
+<p>Better settings / configuration to select: </p>
 
 <ul>
-<li>How many numbers to sort (slider?)</li>
-<li>Range of numbers to sort, from 1 &gt; or -n&hellip;n</li>
-<li>Random numbers or sequences</li>
-<li>Visuals; lines (currently implemented) or dots being animated.</li>
+<li>count of numbers to sort</li>
+<li>fancy graphics to display</li>
+<li>adjusting speed, depending on array size</li>
 </ul>
+<h2 id='contributing' class='heading'>Contributing</h2>
 
-<p>Also, more functionality:</p>
+<p>See the docs generated from the code. If you want to add a new sorting method:</p>
 
 <ol>
-<li>More sorting algorithms</li>
-<li>Better visuals, like line width, highlighting the numbers compared just now</li>
-<li>Sounds, generated from sort status data.</li>
-<li>Adjusting speed, depending on array size and animations</li>
+<li>Read the <code><a href="Protocols/SortMethod.html">SortMethod</a></code> protocol and the <a href="https://anttijuu.github.io/SortSpectacle">documentation</a> of the app.</li>
+<li>Using other methods as samples, implement your sorting method, both the step by step method (<code>SortMethod.nextStep()</code>) and the <code>realAlgorithm()</code>.</li>
+<li>Test your sort method by adding it to existing testing methods in unit tests (<code>SortSpectacleTests.swift</code>) as well as writing new tests.</li>
+<li>Add your sort method to the <code>SortCoordinator.prepare()</code></li>
+<li>Share your sort method. I&rsquo;d like to add more in this project.</li>
 </ol>
-<h2 id='about' class='heading'>About</h2>
+<h2 id='license' class='heading'>License</h2>
 
-<p>&copy; Antti Juustila, 2020 All Rights Reserved.</p>
+<p>GPL </p>
+<h2 id='who-did-this' class='heading'>Who did this</h2>
+
+<p>&copy; Antti Juustila, 2020 All Rights Reserved.
+INTERACT Research Group, University of Oulu, Finland</p>
 
           </section>
         </section>
