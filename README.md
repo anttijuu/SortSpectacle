@@ -24,12 +24,15 @@ Better settings / configuration to select:
 
 See the docs generated from the code. If you want to add a new sorting method:
 
-1. Read the `SortMethod` protocol and the documentation of the app.
+1. Read the `SortMethod` protocol and the [documentation](https://anttijuu.github.io/SortSpectacle) of the app.
 1. Using other methods as samples, implement your sorting method, both the step by step method (`SortMethod.nextStep()`) and the `realAlgorithm()`.
 1. Test your sort method by adding it to existing testing methods in unit tests (`SortSpectacleTests.swift`) as well as writing new tests.
 1. Add your sort method to the `SortCoordinator.prepare()`
 1. Share your sort method. I'd like to add more in this project.
 
+## License
+
+GPL 
 ## Who did this
 
 (c) Antti Juustila, 2020 All Rights Reserved.
