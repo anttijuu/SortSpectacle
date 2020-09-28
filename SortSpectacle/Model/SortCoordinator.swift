@@ -69,7 +69,7 @@ class SortCoordinator: ObservableObject {
    private let waitingForNextSortStep = 0.0005
 
    // Make sure the value here is one of the values in IntroView's array.
-   @Published var countOfNumbers = 200
+   @Published var countOfNumbers = 400
 
    /// The currently executing sorthing method reference.
    private var currentMethod: SortMethod?
@@ -132,6 +132,7 @@ class SortCoordinator: ObservableObject {
       sortingMethods.append(BubbleSort(arraySize: array.count))
       sortingMethods.append(ShellSort(arraySize: array.count))
       sortingMethods.append(LampSort(arraySize: array.count))
+      sortingMethods.append(RadixSort(arraySize: array.count))
       sortingMethods.append(NativeSwiftSort(arraySize: array.count))
       currentMethodIndex = 0
       currentMethod = sortingMethods[currentMethodIndex]
@@ -175,7 +176,7 @@ class SortCoordinator: ObservableObject {
       switch countOfNumbers {
       case 0...50:
          slowFactor = 75.0
-      case 51...150:
+      case 51...100:
          slowFactor = 50.0
       default:
          slowFactor = 1.0
@@ -215,6 +216,8 @@ class SortCoordinator: ObservableObject {
                self.performanceTable.append(result)
                self.performanceTable.sort()
                if debug { print(self.performanceTable) }
+            } else {
+               if debug { print("No success with real method in \(self.currentMethod!.name)")}
             }
             self.nextMethod()
 

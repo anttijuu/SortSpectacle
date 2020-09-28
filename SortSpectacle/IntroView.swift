@@ -16,7 +16,7 @@ struct IntroView: View {
    
    @ObservedObject var engine: SortCoordinator
 
-   @State var numberArray: [Int] = [25, 50, 100, 150, 200, 400, 600, 1000]
+   @State var numberArray: [Int] = [100, 150, 200, 400, 600, 1000, 2000]
    @State var selectedNumberIndex = 3
 
    var body: some View {

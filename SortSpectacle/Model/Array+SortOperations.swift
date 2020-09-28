@@ -94,4 +94,8 @@ extension Array where Element == Int {
       return true
    }
 
+   func containsSameElements(as other: [Element]) -> Bool {
+      return self.count == other.count && self.sorted() == other.sorted()
+   }
+
 }
