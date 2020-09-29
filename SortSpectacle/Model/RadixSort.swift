@@ -203,8 +203,13 @@ struct RadixSort: SortMethod {
       }
       return false
    }
-   
-   // Ported Python code by Alexander Shostak from https://stackoverflow.com/questions/15306665/radix-sort-for-negative-integers comment
+
+   /**
+    Sorts a copy of the array in the paramenter using the sorting method in one go.
+    Implementation is based on Python code by Alexander Shostak's comment from https://stackoverflow.com/questions/15306665/radix-sort-for-negative-integers discussion.
+    - parameter arrayCopy The array to copy and sort.
+    - returns Returns true if the array is sorted.
+    */
    mutating func realAlgorithm(arrayCopy: [Int]) -> Bool {
       var arrayToSort = arrayCopy
       restart()
@@ -227,8 +232,7 @@ struct RadixSort: SortMethod {
          var tempArrayPos = 0
          // Treat the last radix with sign bit specially
          // Output signed groups (128..256 = -128..-1) first
-         // Other groups afterwards. No performance penalty, as compared to flipping sign bit
-         // via (($currItem ^ 0x8000000000000000) >> $shift) & 0xFF)
+         // other groups afterwards. No performance penalty, as compared to flipping sign bit
          if tempCounter == 7 {
             for groupCounter in 128..<256 {
                for number in groups[groupCounter] {

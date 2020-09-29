@@ -94,6 +94,12 @@ extension Array where Element == Int {
       return true
    }
 
+   /**
+    Utility function used in testing to check if arrays contain the same elements
+    in the same order.
+    - parameter other The other array to compare with this one
+    - returns Returns true if arrays are the same.
+    */
    func containsSameElements(as other: [Element]) -> Bool {
       return self.count == other.count && self.sorted() == other.sorted()
    }

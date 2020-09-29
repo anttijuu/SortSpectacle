@@ -85,13 +85,6 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/Array+SortOperations.swift",
-      "line": 97,
-      "symbol": "Array.containsSameElements(as:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/LampSort.swift",
       "line": 28,
       "symbol": "LampSort.low",
