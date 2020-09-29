@@ -1,0 +1,327 @@
+//
+//  SortCoordinator.swift
+//  SortSpectacle
+//
+//  Created by Antti Juustila on 24.2.2020.
+//  Copyright © 2020 Antti Juustila. All rights reserved.
+//
+
+import Foundation
+
+/**
+ Records the timing of sort methods executed in a tight loop. The results are shown
+ in the UI after animating the results.
+ */
+struct TimingResult: Hashable, Comparable {
+   /// The name of the sorting algorithm.
+   let methodName: String
+   /// The amount of seconds the algorithm took to sort the array.
+   let timing: Double
+   /// Timing as string
+   var timingAsString: String {
+      String(format: "%.5f", timing) + "s"
+   }
+
+   static func < (lhs: TimingResult, rhs: TimingResult) -> Bool {
+      lhs.timing < rhs.timing
+   }
+}
+
+/**
+ SortCoordinator coordinates, as the name implies, sorting of arrays using different sorting methods.
+ It is an `ObservableObject`, being observerd by a `View` that holds the coordinator as an `@ObservedObject`
+ to show the state of the sorting in the UI.
+ 
+ SortCoordinator:
+  - holds the array to be sorted, giving it to each sort method by calling SortMethod.nextStep().
+  - times the sorting process using a `Timer`
+  - publishes the array to the Views so that when the array is updated, view is redrawn.
+  - collects the timing results using `SortMethod.realAlgorithm(...)`, to show to the user the time the algoritms
+ take to sort the array without any animations.
+ 
+ SortCoordinator is to be used so that the client (a SwiftUI View):
+ 
+ 1. creates the SortCoordinator object
+ 1. calls `execute()` when user is tapping some element in the UI
+ 1. reacts to the events in the SortCoordinator when the array within changes, by updating the UI
+ 1. calls `stop()` if user wants to stop the sorting by tapping in the View.
+ 
+ For details, see the properties and methods in this class as well as the `SortMethod` protocol which all the sorting methods implement.
+ 
+ */
+class SortCoordinator: ObservableObject {
+
+   /** The data to be sorted is generated to `originalArray` first, then copied to
+    the array member. This is to make sure that all sorting methods start from exactly the
+    same data. This produces comparable performance metrics, since how the data is organized
+    in the array influences the sorting methods' performance.
+   */
+   var originalArray: [Int]!
+
+   /// The array that is actually used in the sorting. This is also displayed in the UI, the reason why it is @Published.
+   @Published var array: [Int]!
+   /// The (current) sorting methods used. Value changes when execution moves from one method to another.
+   @Published var description = String("Start sorting")
+   /// This table will include the real time performance metrics of the sorting methods after the measuring phase.
+   @Published var performanceTable = [TimingResult]()
+
+   @Published var methodActingOnIndex1: Int = -1
+   @Published var methodActingOnIndex2: Int = -1
+
+   private let waitingForNextSortMethod = 1.5
+   private let waitingForNextSortStep = 0.0005
+
+   // Make sure the value here is one of the values in IntroView's array.
+   @Published var countOfNumbers = 400
+
+   /// The currently executing sorthing method reference.
+   private var currentMethod: SortMethod?
+   /// A timer is used to control the execution of the sorting.
+   private var timer: Timer?
+   /// Holds the current interval used in the timing.
+   private var timerInterval = 1.5
+   /// Is true, if sorting is ongoing, otherwise false.
+   private var executing = false
+
+   /// Which of the sorting methods in the sortingMethod array is currently executed.
+   private var currentMethodIndex = 0
+   /// All the supported sorting methods are placed in the array before starting the execution.
+   private var sortingMethods = [SortMethod]()
+
+   /// The different states of the execution of the sort coordinator.
+   enum State {
+      /// Starting phase, where preparation for the execution is done
+      case atStart
+      /// The animating phase, where sorting methods are executed one by one, step by step, by calling the nextStep() method.
+      case animating
+      /// After animation, all sorting methods are executed using the realAlgorithm() method to time the "actual" perfomance of the methods.
+      case measuring
+      /// End phase, where the exection is finished.
+      case atEnd
+   }
+   /// The state variable, holding the execution state.
+   private(set) var state = State.atStart
+
+   init() {
+      prepare(count: countOfNumbers * 2)
+   }
+   /**
+    Gets the count of supported sorting methods
+    - returns: The count of implemented sorting methods
+    */
+   func getCountOfSupportedMethods() -> Int {
+      return sortingMethods.count
+   }
+
+   /**
+    Gets the name of the currently executing sorting method.
+    - returns: The name of the currently executing sorting method.
+    */
+   func getName() -> String {
+      return currentMethod!.name
+   }
+
+   /**
+    Prepares the coordinator for sorting.
+    - parameter count: The number of elements to hold in the array to be sorted.
+    */
+   func prepare(count: Int) {
+      countOfNumbers = count
+      originalArray = [Int]()
+      originalArray.prepare(range: -count/2...count/2)
+      originalArray.shuffle()
+      array = originalArray
+      sortingMethods.removeAll()
+      sortingMethods.append(BubbleSort(arraySize: array.count))
+      sortingMethods.append(ShellSort(arraySize: array.count))
+      sortingMethods.append(LampSort(arraySize: array.count))
+      sortingMethods.append(RadixSort(arraySize: array.count))
+      sortingMethods.append(NativeSwiftSort(arraySize: array.count))
+      currentMethodIndex = 0
+      currentMethod = sortingMethods[currentMethodIndex]
+      description = "Next sort method: \(currentMethod!.name)"
+   }
+
+   /**
+    Gets a description for the sorting method by method name
+    - parameter methodName: The name of the sorting method.
+    - returns: The description for the sorting method.
+    */
+   func getDescription(for methodName: String) -> String {
+      for method in sortingMethods where method.name == methodName {
+         return method.description
+      }
+      return ""
+   }
+
+   /**
+    Gets the sorting method by the method's name.
+    - parameter methodName: The name of the sorting method.
+    - returns: The sorting method protocol referring to the method struct, nil if not found.
+    */
+   func getMethod(for methodName: String) -> SortMethod? {
+      for method in sortingMethods where method.name == methodName {
+         return method
+      }
+      return nil
+   }
+
+   /**
+    Executes the different sorting methods, using a repeating timer within a closure.
+    
+    See also `nextStep()` and `nextMethod()` as well as `stop()`, which all contribute to the state manamement of
+    the coordinator.
+    
+    See the State enum values, coordinating the execution of the sorting in different phases.
+    */
+   func execute() {
+      var slowFactor = 1.0
+      switch countOfNumbers {
+      case 0...50:
+         slowFactor = 75.0
+      case 51...100:
+         slowFactor = 50.0
+      default:
+         slowFactor = 1.0
+      }
+      self.timerInterval = self.waitingForNextSortStep * slowFactor
+      timer = Timer.scheduledTimer(withTimeInterval: timerInterval, repeats: true) { _ in
+         switch self.state {
+         case .atStart:
+            if debug { print("Engine atStart") }
+            self.state = .animating
+            self.originalArray.prepare(range: -self.countOfNumbers/2...self.countOfNumbers/2)
+            self.originalArray.shuffle()
+            self.array = self.originalArray
+            self.currentMethod!.restart()
+            self.description = "Now sorting with \(self.currentMethod!.name)"
+            self.executing = true
+
+         case .animating:
+            // If nextStep returns true, array is sorted and it is time to switch to the next supported method, if any.
+            if self.nextStep() {
+               self.nextMethod()
+            }
+
+         case .measuring:
+            if debug { print("Engine measuring") }
+            // Measure the time performance of each of the methods, without animation and loops.
+            // 1. Take timestamp
+            let now = Date()
+            // 2. Do sorting with real algo
+            let success = self.currentMethod?.realAlgorithm(arrayCopy: self.array)
+            if success! {
+               // 3. Take timestamp
+               // 4. Calculate duration
+               let duration = Date().timeIntervalSince(now)
+               // 5. Add to performanceTable
+               let result = TimingResult(methodName: self.currentMethod!.name, timing: duration)
+               self.performanceTable.append(result)
+               self.performanceTable.sort()
+               if debug { print(self.performanceTable) }
+            } else {
+               if debug { print("No success with real method in \(self.currentMethod!.name)")}
+            }
+            self.nextMethod()
+
+         case .atEnd:
+            if debug { print("Engine atEnd") }
+            self.state = .atStart
+         }
+      }
+
+   }
+
+   /**
+    Is the coordinator executing or not
+    - returns: True if the coordinator is executing the sorting methods.
+    */
+   func isExecuting() -> Bool {
+      return executing
+   }
+
+   /**
+    Stops the execution of the sorthing phase, advances to the next phase, if any.
+    */
+   func stop() {
+      if let clock = timer {
+         clock.invalidate()
+      }
+      if debug { print("in stop") }
+      currentMethodIndex = 0
+      currentMethod = self.sortingMethods[self.currentMethodIndex]
+      let method = self.currentMethod?.name ?? "No method selected"
+      description = "Next sort method: \(method)"
+
+      switch state {
+      case .atStart:
+         if debug { print("in stop, state is atStart") }
+
+      case .animating:
+         if debug { print("in stop, moving to measuring state") }
+         state = .measuring
+         originalArray.prepare(range: -2500...2499)
+         originalArray.shuffle()
+         array = originalArray
+         description = "Comparing algorithms with \(array.count) numbers..."
+         performanceTable.removeAll(keepingCapacity: true)
+         timer = Timer.scheduledTimer(withTimeInterval: waitingForNextSortMethod, repeats: false) { _ in
+            self.execute()
+         }
+
+      case .measuring:
+         if debug { print("in stop, moving to atEnd state") }
+         state = .atEnd
+         description = "Compare results in sorting \(array.count) numbers"
+         originalArray.prepare(range: -countOfNumbers/2...countOfNumbers/2)
+         originalArray.shuffle()
+         array = originalArray
+         executing = false
+
+      default:
+         state = .atStart
+      }
+   }
+
+   /**
+    Executes the next step of any sorting method when animating the methods.
+    - returns: Returns true if the sort method finished sorting and the array is now sorted.
+    */
+   private func nextStep() -> Bool {
+      var returnValue = false
+      var swappedItems = SwappedItems()
+      returnValue = currentMethod!.nextStep(array: array, swappedItems: &swappedItems)
+      self.array.handleSortOperation(operation: swappedItems)
+      if swappedItems.currentIndex1 >= 0 {
+         methodActingOnIndex1 = swappedItems.currentIndex1
+      }
+      if swappedItems.currentIndex2 >= 0 {
+         methodActingOnIndex2 = swappedItems.currentIndex2
+      }
+      return returnValue
+   }
+
+   func nextMethod() {
+      if let clock = timer {
+         clock.invalidate()
+      }
+      if debug { print("in nextMethod") }
+      array = originalArray
+      currentMethodIndex += 1
+      if self.currentMethodIndex < self.sortingMethods.count {
+         currentMethod = sortingMethods[self.currentMethodIndex]
+         currentMethod?.restart()
+//         if state != .measuring {
+            let method = currentMethod?.name ?? "No method selected"
+            description = "Next method: \(method)"
+//         }
+         timer = Timer.scheduledTimer(withTimeInterval: waitingForNextSortMethod, repeats: false) { _ in
+            self.description = "Sorting with: \(self.currentMethod?.name ?? "")"
+            self.execute()
+         }
+      } else {
+         stop()
+      }
+   }
+
+}

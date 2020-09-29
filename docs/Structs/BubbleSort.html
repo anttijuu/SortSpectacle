@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>BubbleSort Structure Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Struct/BubbleSort" class="dashAnchor"></a>
+    <a title="BubbleSort Structure Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">SortSpectacle Docs</a> (73% documented)</p>
+        <p class="header-right"><a href="https://github.com/anttijuu/SortSpectacle"><img src="../img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">SortSpectacle Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        BubbleSort Structure Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/SortCoordinator.html">SortCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SortCoordinator/State.html">– State</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Global%20Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Global%20Variables.html#/s:13SortSpectacle5debugSbvp">debug</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Array.html">Array</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/SortMethod.html">SortMethod</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Stackable.html">Stackable</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/BubbleSort.html">BubbleSort</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ContentView.html">ContentView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/LampSort.html">LampSort</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/LampSort/State.html">– State</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NativeSwiftSort.html">NativeSwiftSort</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NumbersLineShape.html">NumbersLineShape</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RadixSort.html">RadixSort</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RadixSort.html#/s:13SortSpectacle05RadixA0V5State33_231DC138CD339F48C493ADE2FE606F93LLO">– State</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ResultsView.html">ResultsView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ShellSort.html">ShellSort</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ShellSort/State.html">– State</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Stack.html">Stack</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SwappedItems.html">SwappedItems</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SwappedItems/Operation.html">– Operation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/TimingResult.html">TimingResult</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>BubbleSort</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">BubbleSort</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/SortMethod.html">SortMethod</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>Implementation of the Bubble sort algorithm.</p>
+
+<p>Bubble sort performs poorly in real world use and is used primarily as an educational tool. Note that using very large
+arrays slows down the sorting using BubbleSort considerably.</p>
+
+<p>See <a href="https://en.wikipedia.org/wiki/Bubble_sort">https://en.wikipedia.org/wiki/Bubble_sort</a></p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SortSpectacle06BubbleA0V4nameSSvp"></a>
+                    <a name="//apple_ref/swift/Property/name" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle06BubbleA0V4nameSSvp">name</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Name of the BubbleSort is &ldquo;BubbleSort&rdquo;.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SortSpectacle06BubbleA0V11descriptionSSvp"></a>
+                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle06BubbleA0V11descriptionSSvp">description</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A short description of the Bubblesort.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SortSpectacle0A6MethodP8webLinksSaySS_SStGvp"></a>
+                    <a name="//apple_ref/swift/Property/webLinks" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle0A6MethodP8webLinksSaySS_SStGvp">webLinks</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">webLinks</span><span class="p">:</span> <span class="p">[(</span><span class="kt">String</span><span class="p">,</span> <span class="kt">String</span><span class="p">)]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SortSpectacle06BubbleA0V4sizeSivp"></a>
+                    <a name="//apple_ref/swift/Property/size" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle06BubbleA0V4sizeSivp">size</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Implements the size property declared in the <code><a href="../Protocols/SortMethod.html">SortMethod</a></code> protocol. This is the size of the array to sort.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">size</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SortSpectacle06BubbleA0V8sortSize33_03AA02091AC01CE17519CBA0AFE21EF9LLSivp"></a>
+                    <a name="//apple_ref/swift/Property/sortSize" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle06BubbleA0V8sortSize33_03AA02091AC01CE17519CBA0AFE21EF9LLSivp">sortSize</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A varible to address the sortable (not yet sorted) size of the array.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">sortSize</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SortSpectacle06BubbleA0V7newSize33_03AA02091AC01CE17519CBA0AFE21EF9LLSivp"></a>
+                    <a name="//apple_ref/swift/Property/newSize" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle06BubbleA0V7newSize33_03AA02091AC01CE17519CBA0AFE21EF9LLSivp">newSize</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A variable to keep track where sorting has advanced to.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">newSize</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SortSpectacle06BubbleA0V10innerIndex33_03AA02091AC01CE17519CBA0AFE21EF9LLSivp"></a>
+                    <a name="//apple_ref/swift/Property/innerIndex" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle06BubbleA0V10innerIndex33_03AA02091AC01CE17519CBA0AFE21EF9LLSivp">innerIndex</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Loop index variable for sorting the array.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">innerIndex</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SortSpectacle06BubbleA0V9arraySizeACSi_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(arraySize:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle06BubbleA0V9arraySizeACSi_tcfc">init(arraySize:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes the BubbleSort.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">arraySize</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SortSpectacle06BubbleA0V7restartyyF"></a>
+                    <a name="//apple_ref/swift/Method/restart()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle06BubbleA0V7restartyyF">restart()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Restarts the bubble sort, resets the member variables.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">mutating</span> <span class="kd">func</span> <span class="nf">restart</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SortSpectacle06BubbleA0V8nextStep5array12swappedItemsSbSaySiG_AA07SwappedH0VztF"></a>
+                    <a name="//apple_ref/swift/Method/nextStep(array:swappedItems:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle06BubbleA0V8nextStep5array12swappedItemsSbSaySiG_AA07SwappedH0VztF">nextStep(array:<wbr>swappedItems:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Implements the SortMethod protocol with bubble sort method.
+ Note that the algorithm modifies the array size member variable, and that will eventually
+ cause the method returning true. Until that, false is always returned at the end of the method.
+ See protocol documentation for details of the method.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">mutating</span> <span class="kd">func</span> <span class="nf">nextStep</span><span class="p">(</span><span class="nv">array</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">],</span> <span class="nv">swappedItems</span><span class="p">:</span> <span class="k">inout</span> <span class="kt"><a href="../Structs/SwappedItems.html">SwappedItems</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SortSpectacle06BubbleA0V13realAlgorithm9arrayCopySbSaySiG_tF"></a>
+                    <a name="//apple_ref/swift/Method/realAlgorithm(arrayCopy:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle06BubbleA0V13realAlgorithm9arrayCopySbSaySiG_tF">realAlgorithm(arrayCopy:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Implementation of the BubbleSort in two tight loops.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">mutating</span> <span class="kd">func</span> <span class="nf">realAlgorithm</span><span class="p">(</span><span class="nv">arrayCopy</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external">Antti</a>. All rights reserved. (Last updated: 2020-09-29)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

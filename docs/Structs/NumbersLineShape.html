@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>NumbersLineShape Structure Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Struct/NumbersLineShape" class="dashAnchor"></a>
+    <a title="NumbersLineShape Structure Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">SortSpectacle Docs</a> (73% documented)</p>
+        <p class="header-right"><a href="https://github.com/anttijuu/SortSpectacle"><img src="../img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">SortSpectacle Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        NumbersLineShape Structure Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/SortCoordinator.html">SortCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SortCoordinator/State.html">– State</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Global%20Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Global%20Variables.html#/s:13SortSpectacle5debugSbvp">debug</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Array.html">Array</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/SortMethod.html">SortMethod</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Stackable.html">Stackable</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/BubbleSort.html">BubbleSort</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ContentView.html">ContentView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/LampSort.html">LampSort</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/LampSort/State.html">– State</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NativeSwiftSort.html">NativeSwiftSort</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/NumbersLineShape.html">NumbersLineShape</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RadixSort.html">RadixSort</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RadixSort.html#/s:13SortSpectacle05RadixA0V5State33_231DC138CD339F48C493ADE2FE606F93LLO">– State</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ResultsView.html">ResultsView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ShellSort.html">ShellSort</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ShellSort/State.html">– State</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Stack.html">Stack</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SwappedItems.html">SwappedItems</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SwappedItems/Operation.html">– Operation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/TimingResult.html">TimingResult</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>NumbersLineShape</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">NumbersLineShape</span> <span class="p">:</span> <span class="kt">Shape</span></code></pre>
+
+                </div>
+              </div>
+            <p>A shape which draws the numbers in an array of integers as lines.</p>
+
+<p>The area to draw is adjusted to the Rect in the parameter to the <code>path</code> function. Line
+lengths are adjusted to the range of numbers so that the largest (abs) value determines the length
+of the tallest line. Line widht is also calculated based on the number of lines to draw adjusted to the available space.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SortSpectacle16NumbersLineShapeV11sourceArray10activeInd10H4Ind2ACSaySiGSg_S2itcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(sourceArray:activeInd1:activeInd2:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle16NumbersLineShapeV11sourceArray10activeInd10H4Ind2ACSaySiGSg_S2itcfc">init(sourceArray:<wbr>activeInd1:<wbr>activeInd2:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes the shape by providing the array which contains the numbers to be drawn.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">sourceArray</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">]?,</span> <span class="nv">activeInd1</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">activeInd2</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sourceArray</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The array to draw.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SortSpectacle16NumbersLineShapeV4path2in7SwiftUI4PathVSo6CGRectV_tF"></a>
+                    <a name="//apple_ref/swift/Method/path(in:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle16NumbersLineShapeV4path2in7SwiftUI4PathVSo6CGRectV_tF">path(in:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates the <code>Path</code> shape from the numbers in the array</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">path</span><span class="p">(</span><span class="k">in</span> <span class="nv">rect</span><span class="p">:</span> <span class="kt">CGRect</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Path</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>rect</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The rectangle to draw the lines.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Returnst the path to draw to the View.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external">Antti</a>. All rights reserved. (Last updated: 2020-09-29)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
