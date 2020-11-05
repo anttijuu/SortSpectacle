@@ -233,7 +233,10 @@ struct RadixSort: SortMethod {
       // Only handle so many bytes that we actually have in the array.
       let maxBytes = max(MemoryLayout.size(ofValue: maxValue), MemoryLayout.size(ofValue: minValue))
       
-      for tempCounter in 0..<numRadix where shift <= maxBytes * bitsPerBytes {
+      for tempCounter in 0..<numRadix {
+         if shift > maxBytes * bitsPerBytes {
+            break
+         }
          // Cleaning groups
          groups.removeAll()
          for _ in 0..<256 {
