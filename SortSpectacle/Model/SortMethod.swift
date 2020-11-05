@@ -8,7 +8,8 @@
 
 import Foundation
 
-/// Set debug to true to print debug output where implemented.
+/// Set debug to true to print debug output where implemented
+/// and perform debug tests not performed in release versions.
 let debug = false
 
 /**
