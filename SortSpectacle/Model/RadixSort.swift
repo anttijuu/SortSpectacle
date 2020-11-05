@@ -17,7 +17,7 @@ import Foundation
 
  This method implements the LSD algorithm (Least Significant Digit). Implementation has places for optimization, exercise left for the reader.
 
- The algorithm is a port from a python code from Stackoverflow. See comment on realAlgorithm() for details.
+ The algorithm is a port from code implemented in another language from Stackoverflow. See comment on realAlgorithm() for details.
  */
 struct RadixSort: SortMethod {
    
