@@ -30,6 +30,8 @@ struct RadixSort: SortMethod {
    private var groupArrayCounter: Int = 0
    private var arrayPos: Int = 0
    private var radixGroupSplittingCounter: Int = 0
+   private var maxBytes: Int?
+   private let bitsPerBytes = 8
 
    /**
     The states of the algorithm. Basically, as with other methods, the realAlgorigthm was sliced
@@ -51,9 +53,6 @@ struct RadixSort: SortMethod {
    
    init(arraySize: Int) {
       size = arraySize
-      if size < 2 {
-         state = .finished
-      }
       restart()
    }
    
@@ -81,13 +80,18 @@ struct RadixSort: SortMethod {
    }
    
    mutating func restart() {
-      state = .outerLoopReset
+      if size < 2 {
+         state = .finished
+      } else {
+         state = .outerLoopReset
+      }
       shift = 0
       outerLoopCounter = 0
       groupCounter = 0
       radixCounter = 0
       groupArrayCounter = 0
       radixGroupSplittingCounter = 0
+      maxBytes = nil
    }
    
    //swiftlint:disable cyclomatic_complexity function_body_length
@@ -95,9 +99,9 @@ struct RadixSort: SortMethod {
       switch state {
       case .outerLoopReset:
          // Added quick fix. Algo should somehow handle already sorted array, currently does not.
-         if array.isSorted() {
-            return true
-         }
+//         if array.isSorted() {
+//            return true
+//         }
          if debug { print("case .outerLoopReset") }
          groups.removeAll()
          for _ in 0..<256 {
@@ -105,6 +109,13 @@ struct RadixSort: SortMethod {
          }
          state = .creatingRadixGroupsLoop
          radixGroupSplittingCounter = 0
+         if maxBytes == nil {
+            let maxValue = abs(array.max()!)
+            let minValue = abs(array.min()!)
+            // Only handle so many bytes that we actually have in the array.
+            maxBytes = max(MemoryLayout.size(ofValue: maxValue), MemoryLayout.size(ofValue: minValue))
+            if debug { print("max bytes in abs(largest) number is \(maxBytes!)") }
+         }
 
       case .creatingRadixGroupsLoop:
          // Splitting items into radix groups
@@ -129,7 +140,7 @@ struct RadixSort: SortMethod {
          }
 
       case .handlingRadixFrom0to6:
-         if debug && groupArrayCounter == 0 { print("case .handlingRadixFrom0to6") }
+         if debug && groupArrayCounter == 0 { print("case .handlingRadixFrom0to6 groupArrayCounter: \(groupArrayCounter), groupCounter: \(groupCounter)") }
          if groupArrayCounter < groups[groupCounter].count {
             swappedItems.operation = .moveValue
             swappedItems.first = groups[groupCounter][groupArrayCounter]
@@ -149,7 +160,7 @@ struct RadixSort: SortMethod {
          }
 
       case .handlingRadix7EndPart:
-         if debug && groupArrayCounter == 0 { print("case .handlingRadix7EndPart") }
+         if debug && groupArrayCounter == 0 { print("case .handlingRadix7EndPart groupArrayCounter: \(groupArrayCounter), groupCounter: \(groupCounter)") }
          if groupArrayCounter < groups[groupCounter].count {
             swappedItems.operation = .moveValue
             swappedItems.first = groups[groupCounter][groupArrayCounter]
@@ -169,7 +180,7 @@ struct RadixSort: SortMethod {
          }
          
       case .handlingRadix7BeginningPart:
-         if debug && groupArrayCounter == 0 { print("case .handlingRadix7BeginningPart") }
+         if debug && groupArrayCounter == 0 { print("case .handlingRadix7BeginningPart groupArrayCounter: \(groupArrayCounter), groupCounter: \(groupCounter)") }
          if groupArrayCounter < groups[groupCounter].count {
             swappedItems.operation = .moveValue
             swappedItems.first = groups[groupCounter][groupArrayCounter]
@@ -189,16 +200,17 @@ struct RadixSort: SortMethod {
          }
          
       case .increasingShift:
-         if debug { print("case .increasingShift shift: \(shift) radixCounter: \(radixCounter)") }
          shift += 8
          radixCounter += 1
-         if radixCounter < numRadix {
+         if debug { print("case .increasingShift shift: \(shift) radixCounter: \(radixCounter)") }
+         if radixCounter < numRadix && shift <= maxBytes! * bitsPerBytes {
             state = .outerLoopReset
          } else {
             state = .finished
          }
          
       case .finished:
+         if debug { print("case .finished, sort is over") }
          return true
       }
       return false
@@ -206,16 +218,22 @@ struct RadixSort: SortMethod {
 
    /**
     Sorts a copy of the array in the paramenter using the sorting method in one go.
-    Implementation is based on Python code by Alexander Shostak's comment from https://stackoverflow.com/questions/15306665/radix-sort-for-negative-integers discussion.
+    Implementation is based on sample code by Alexander Shostak's comment from
+    https://stackoverflow.com/questions/15306665/radix-sort-for-negative-integers discussion.
     - parameter arrayCopy The array to copy and sort.
     - returns Returns true if the array is sorted.
     */
-   mutating func realAlgorithm(arrayCopy: [Int]) -> Bool {
-      var arrayToSort = arrayCopy
+   mutating func realAlgorithm(arrayCopy: [Int]) {
+      var array = arrayCopy
       restart()
-      let size = arrayToSort.count
+      let size = array.count
+      // Find the min and max values and the sizes in bytes
+      let maxValue = array.max()
+      let minValue = array.min()
+      // Only handle so many bytes that we actually have in the array.
+      let maxBytes = max(MemoryLayout.size(ofValue: maxValue), MemoryLayout.size(ofValue: minValue))
       
-      for tempCounter in 0..<numRadix {
+      for tempCounter in 0..<numRadix where shift <= maxBytes * bitsPerBytes {
          // Cleaning groups
          groups.removeAll()
          for _ in 0..<256 {
@@ -224,7 +242,7 @@ struct RadixSort: SortMethod {
          
          // Splitting items into radix groups
          for splittingCounter in 0..<size {
-            let number = arrayToSort[splittingCounter]
+            let number = array[splittingCounter]
             groups[(number >> shift & 0xFF)].append(number)
          }
     
@@ -236,27 +254,27 @@ struct RadixSort: SortMethod {
          if tempCounter == 7 {
             for groupCounter in 128..<256 {
                for number in groups[groupCounter] {
-                  arrayToSort[tempArrayPos] = number
+                  array[tempArrayPos] = number
                   tempArrayPos += 1
                }
             }
             for groupCounter in 0..<128 {
                for number in groups[groupCounter] {
-                  arrayToSort[tempArrayPos] = number
+                  array[tempArrayPos] = number
                   tempArrayPos += 1
                }
             }
          } else {
             for intArray in groups {
                for number in intArray {
-                  arrayToSort[tempArrayPos] = number
+                  array[tempArrayPos] = number
                   tempArrayPos += 1
                }
             }
          }
          shift += 8
       } // for counter
-      return arrayToSort.isSorted()
+      if debug { assert(array.isSorted()) }
    } // realAlgorithm
    
 } // Struct

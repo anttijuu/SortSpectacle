@@ -53,13 +53,13 @@ struct LampSort: SortMethod {
    /// Short description for the sort method.
    var description: String {
       """
-      Recursion is not fundamental to the Quick sort algorithm. Lamp sort is an implementation of Quick sort without recursion.
+      Recursion is not fundamental to the Quick sort algorithm. Lamp sort is an implementation without recursion.
 
       This implementation uses two stacks to control the areas to be sorted in different passes.
 
       The fundamental step of the sort is the partition operation. Given an interval [start, stop] over the data array, partitioning picks a pivot, any element inside the interval. Then split the interval in two: one containing the elements smaller than the pivot and one containing the elements larger than the pivot.
 
-      After this, continue on the 2 sub intervals. Intervals with zero or one element are sorted by default. The third step utilizes stacks: start by adding the complete interval to the stacks. Each time we partition, we take an interval out of the set, split it and add the 2 sub intervals. Empty intervals with one value need no further work and get removed. Eventually the stacks will be empty, sorting done.
+      After this, continue on subintervals. Intervals with zero or one element are sorted. The third step utilizes stacks adding the complete interval to the stacks. In partitioning, take an interval, split it and add the 2 sub intervals. Empty intervals with one value get removed. Eventually the stacks will be empty, sorting done.
       """
    }
 
@@ -163,14 +163,14 @@ struct LampSort: SortMethod {
     - parameter arrayCopy: The array to sort.
     - returns: Returns true if the array was successfully sorted.
     */
-   mutating func realAlgorithm(arrayCopy: [Int]) -> Bool {
+   mutating func realAlgorithm(arrayCopy: [Int]) {
       var array = arrayCopy
       var low: Int
       var high: Int
       var span: Int
       let size = array.count
 
-      if size < 2 { return true }
+      if size < 2 { return }
 
       lows.push(0)
       highs.push(size-1)
@@ -219,7 +219,7 @@ struct LampSort: SortMethod {
             }
          }
       } while !lows.isEmpty
-      return array.isSorted()
+      if debug { assert(array.isSorted()) }
    }
 
 }

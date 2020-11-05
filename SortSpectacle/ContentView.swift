@@ -39,6 +39,16 @@ struct NumbersLineShape: Shape {
             maxAbsValue = abs(maxAbsValue)
             minValue = array.min()!
          }
+         let count = array.count
+         if count <= 50 {
+            lineWidth = 8
+         } else if count <= 100 {
+            lineWidth = 6
+         } else if count <= 200 {
+            lineWidth = 4
+         } else {
+            lineWidth = 1
+         }
       } else {
          array = [Int]()
       }
@@ -127,7 +137,7 @@ struct ContentView: View {
             IntroView(engine: sortEngine)
          } else if sortEngine.state == SortCoordinator.State.animating {
             NumbersLineShape(sourceArray: sortEngine.array, activeInd1: sortEngine.methodActingOnIndex1, activeInd2: sortEngine.methodActingOnIndex2)
-               .stroke(Color.red, style: StrokeStyle(lineWidth: 1.0, lineCap: .butt, lineJoin: .miter, miterLimit: 1))
+               .stroke(Color.red, style: StrokeStyle(lineWidth: lineWidth, lineCap: .butt, lineJoin: .miter, miterLimit: 1))
                .gesture(tap)
          } else {
             ResultsView(engine: sortEngine)

@@ -25,12 +25,12 @@ struct NativeSwiftSort: SortMethod {
    let size: Int
    
    var name: String {
-      "Native Swift sort"
+      "Native Swift Timsort"
    }
    
    var description: String {
       """
-      The sorting method implemented in Swift. This is Timsort.
+      The sorting method implemented in Swift, Timsort.
 
       Timsort is a hybrid stable sorting algorithm, derived from merge sort and insertion sort, designed to perform well on many kinds of real-world data.
 
@@ -60,10 +60,9 @@ struct NativeSwiftSort: SortMethod {
    /**
     Just call the usual sort implementation of the library array struct.
     */
-   mutating func realAlgorithm(arrayCopy: [Int]) -> Bool {
+   mutating func realAlgorithm(arrayCopy: [Int]) {
       var array = arrayCopy
       array.sort()
-      return true
    }
 
 }

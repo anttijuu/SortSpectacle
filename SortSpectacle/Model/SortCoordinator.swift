@@ -67,8 +67,9 @@ class SortCoordinator: ObservableObject {
 
    @Published var methodActingOnIndex1: Int = -1
    @Published var methodActingOnIndex2: Int = -1
-
-   private let waitingForNextSortMethod = 1.5
+   @Published var usePositiveNumbers: Bool = true
+   
+   private let waitingForNextSortMethod = 2.0
    private let waitingForNextSortStep = 0.0005
 
    // Make sure the value here is one of the values in IntroView's array.
@@ -121,16 +122,23 @@ class SortCoordinator: ObservableObject {
       return currentMethod!.name
    }
 
+   func prepareOriginalArray(with count: Int) {
+      originalArray = [Int]()
+      if usePositiveNumbers {
+         originalArray.prepare(range: 1...count)
+      } else {
+         originalArray.prepare(range: -count/2...(count/2)-1)
+      }
+      originalArray.shuffle()
+      array = originalArray
+   }
    /**
     Prepares the coordinator for sorting.
     - parameter count: The number of elements to hold in the array to be sorted.
     */
    func prepare(count: Int) {
       countOfNumbers = count
-      originalArray = [Int]()
-      originalArray.prepare(range: -count/2...count/2)
-      originalArray.shuffle()
-      array = originalArray
+      prepareOriginalArray(with: countOfNumbers)
       sortingMethods.removeAll()
       sortingMethods.append(BubbleSort(arraySize: array.count))
       sortingMethods.append(ShellSort(arraySize: array.count))
@@ -181,26 +189,26 @@ class SortCoordinator: ObservableObject {
          slowFactor = 75.0
       case 51...100:
          slowFactor = 50.0
+      case 101...150:
+         slowFactor = 25.0
       default:
          slowFactor = 1.0
       }
       self.timerInterval = self.waitingForNextSortStep * slowFactor
-      timer = Timer.scheduledTimer(withTimeInterval: timerInterval, repeats: true) { _ in
-         switch self.state {
+      timer = Timer.scheduledTimer(withTimeInterval: timerInterval, repeats: true) { [self] _ in
+         switch state {
          case .atStart:
             if debug { print("Engine atStart") }
-            self.state = .animating
-            self.originalArray.prepare(range: -self.countOfNumbers/2...self.countOfNumbers/2)
-            self.originalArray.shuffle()
-            self.array = self.originalArray
-            self.currentMethod!.restart()
-            self.description = "Now sorting with \(self.currentMethod!.name)"
-            self.executing = true
+            state = .animating
+            prepareOriginalArray(with: countOfNumbers)
+            currentMethod!.restart()
+            description = "Now sorting with \(self.currentMethod!.name)"
+            executing = true
 
          case .animating:
             // If nextStep returns true, array is sorted and it is time to switch to the next supported method, if any.
-            if self.nextStep() {
-               self.nextMethod()
+            if nextStep() {
+               nextMethod()
             }
 
          case .measuring:
@@ -209,24 +217,20 @@ class SortCoordinator: ObservableObject {
             // 1. Take timestamp
             let now = Date()
             // 2. Do sorting with real algo
-            let success = self.currentMethod?.realAlgorithm(arrayCopy: self.array)
-            if success! {
-               // 3. Take timestamp
-               // 4. Calculate duration
-               let duration = Date().timeIntervalSince(now)
-               // 5. Add to performanceTable
-               let result = TimingResult(methodName: self.currentMethod!.name, timing: duration)
-               self.performanceTable.append(result)
-               self.performanceTable.sort()
-               if debug { print(self.performanceTable) }
-            } else {
-               if debug { print("No success with real method in \(self.currentMethod!.name)")}
-            }
-            self.nextMethod()
+            currentMethod?.realAlgorithm(arrayCopy: self.array)
+            // 3. Take timestamp
+            // 4. Calculate duration
+            let duration = Date().timeIntervalSince(now)
+            // 5. Add to performanceTable
+            let result = TimingResult(methodName: currentMethod!.name, timing: duration)
+            performanceTable.append(result)
+            performanceTable.sort()
+            if debug { print(performanceTable) }
+            nextMethod()
 
          case .atEnd:
             if debug { print("Engine atEnd") }
-            self.state = .atStart
+            state = .atStart
          }
       }
 
@@ -259,23 +263,21 @@ class SortCoordinator: ObservableObject {
 
       case .animating:
          if debug { print("in stop, moving to measuring state") }
-         state = .measuring
-         originalArray.prepare(range: -2500...2499)
-         originalArray.shuffle()
-         array = originalArray
-         description = "Comparing algorithms with \(array.count) numbers..."
-         performanceTable.removeAll(keepingCapacity: true)
-         timer = Timer.scheduledTimer(withTimeInterval: waitingForNextSortMethod, repeats: false) { _ in
-            self.execute()
-         }
+         DispatchQueue.main.asyncAfter(deadline: .now()+2, execute: { [self] in
+            state = .measuring
+            prepareOriginalArray(with: 5000)
+            description = "Comparing algorithms with \(array.count) numbers..."
+            performanceTable.removeAll(keepingCapacity: true)
+            timer = Timer.scheduledTimer(withTimeInterval: waitingForNextSortMethod, repeats: false) { _ in
+               self.execute()
+            }
+         })
 
       case .measuring:
          if debug { print("in stop, moving to atEnd state") }
          state = .atEnd
+         prepareOriginalArray(with: countOfNumbers)
          description = "Compare results in sorting \(array.count) numbers"
-         originalArray.prepare(range: -countOfNumbers/2...countOfNumbers/2)
-         originalArray.shuffle()
-         array = originalArray
          executing = false
 
       default:
@@ -306,7 +308,6 @@ class SortCoordinator: ObservableObject {
          clock.invalidate()
       }
       if debug { print("in nextMethod") }
-      array = originalArray
       currentMethodIndex += 1
       if self.currentMethodIndex < self.sortingMethods.count {
          currentMethod = sortingMethods[self.currentMethodIndex]
@@ -315,9 +316,10 @@ class SortCoordinator: ObservableObject {
             let method = currentMethod?.name ?? "No method selected"
             description = "Next method: \(method)"
 //         }
-         timer = Timer.scheduledTimer(withTimeInterval: waitingForNextSortMethod, repeats: false) { _ in
-            self.description = "Sorting with: \(self.currentMethod?.name ?? "")"
-            self.execute()
+         timer = Timer.scheduledTimer(withTimeInterval: waitingForNextSortMethod, repeats: false) { [self] _ in
+            array = originalArray
+            description = "Sorting with: \(self.currentMethod?.name ?? "")"
+            execute()
          }
       } else {
          stop()

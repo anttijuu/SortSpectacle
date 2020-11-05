@@ -98,7 +98,6 @@ protocol SortMethod {
     Usually the implementations copy the array to a temporary and sort that, since the caller does not
     have to have the sorted array.
     - parameter arrayCopy: The array to sort.
-    - returns: Returns true if the array was successfully sorted.
     */
-   mutating func realAlgorithm(arrayCopy: [Int]) -> Bool
+   mutating func realAlgorithm(arrayCopy: [Int])
 }

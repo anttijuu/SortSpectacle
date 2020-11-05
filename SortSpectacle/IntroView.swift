@@ -16,9 +16,9 @@ struct IntroView: View {
    
    @ObservedObject var engine: SortCoordinator
 
-   @State var numberArray: [Int] = [100, 150, 200, 400, 600, 1000, 2000]
+   @State var numberArray: [Int] = [50, 100, 150, 200, 400, 600, 1000, 2000]
    @State var selectedNumberIndex = 3
-
+   
    var body: some View {
       VStack {
          VStack(alignment: .leading) {
@@ -35,6 +35,9 @@ struct IntroView: View {
                }
             }
             .pickerStyle(SegmentedPickerStyle())
+            Toggle(isOn: $engine.usePositiveNumbers, label: {
+               Text("Use positive numbers only")
+            })
          }
          .padding()
          Spacer()

@@ -158,7 +158,7 @@ struct ShellSort: SortMethod {
     - parameter arrayCopy: The array containing the elements to sort.
     - returns: Returns if the array was successfully sorted.
     */
-   mutating func realAlgorithm(arrayCopy: [Int]) -> Bool {
+   mutating func realAlgorithm(arrayCopy: [Int]) {
       var array = arrayCopy
       var gap = array.count / 2
       // This is the level 1 "gap update" loop, see nextStep()
@@ -179,6 +179,6 @@ struct ShellSort: SortMethod {
          }
          gap /= 2
       } while gap > 0
-      return array.isSorted()
+      if debug { assert(array.isSorted()) }
    }
 }

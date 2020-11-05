@@ -30,7 +30,9 @@ struct BubbleSort: SortMethod {
       
       The pass through the list is repeated until the list is sorted. Bubble sort performs poorly in real world use and is used primarily as an educational tool.
       
-      Do not use large arrays (>1000) elements unless you have time to wait and see how the sorting goes.
+      Do not use large arrays unless you really have time to wait and see how the sorting goes.
+
+      Click on the animation to abort the sort and move to next sort.
       """
    }
 
@@ -94,7 +96,7 @@ struct BubbleSort: SortMethod {
    /**
     Implementation of the BubbleSort in two tight loops.
     */
-   mutating func realAlgorithm(arrayCopy: [Int]) -> Bool {
+   mutating func realAlgorithm(arrayCopy: [Int]) {
       var array = arrayCopy
       sortSize = array.count
       repeat {
@@ -105,6 +107,6 @@ struct BubbleSort: SortMethod {
          }
          sortSize = newSize
       } while sortSize > 1
-      return array.isSorted()
+      if debug { assert(array.isSorted()) }
    }
 }
