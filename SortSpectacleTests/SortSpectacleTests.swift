@@ -190,11 +190,8 @@ class SortSpectacleTests: XCTestCase {
       intArray.shuffle()
       DispatchQueue.global().sync {
          self.measure {
-            if sort.realAlgorithm(arrayCopy: self.intArray) {
-               expectation.fulfill()
-            } else {
-               XCTAssert(false, "BubbleSort.realAlgorithm() returned false")
-            }
+            sort.realAlgorithm(arrayCopy: self.intArray)
+            expectation.fulfill()
          }
       }
       // wait(for: [expectation], timeout: timeout)
@@ -206,11 +203,8 @@ class SortSpectacleTests: XCTestCase {
       intArray.shuffle()
       DispatchQueue.global().sync {
          self.measure {
-            if sort.realAlgorithm(arrayCopy: self.intArray) {
-               expectation.fulfill()
-            } else {
-               XCTAssert(false, "ShellSort.realAlgorithm() returned false")
-            }
+            sort.realAlgorithm(arrayCopy: self.intArray)
+            expectation.fulfill()
          }
       }
       wait(for: [expectation], timeout: timeout)
@@ -222,11 +216,8 @@ class SortSpectacleTests: XCTestCase {
       intArray.shuffle()
       DispatchQueue.global().sync {
          self.measure {
-            if sort.realAlgorithm(arrayCopy: self.intArray) {
-               expectation.fulfill()
-            } else {
-               XCTAssert(false, "LampSort.realAlgorithm() returned false")
-            }
+            sort.realAlgorithm(arrayCopy: self.intArray)
+            expectation.fulfill()
          }
       }
       wait(for: [expectation], timeout: timeout)
@@ -239,11 +230,8 @@ class SortSpectacleTests: XCTestCase {
       intArray.shuffle()
       DispatchQueue.global().sync {
          self.measure {
-            if sort.realAlgorithm(arrayCopy: self.intArray) {
-               expectation.fulfill()
-            } else {
-               XCTAssert(false, "RadixSort.realAlgorithm() returned false")
-            }
+            sort.realAlgorithm(arrayCopy: self.intArray)
+            expectation.fulfill()
          }
       }
       wait(for: [expectation], timeout: timeout)
