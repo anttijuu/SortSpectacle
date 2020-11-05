@@ -123,6 +123,7 @@ class SortCoordinator: ObservableObject {
    }
 
    func prepareOriginalArray(with count: Int) {
+      countOfNumbers = count
       originalArray = [Int]()
       if usePositiveNumbers {
          originalArray.prepare(range: 1...count)

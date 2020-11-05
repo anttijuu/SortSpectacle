@@ -1,369 +1,397 @@
 {
   "warnings": [
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/AppDelegate.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/AppDelegate.swift",
       "line": 12,
       "symbol": "AppDelegate",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/ContentView.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/ContentView.swift",
       "line": 11,
       "symbol": "lineWidth",
       "symbol_kind": "source.lang.swift.decl.var.global",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/ContentView.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/ContentView.swift",
       "line": 21,
       "symbol": "NumbersLineShape.array",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/ContentView.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/ContentView.swift",
       "line": 22,
       "symbol": "NumbersLineShape.activeIndex1",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/ContentView.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/ContentView.swift",
       "line": 23,
       "symbol": "NumbersLineShape.activeIndex2",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/ContentView.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/ContentView.swift",
       "line": 24,
       "symbol": "NumbersLineShape.maxAbsValue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/ContentView.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/ContentView.swift",
       "line": 25,
       "symbol": "NumbersLineShape.minValue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/ContentView.swift",
-      "line": 103,
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/ContentView.swift",
+      "line": 113,
       "symbol": "ContentView.sortEngine",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/ContentView.swift",
-      "line": 105,
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/ContentView.swift",
+      "line": 115,
       "symbol": "ContentView.tap",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/ContentView.swift",
-      "line": 139,
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/ContentView.swift",
+      "line": 149,
       "symbol": "ContentView_Previews",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/IntroView.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/IntroView.swift",
       "line": 15,
       "symbol": "IntroView",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/IntroView.swift",
-      "line": 51,
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/IntroView.swift",
+      "line": 54,
       "symbol": "IntroView_Previews",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/LampSort.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/LampSort.swift",
       "line": 28,
       "symbol": "LampSort.low",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/LampSort.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/LampSort.swift",
       "line": 29,
       "symbol": "LampSort.high",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/LampSort.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/LampSort.swift",
       "line": 30,
       "symbol": "LampSort.span",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/LampSort.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/LampSort.swift",
       "line": 31,
       "symbol": "LampSort.innerForLoopIndex",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/LampSort.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/LampSort.swift",
       "line": 32,
       "symbol": "LampSort.pivotIndex",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/LampSort.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/LampSort.swift",
       "line": 33,
       "symbol": "LampSort.pivot",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/LampSort.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/LampSort.swift",
       "line": 42,
       "symbol": "LampSort.State.outerLoopSecondPart",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/LampSort.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/LampSort.swift",
       "line": 46,
       "symbol": "LampSort.state",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
       "line": 24,
       "symbol": "RadixSort.groups",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
       "line": 25,
       "symbol": "RadixSort.numRadix",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
       "line": 26,
       "symbol": "RadixSort.radixCounter",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
       "line": 27,
       "symbol": "RadixSort.shift",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
       "line": 28,
       "symbol": "RadixSort.outerLoopCounter",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
       "line": 29,
       "symbol": "RadixSort.groupCounter",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
       "line": 30,
       "symbol": "RadixSort.groupArrayCounter",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
       "line": 31,
       "symbol": "RadixSort.arrayPos",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
       "line": 32,
       "symbol": "RadixSort.radixGroupSplittingCounter",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
-      "line": 40,
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
+      "line": 33,
+      "symbol": "RadixSort.maxBytes",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
+      "line": 34,
+      "symbol": "RadixSort.bitsPerBytes",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
+      "line": 42,
       "symbol": "RadixSort.State.outerLoopReset",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
-      "line": 41,
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
+      "line": 43,
       "symbol": "RadixSort.State.creatingRadixGroupsEnd",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
-      "line": 42,
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
+      "line": 44,
       "symbol": "RadixSort.State.creatingRadixGroupsLoop",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
-      "line": 43,
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
+      "line": 45,
       "symbol": "RadixSort.State.handlingRadixFrom0to6",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
-      "line": 44,
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
+      "line": 46,
       "symbol": "RadixSort.State.handlingRadix7BeginningPart",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
-      "line": 45,
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
+      "line": 47,
       "symbol": "RadixSort.State.handlingRadix7EndPart",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
-      "line": 46,
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
+      "line": 48,
       "symbol": "RadixSort.State.increasingShift",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
-      "line": 47,
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
+      "line": 49,
       "symbol": "RadixSort.State.finished",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
-      "line": 50,
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/RadixSort.swift",
+      "line": 52,
       "symbol": "RadixSort.state",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/ShellSort.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/ShellSort.swift",
       "line": 53,
       "symbol": "ShellSort.outerIndex",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/SortCoordinator.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/SortCoordinator.swift",
       "line": 68,
       "symbol": "SortCoordinator.methodActingOnIndex1",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/SortCoordinator.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/SortCoordinator.swift",
       "line": 69,
       "symbol": "SortCoordinator.methodActingOnIndex2",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/SortCoordinator.swift",
-      "line": 71,
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/SortCoordinator.swift",
+      "line": 70,
+      "symbol": "SortCoordinator.usePositiveNumbers",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/SortCoordinator.swift",
+      "line": 72,
       "symbol": "SortCoordinator.waitingForNextSortMethod",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/SortCoordinator.swift",
-      "line": 72,
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/SortCoordinator.swift",
+      "line": 73,
       "symbol": "SortCoordinator.waitingForNextSortStep",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/SortCoordinator.swift",
-      "line": 75,
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/SortCoordinator.swift",
+      "line": 76,
       "symbol": "SortCoordinator.countOfNumbers",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/SortCoordinator.swift",
-      "line": 105,
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/SortCoordinator.swift",
+      "line": 106,
       "symbol": "SortCoordinator.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/SortCoordinator.swift",
-      "line": 304,
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/SortCoordinator.swift",
+      "line": 125,
+      "symbol": "SortCoordinator.prepareOriginalArray(with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/SortCoordinator.swift",
+      "line": 307,
       "symbol": "SortCoordinator.nextMethod()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/Stack.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/Stack.swift",
       "line": 31,
       "symbol": "Stackable.isEmpty",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/ResultsView.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/ResultsView.swift",
       "line": 11,
       "symbol": "PerformanceRow",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/ResultsView.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/ResultsView.swift",
       "line": 58,
       "symbol": "ResultsView_Previews",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/SceneDelegate.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/SceneDelegate.swift",
       "line": 12,
       "symbol": "SceneDelegate",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/SortMethodDetailView.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/SortMethodDetailView.swift",
       "line": 11,
       "symbol": "SortMethodDetailView",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/SortMethodDetailView.swift",
+      "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/SortMethodDetailView.swift",
       "line": 43,
       "symbol": "SortMethodDetailView_Previews",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     }
   ],
-  "source_directory": "/Users/juustila/workspace/SortSpectacle"
+  "source_directory": "/Users/anttijuustila/workspace/SortSpectacle"
 }
