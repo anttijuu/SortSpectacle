@@ -33,9 +33,9 @@ See the docs generated from the code. If you want to add a new sorting method:
 1. Add your sort method to the `SortCoordinator.prepare()`
 1. Share your sort method. I'd like to add more in this project.
 
-The preferred way to contribute is to fork the project, creating a branch to your own fork with the new sorting method. When you have tested that it works, provide a pull request from your for to my project. I'll then check & test and merge it into the main project if all is well.
+The preferred way to contribute is to fork the project, creating a branch to your own fork. In the branch, implement the new sorting method. When you have tested that it works (see the unit tests in `SortSpectacleTests.swift`), provide a pull request from your fork to my repository. I'll then check & test and merge it into the main project if all is well.
 
-Optimizing and improving already implemented methods are also welcome (especially Radix sort, see it with count < 100 and observe how it does basically nothing useful at the end part.).
+Optimizing and improving already implemented methods are also welcomed contributions (especially Radix sort, see it with count < 100 and observe how it does basically nothing useful at the end part.).
 
 ## License
 
