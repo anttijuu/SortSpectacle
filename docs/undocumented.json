@@ -345,7 +345,7 @@
     },
     {
       "file": "/Users/anttijuustila/workspace/SortSpectacle/SortSpectacle/Model/SortCoordinator.swift",
-      "line": 307,
+      "line": 308,
       "symbol": "SortCoordinator.nextMethod()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
