@@ -48,10 +48,12 @@ struct SwappedItems {
  the nextStep() executes one relevant step of the sorting algorithm, usually leading into
  values changing places in the array to be sorted. This can then be animated in the UI.
  
- Protocol implementations must also implement realAlgorithm, executing the sorting method
+ Protocol implementations must also implement `realAlgorithm()`, executing the sorting method
  in a tight loop. This is not animated in the UI, but used in comparing the speed of the
- algorithms. Note that when giving an array to be sorted to various sorting methods, the
- array each of them starts must contain the same numbers in the same order -- otherwise
+ algorithms.
+ 
+ Note that when giving an array to be sorted to various sorting methods, the
+ array each of them starts with must contain the same numbers in the same order -- otherwise
  the comparisons are not fair.
  
  */
@@ -104,7 +106,8 @@ protocol SortMethod {
 
    /**
     Implementation of the sorting method without any steps, sorting the data in one go in a loop/loops.
-    The caller may verify if the arrai is called by executing Array.isSorted()
+    The caller should verify if the array is actually sorted properly by doing assert(Array.isSorted()) when
+    this function returns.
     - parameter array: The array to sort.
     */
    mutating func realAlgorithm(array: inout [Int])
