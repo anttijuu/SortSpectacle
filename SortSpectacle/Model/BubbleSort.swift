@@ -95,9 +95,9 @@ struct BubbleSort: SortMethod {
 
    /**
     Implementation of the BubbleSort in two tight loops.
+    - parameter: array The array to sort.
     */
-   mutating func realAlgorithm(arrayCopy: [Int]) {
-      var array = arrayCopy
+   mutating func realAlgorithm(array: inout [Int]) {
       sortSize = array.count
       repeat {
          newSize = 0
@@ -107,6 +107,5 @@ struct BubbleSort: SortMethod {
          }
          sortSize = newSize
       } while sortSize > 1
-      if debug { assert(array.isSorted()) }
    }
 }

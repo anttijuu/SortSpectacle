@@ -140,7 +140,7 @@ struct RadixSort: SortMethod {
          }
 
       case .handlingRadixFrom0to6:
-         if debug && groupArrayCounter == 0 { print("case .handlingRadixFrom0to6 groupArrayCounter: \(groupArrayCounter), groupCounter: \(groupCounter)") }
+         if debug { print("case .handlingRadixFrom0to6 groupArrayCounter: \(groupArrayCounter), groupCounter: \(groupCounter)") }
          if groupArrayCounter < groups[groupCounter].count {
             swappedItems.operation = .moveValue
             swappedItems.first = groups[groupCounter][groupArrayCounter]
@@ -220,11 +220,9 @@ struct RadixSort: SortMethod {
     Sorts a copy of the array in the paramenter using the sorting method in one go.
     Implementation is based on sample code by Alexander Shostak's comment from
     https://stackoverflow.com/questions/15306665/radix-sort-for-negative-integers discussion.
-    - parameter arrayCopy The array to copy and sort.
-    - returns Returns true if the array is sorted.
+    - parameter array The array to copy and sort.
     */
-   mutating func realAlgorithm(arrayCopy: [Int]) {
-      var array = arrayCopy
+   mutating func realAlgorithm(array: inout [Int]) {
       restart()
       let size = array.count
       // Find the min and max values and the sizes in bytes

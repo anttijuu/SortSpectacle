@@ -160,11 +160,9 @@ struct LampSort: SortMethod {
 
    /**
     Executes the "real" Lampsort algoritm in one go using loops.
-    - parameter arrayCopy: The array to sort.
-    - returns: Returns true if the array was successfully sorted.
+    - parameter array: The array to sort.
     */
-   mutating func realAlgorithm(arrayCopy: [Int]) {
-      var array = arrayCopy
+   mutating func realAlgorithm(array: inout [Int]) {
       var low: Int
       var high: Int
       var span: Int
@@ -219,7 +217,6 @@ struct LampSort: SortMethod {
             }
          }
       } while !lows.isEmpty
-      if debug { assert(array.isSorted()) }
    }
 
 }

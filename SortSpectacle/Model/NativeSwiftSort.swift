@@ -60,8 +60,7 @@ struct NativeSwiftSort: SortMethod {
    /**
     Just call the usual sort implementation of the library array struct.
     */
-   mutating func realAlgorithm(arrayCopy: [Int]) {
-      var array = arrayCopy
+   mutating func realAlgorithm(array: inout [Int]) {
       array.sort()
    }
 

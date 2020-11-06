@@ -218,7 +218,7 @@ class SortCoordinator: ObservableObject {
             // 1. Take timestamp
             let now = Date()
             // 2. Do sorting with real algo
-            currentMethod?.realAlgorithm(arrayCopy: self.array)
+            currentMethod?.realAlgorithm(array: &array)
             // 3. Take timestamp
             // 4. Calculate duration
             let duration = Date().timeIntervalSince(now)
@@ -226,6 +226,7 @@ class SortCoordinator: ObservableObject {
             let result = TimingResult(methodName: currentMethod!.name, timing: duration)
             performanceTable.append(result)
             performanceTable.sort()
+            assert(array.isSorted())
             if debug { print(performanceTable) }
             nextMethod()
 

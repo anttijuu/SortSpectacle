@@ -153,13 +153,9 @@ struct ShellSort: SortMethod {
 
    /**
     The tight loop implementation of Shell sort, sorting the array at one go.
-    
-    The array in the parameter is copied and the copied array is then sorted.
-    - parameter arrayCopy: The array containing the elements to sort.
-    - returns: Returns if the array was successfully sorted.
+    - parameter array: The array containing the elements to sort.
     */
-   mutating func realAlgorithm(arrayCopy: [Int]) {
-      var array = arrayCopy
+   mutating func realAlgorithm(array: inout [Int]) {
       var gap = array.count / 2
       // This is the level 1 "gap update" loop, see nextStep()
       // where loop names are "opened up" as states.
@@ -179,6 +175,5 @@ struct ShellSort: SortMethod {
          }
          gap /= 2
       } while gap > 0
-      if debug { assert(array.isSorted()) }
    }
 }

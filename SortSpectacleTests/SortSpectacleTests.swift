@@ -175,52 +175,46 @@ class SortSpectacleTests: XCTestCase {
       }
    }
 
-//   func testLampSortReal() {
-//      intArray.prepare(count: 10)
-//      var lampSort = LampSort(arraySize: intArray.count)
-//      self.measure {
-//         intArray.shuffle()
-//         XCTAssertTrue(lampSort.realAlgorithm(arrayCopy: intArray), "Array was not sorted correctly")
-//      }
-//   }
-
    func testBubbleSortReal() {
       var sort = BubbleSort(arraySize: intArray.count)
       let expectation = XCTestExpectation(description: "Sorting done using \(sort.name) in less than \(timeout) seconds")
       intArray.shuffle()
-      DispatchQueue.global().sync {
+      DispatchQueue.global().sync { [self] in
          self.measure {
-            sort.realAlgorithm(arrayCopy: self.intArray)
+            sort.realAlgorithm(array: &intArray)
             expectation.fulfill()
          }
       }
-      // wait(for: [expectation], timeout: timeout)
+      wait(for: [expectation], timeout: timeout)
+      XCTAssert(intArray.isSorted())
    }
 
    func testShellSortReal() {
       var sort = ShellSort(arraySize: intArray.count)
       let expectation = XCTestExpectation(description: "Sorting done using \(sort.name) in less than \(timeout) seconds")
       intArray.shuffle()
-      DispatchQueue.global().sync {
+      DispatchQueue.global().sync {  [self] in
          self.measure {
-            sort.realAlgorithm(arrayCopy: self.intArray)
+            sort.realAlgorithm(array: &intArray)
             expectation.fulfill()
          }
       }
       wait(for: [expectation], timeout: timeout)
+      XCTAssert(intArray.isSorted())
    }
 
    func testLampSortReal() {
       var sort = LampSort(arraySize: intArray.count)
       let expectation = XCTestExpectation(description: "Sorting done using \(sort.name) in less than \(timeout) seconds")
       intArray.shuffle()
-      DispatchQueue.global().sync {
+      DispatchQueue.global().sync { [self] in
          self.measure {
-            sort.realAlgorithm(arrayCopy: self.intArray)
+            sort.realAlgorithm(array: &intArray)
             expectation.fulfill()
          }
       }
       wait(for: [expectation], timeout: timeout)
+      XCTAssert(intArray.isSorted())
    }
 
    func testRadixSortReal() {
@@ -228,13 +222,14 @@ class SortSpectacleTests: XCTestCase {
       var sort = RadixSort(arraySize: intArray.count)
       let expectation = XCTestExpectation(description: "Sorting done using \(sort.name) in less than \(timeout) seconds")
       intArray.shuffle()
-      DispatchQueue.global().sync {
+      DispatchQueue.global().sync { [self] in
          self.measure {
-            sort.realAlgorithm(arrayCopy: self.intArray)
+            sort.realAlgorithm(array: &intArray)
             expectation.fulfill()
          }
       }
       wait(for: [expectation], timeout: timeout)
+      XCTAssert(intArray.isSorted())
    }
    
    func doSortTest(sortAlgorithm: SortMethod) {
@@ -253,8 +248,8 @@ class SortSpectacleTests: XCTestCase {
          }
       }
       wait(for: [expectation], timeout: timeout)
-      print("\(backupArray)")
-      print("\(intArray)")
+//      print("\(backupArray)")
+//      print("\(intArray)")
       XCTAssertTrue(backupArray.containsSameElements(as: intArray))
    }
 

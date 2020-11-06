@@ -44,7 +44,15 @@ struct SwappedItems {
  A common protocol for all sorting methods.
  
  Note that the array to be sorted is hosted in an external object, and provided
- to the sorting methods as a parameter to the `nextStep()` method.
+ to the sorting methods as a parameter to the `nextStep()` method. Each execution of
+ the nextStep() executes one relevant step of the sorting algorithm, usually leading into
+ values changing places in the array to be sorted. This can then be animated in the UI.
+ 
+ Protocol implementations must also implement realAlgorithm, executing the sorting method
+ in a tight loop. This is not animated in the UI, but used in comparing the speed of the
+ algorithms. Note that when giving an array to be sorted to various sorting methods, the
+ array each of them starts must contain the same numbers in the same order -- otherwise
+ the comparisons are not fair.
  
  */
 protocol SortMethod {
@@ -96,9 +104,8 @@ protocol SortMethod {
 
    /**
     Implementation of the sorting method without any steps, sorting the data in one go in a loop/loops.
-    Usually the implementations copy the array to a temporary and sort that, since the caller does not
-    have to have the sorted array.
-    - parameter arrayCopy: The array to sort.
+    The caller may verify if the arrai is called by executing Array.isSorted()
+    - parameter array: The array to sort.
     */
-   mutating func realAlgorithm(arrayCopy: [Int])
+   mutating func realAlgorithm(array: inout [Int])
 }
