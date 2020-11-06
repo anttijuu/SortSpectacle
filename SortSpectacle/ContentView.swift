@@ -15,7 +15,7 @@ var lineWidth: CGFloat = 1.0
  
  The area to draw is adjusted to the Rect in the parameter to the `path` function. Line
  lengths are adjusted to the range of numbers so that the largest (abs) value determines the length
- of the tallest line. Line widht is also calculated based on the number of lines to draw adjusted to the available space.
+ of the tallest line. Line width is also calculated based on the number of lines to draw adjusted to the available space.
  */
 struct NumbersLineShape: Shape {
    private var array: [Int]
