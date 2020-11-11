@@ -23,7 +23,7 @@ struct IntroView: View {
       VStack {
          VStack(alignment: .leading) {
             Text("Demonstration of different sorting methods.\n")
-               .font(.title2)
+               .font(.title)
             Text("There are \(engine.getCountOfSupportedMethods()) sorting methods supported currently.\n")
             Text("When you start, the methods are first animated to show how they do their job of sorting numbers.\n")
             Text("You can tap the animation screen to stop sorting and move to the next method.\n")

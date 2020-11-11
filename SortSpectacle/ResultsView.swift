@@ -37,7 +37,7 @@ struct ResultsView: View {
       NavigationView {
          VStack {
             Text("Hall of Fame")
-               .font(.title2)
+               .font(.title)
             List {
                ForEach(engine.performanceTable, id: \.self) { item in
                   PerformanceRow(rowData: item, method: self.engine.getMethod(for: item.methodName)!)

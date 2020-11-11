@@ -138,6 +138,24 @@ class SortSpectacleTests: XCTestCase {
       sort = RadixSort(arraySize: intArray.count)
       doSortTest(sortAlgorithm: sort)
    }
+   
+   func testArrayWithSameValuesOnly() {
+      intArray.removeAll()
+      var count = 21
+      while count > 0 {
+         intArray.append(42)
+         count -= 1
+      }
+      var sort: SortMethod
+      sort = BubbleSort(arraySize: intArray.count)
+      doSortTest(sortAlgorithm: sort)
+      sort = LampSort(arraySize: intArray.count)
+      doSortTest(sortAlgorithm: sort)
+      sort = ShellSort(arraySize: intArray.count)
+      doSortTest(sortAlgorithm: sort)
+      sort = RadixSort(arraySize: intArray.count)
+      doSortTest(sortAlgorithm: sort)
+   }
 
    func testBubbleSort() {
       // intArray.prepare(range: -10...10)
