@@ -185,7 +185,7 @@ class SortSpectacleTests: XCTestCase {
    }
    
    func testRadixSort() {
-      //intArray.prepare(range: -20...20)
+      // intArray.prepare(range: -20...20)
       intArray.shuffle()
       let radixSort: SortMethod = RadixSort(arraySize: intArray.count)
       measure {
@@ -249,7 +249,21 @@ class SortSpectacleTests: XCTestCase {
       wait(for: [expectation], timeout: timeout)
       XCTAssert(intArray.isSorted())
    }
-   
+
+   func testHeapSortReal() {
+      var sort = HeapSort(arraySize: intArray.count)
+      let expectation = XCTestExpectation(description: "Sorting done using \(sort.name) in less than \(timeout) seconds")
+      intArray.shuffle()
+      DispatchQueue.global().sync { [self] in
+         self.measure {
+            sort.realAlgorithm(array: &intArray)
+            expectation.fulfill()
+         }
+      }
+      wait(for: [expectation], timeout: timeout)
+      XCTAssert(intArray.isSorted())
+   }
+
    func doSortTest(sortAlgorithm: SortMethod) {
       let expectation = XCTestExpectation(description: "Sorting done using \(sortAlgorithm.name) in less than \(timeout) seconds")
       var method = sortAlgorithm

@@ -61,7 +61,8 @@ protocol SortMethod {
 
    /**
     Initializes the sortmethod to sort an array with specific number of elements.
-    - parameter arraySize: The size of the array to initialize.
+    - Parameters:
+      - arraySize: The size of the array to initialize.
     */
    init(arraySize: Int)
 
@@ -97,10 +98,12 @@ protocol SortMethod {
     
     Note that caller should have swappedItems as a local variable *within* a loop so that it is resetted before each
     call to nextStep.
-    
-    - parameter array: The array containing the elements to sort.
-    - parameter swappedItems: The two items to swap or move, if any. Method sets the values and caller does the moving.
-    - returns: Returns true if the array is sorted. Caller should stop sorting (calling nextStep).
+
+    - Parameters:
+     - array: The array containing the elements to sort.
+     - swappedItems: The two items to swap or move, if any. Method sets the values and caller does the moving.
+
+    - Returns: Returns true if the array is sorted. Caller should stop sorting (calling nextStep).
     */
    mutating func nextStep(array: [Int], swappedItems : inout SwappedItems) -> Bool
 
@@ -108,7 +111,9 @@ protocol SortMethod {
     Implementation of the sorting method without any steps, sorting the data in one go in a loop/loops.
     The caller should verify if the array is actually sorted properly by doing assert(Array.isSorted()) when
     this function returns.
-    - parameter array: The array to sort.
+
+    - Parameters:
+      - array: The array to sort.
     */
    mutating func realAlgorithm(array: inout [Int])
 }

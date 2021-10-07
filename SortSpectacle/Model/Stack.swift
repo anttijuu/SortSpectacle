@@ -11,7 +11,7 @@ import Foundation
 /**
  An interface for stack data structure needed by e.g. LampSort.
  
- Based on an example from Stack overlow.
+ Based on an example from Stackoverflow.
  
  See https://stackoverflow.com/questions/31462272/stack-implementation-in-swift
  */
