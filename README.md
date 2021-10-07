@@ -2,10 +2,9 @@
 
 Sort Spectacle is a Swift/SwiftUI app demonstrating visually how different sorting algorithms behave.
 
-Currently Bubble sort, Lamp sort, Shell sort and Radix sort are implemented. Additionally, Swift Foundation Array's sort() is called, to compare performance in the final step of the demonstration. Swift's Array.sort() implements Tim sort.
+Currently Bubble sort, Lamp sort, Shell sort, Heap sort and Radix sort are implemented. Additionally, Swift Foundation Array's sort() is called, to compare performance in the final step of the demonstration. Swift's Array.sort() implements Tim sort.
 
-See a short [demo video](https://youtu.be/5oQp6j5spfM) of the app running on iPhone 11.
-
+See a short [demo video](https://youtu.be/5oQp6j5spfM) of the app running on iPhone 11. Video is old and does not include Heap sort.
 
 ## How to use
 
@@ -15,7 +14,9 @@ Please note that you should build the app in **Release configuration** to make i
 
 ## To do
 
-More sorting methods. E.g. restructure Timsort from Foundation source code to execute step by step.
+More sorting methods. E.g. implement Timsort from Foundation source code to execute step by step.
+
+New video including Heap sort.
 
 Better settings / configuration: 
 
