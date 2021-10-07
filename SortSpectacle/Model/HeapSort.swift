@@ -88,7 +88,7 @@ struct HeapSort: SortMethod {
    }
 
    private func rightChild(_ index: Int) -> Int {
-      return 2 * index + 2;
+      return 2 * index + 2
    }
 
 }
