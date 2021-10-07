@@ -30,7 +30,7 @@ struct NumbersLineShape: Shape {
    */
    init(sourceArray: [Int]?, activeInd1: Int, activeInd2: Int) {
       if let arr = sourceArray {
-         //print("Init NumbersShape with \(arr.count) numbers.")
+         // print("Init NumbersShape with \(arr.count) numbers.")
          array = arr
          activeIndex1 = activeInd1
          activeIndex2 = activeInd2
@@ -78,7 +78,7 @@ struct NumbersLineShape: Shape {
 //      path.addLine(to: CGPoint(x: xOrigin, y: rect.origin.y+rect.height))
       var yOrigin = rect.origin.y+2
       var xTarget = xOrigin
-      //print("Drawing path for \(array.count) numbers...")
+      // print("Drawing path for \(array.count) numbers...")
       var index = 0
       for number in array {
          path.move(to: CGPoint(x: xOrigin, y: yOrigin))

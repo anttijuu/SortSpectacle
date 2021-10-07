@@ -144,9 +144,9 @@ class SortCoordinator: ObservableObject {
       sortingMethods.append(BubbleSort(arraySize: array.count))
       sortingMethods.append(ShellSort(arraySize: array.count))
       sortingMethods.append(LampSort(arraySize: array.count))
+      sortingMethods.append(HeapSort(arraySize: array.count))
       sortingMethods.append(RadixSort(arraySize: array.count))
       sortingMethods.append(NativeSwiftSort(arraySize: array.count))
-      sortingMethods.append(HeapSort(arraySize: array.count))
       currentMethodIndex = 0
       currentMethod = sortingMethods[currentMethodIndex]
       description = "Next sort method: \(currentMethod!.name)"
@@ -188,11 +188,11 @@ class SortCoordinator: ObservableObject {
       var slowFactor = 1.0
       switch countOfNumbers {
       case 0...50:
-         slowFactor = 75.0
+         slowFactor = 45.0
       case 51...100:
-         slowFactor = 50.0
+         slowFactor = 30.0
       case 101...150:
-         slowFactor = 25.0
+         slowFactor = 15.0
       default:
          slowFactor = 1.0
       }
@@ -268,7 +268,7 @@ class SortCoordinator: ObservableObject {
          if debug { print("in stop, moving to measuring state") }
          DispatchQueue.main.asyncAfter(deadline: .now()+2, execute: { [self] in
             state = .measuring
-            prepareOriginalArray(with: 5000)
+            prepareOriginalArray(with: 10000)
             description = "Comparing algorithms with \(array.count) numbers..."
             performanceTable.removeAll(keepingCapacity: true)
             timer = Timer.scheduledTimer(withTimeInterval: waitingForNextSortMethod, repeats: false) { _ in

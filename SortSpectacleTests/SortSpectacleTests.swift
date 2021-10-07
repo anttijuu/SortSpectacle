@@ -26,7 +26,6 @@ class SortSpectacleTests: XCTestCase {
          range = -100...100
       }
       count = Int.random(in: 2...maxArraySize)
-      print("Testing with \(count) elements from range \(range)")
       intArray.prepare(range: range, count: count)
    }
 
@@ -83,6 +82,8 @@ class SortSpectacleTests: XCTestCase {
       doSortTest(sortAlgorithm: sort)
       sort = ShellSort(arraySize: intArray.count)
       doSortTest(sortAlgorithm: sort)
+      sort = HeapSort(arraySize: intArray.count)
+      doSortTest(sortAlgorithm: sort)
       sort = RadixSort(arraySize: intArray.count)
       doSortTest(sortAlgorithm: sort)
    }
@@ -96,6 +97,8 @@ class SortSpectacleTests: XCTestCase {
       sort = LampSort(arraySize: intArray.count)
       doSortTest(sortAlgorithm: sort)
       sort = ShellSort(arraySize: intArray.count)
+      doSortTest(sortAlgorithm: sort)
+      sort = HeapSort(arraySize: intArray.count)
       doSortTest(sortAlgorithm: sort)
       sort = RadixSort(arraySize: intArray.count)
       doSortTest(sortAlgorithm: sort)
@@ -121,6 +124,11 @@ class SortSpectacleTests: XCTestCase {
       intArray.removeAll()
       intArray.append(2)
       intArray.append(1)
+      sort = HeapSort(arraySize: intArray.count)
+      doSortTest(sortAlgorithm: sort)
+      intArray.removeAll()
+      intArray.append(2)
+      intArray.append(1)
       sort = RadixSort(arraySize: intArray.count)
       doSortTest(sortAlgorithm: sort)
    }
@@ -134,6 +142,8 @@ class SortSpectacleTests: XCTestCase {
       sort = LampSort(arraySize: intArray.count)
       doSortTest(sortAlgorithm: sort)
       sort = ShellSort(arraySize: intArray.count)
+      doSortTest(sortAlgorithm: sort)
+      sort = HeapSort(arraySize: intArray.count)
       doSortTest(sortAlgorithm: sort)
       sort = RadixSort(arraySize: intArray.count)
       doSortTest(sortAlgorithm: sort)
@@ -152,6 +162,8 @@ class SortSpectacleTests: XCTestCase {
       sort = LampSort(arraySize: intArray.count)
       doSortTest(sortAlgorithm: sort)
       sort = ShellSort(arraySize: intArray.count)
+      doSortTest(sortAlgorithm: sort)
+      sort = HeapSort(arraySize: intArray.count)
       doSortTest(sortAlgorithm: sort)
       sort = RadixSort(arraySize: intArray.count)
       doSortTest(sortAlgorithm: sort)
@@ -183,7 +195,16 @@ class SortSpectacleTests: XCTestCase {
          doSortTest(sortAlgorithm: shellSort)
       }
    }
-   
+
+   func testHeapSort() {
+      // intArray.prepare(range: -10...10)
+      intArray.shuffle()
+      let heapSort: SortMethod = HeapSort(arraySize: intArray.count)
+      measure {
+         doSortTest(sortAlgorithm: heapSort)
+      }
+   }
+
    func testRadixSort() {
       // intArray.prepare(range: -20...20)
       intArray.shuffle()
@@ -268,6 +289,7 @@ class SortSpectacleTests: XCTestCase {
       let expectation = XCTestExpectation(description: "Sorting done using \(sortAlgorithm.name) in less than \(timeout) seconds")
       var method = sortAlgorithm
       let backupArray = intArray
+      method.restart()
       DispatchQueue.global().async {
          while true {
             var swappedItems = SwappedItems()

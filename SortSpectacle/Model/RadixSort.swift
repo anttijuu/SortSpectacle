@@ -94,14 +94,14 @@ struct RadixSort: SortMethod {
       maxBytes = nil
    }
    
-   //swiftlint:disable cyclomatic_complexity function_body_length
+   // swiftlint:disable cyclomatic_complexity function_body_length
    mutating func nextStep(array: [Int], swappedItems: inout SwappedItems) -> Bool {
       switch state {
       case .outerLoopReset:
          // Added quick fix. Algo should somehow handle already sorted array, currently does not.
-//         if array.isSorted() {
-//            return true
-//         }
+         if array.isSorted() {
+            return true
+         }
          if debug { print("case .outerLoopReset") }
          groups.removeAll()
          for _ in 0..<256 {
