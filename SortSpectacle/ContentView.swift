@@ -139,6 +139,7 @@ struct ContentView: View {
             NumbersLineShape(sourceArray: sortEngine.array, activeInd1: sortEngine.methodActingOnIndex1, activeInd2: sortEngine.methodActingOnIndex2)
                .stroke(Color.red, style: StrokeStyle(lineWidth: lineWidth, lineCap: .butt, lineJoin: .miter, miterLimit: 1))
                .gesture(tap)
+               .drawingGroup()
          } else {
             ResultsView(engine: sortEngine)
          }
