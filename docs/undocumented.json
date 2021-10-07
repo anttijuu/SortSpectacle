@@ -86,9 +86,23 @@
     },
     {
       "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/HeapSort.swift",
-      "line": 11,
-      "symbol": "HeapSort",
-      "symbol_kind": "source.lang.swift.decl.struct",
+      "line": 130,
+      "symbol": "HeapSort.startIndex",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/HeapSort.swift",
+      "line": 131,
+      "symbol": "HeapSort.endIndex",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/HeapSort.swift",
+      "line": 132,
+      "symbol": "HeapSort.rootIndex",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {

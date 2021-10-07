@@ -139,11 +139,11 @@
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">State</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">enum</span> <span class="kt">State</span></code></pre>
 
                 </div>
               </div>
-            <p>The different states of the execution of the sort coordinator.</p>
+            <p>States of the step-by-step algorithm.</p>
 
           </section>
           <section class="section task-group-section">
@@ -152,9 +152,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13SortSpectacle0A11CoordinatorC5StateO7atStartyA2EmF"></a>
-                    <a name="//apple_ref/swift/Element/atStart" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13SortSpectacle0A11CoordinatorC5StateO7atStartyA2EmF">atStart</a>
+                    <a name="/s:13SortSpectacle04HeapA0V5State33_96BBAC9A2BB81DA5889FF7E8F7B52E36LLO10heapifyingyA2FmF"></a>
+                    <a name="//apple_ref/swift/Element/heapifying" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle04HeapA0V5State33_96BBAC9A2BB81DA5889FF7E8F7B52E36LLO10heapifyingyA2FmF">heapifying</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -162,14 +162,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Starting phase, where preparation for the execution is done</p>
+                        <p>Is doing the heapifying before sifting down.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">atStart</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">heapifying</span></code></pre>
 
                         </div>
                       </div>
@@ -179,9 +179,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13SortSpectacle0A11CoordinatorC5StateO9animatingyA2EmF"></a>
-                    <a name="//apple_ref/swift/Element/animating" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13SortSpectacle0A11CoordinatorC5StateO9animatingyA2EmF">animating</a>
+                    <a name="/s:13SortSpectacle04HeapA0V5State33_96BBAC9A2BB81DA5889FF7E8F7B52E36LLO13mainWhileLoopyA2FmF"></a>
+                    <a name="//apple_ref/swift/Element/mainWhileLoop" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle04HeapA0V5State33_96BBAC9A2BB81DA5889FF7E8F7B52E36LLO13mainWhileLoopyA2FmF">mainWhileLoop</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -189,14 +189,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The animating phase, where sorting methods are executed one by one, step by step, by calling the nextStep() method.</p>
+                        <p>Is in the main while loop after heapify.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">animating</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">mainWhileLoop</span></code></pre>
 
                         </div>
                       </div>
@@ -206,9 +206,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13SortSpectacle0A11CoordinatorC5StateO9measuringyA2EmF"></a>
-                    <a name="//apple_ref/swift/Element/measuring" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13SortSpectacle0A11CoordinatorC5StateO9measuringyA2EmF">measuring</a>
+                    <a name="/s:13SortSpectacle04HeapA0V5State33_96BBAC9A2BB81DA5889FF7E8F7B52E36LLO11siftingDownyA2FmF"></a>
+                    <a name="//apple_ref/swift/Element/siftingDown" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle04HeapA0V5State33_96BBAC9A2BB81DA5889FF7E8F7B52E36LLO11siftingDownyA2FmF">siftingDown</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -216,14 +216,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>After animation, all sorting methods are executed using the realAlgorithm() method to time the &ldquo;actual&rdquo; perfomance of the methods.</p>
+                        <p>Is sifting down, either from heapify or from main while loop.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">measuring</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">siftingDown</span></code></pre>
 
                         </div>
                       </div>
@@ -233,9 +233,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13SortSpectacle0A11CoordinatorC5StateO5atEndyA2EmF"></a>
-                    <a name="//apple_ref/swift/Element/atEnd" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13SortSpectacle0A11CoordinatorC5StateO5atEndyA2EmF">atEnd</a>
+                    <a name="/s:13SortSpectacle04HeapA0V5State33_96BBAC9A2BB81DA5889FF7E8F7B52E36LLO8finishedyA2FmF"></a>
+                    <a name="//apple_ref/swift/Element/finished" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle04HeapA0V5State33_96BBAC9A2BB81DA5889FF7E8F7B52E36LLO8finishedyA2FmF">finished</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -243,14 +243,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>End phase, where the exection is finished.</p>
+                        <p>Work is done.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">atEnd</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">finished</span></code></pre>
 
                         </div>
                       </div>

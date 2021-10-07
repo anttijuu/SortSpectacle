@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>ShellSort Structure Reference</title>
+    <title>HeapSort Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -13,8 +13,8 @@
     <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Struct/ShellSort" class="dashAnchor"></a>
-    <a title="ShellSort Structure Reference"></a>
+    <a name="//apple_ref/swift/Struct/HeapSort" class="dashAnchor"></a>
+    <a title="HeapSort Structure Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">SortSpectacle Docs</a> (73% documented)</p>
@@ -30,7 +30,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">SortSpectacle Reference</a>
         <img id="carat" src="../img/carat.png" alt=""/>
-        ShellSort Structure Reference
+        HeapSort Structure Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -135,26 +135,21 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>ShellSort</h1>
+            <h1>HeapSort</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">ShellSort</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/SortMethod.html">SortMethod</a></span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">HeapSort</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/SortMethod.html">SortMethod</a></span></code></pre>
 
                 </div>
               </div>
-            <p>Implements the Shell sort algorithm. Shell sort is an in-place comparison sort. </p>
+            <p>Heapsort is an improved selection sort: like selection sort, heapsort divides its input into a sorted and an unsorted region, and it iteratively shrinks the unsorted region by extracting the largest element from it and inserting it into the sorted region.</p>
 
-<p>Sorting is done one &ldquo;gap&rdquo; at a time. A gap can be thought of as a number of interleaved lists,
-each individually sorted.</p>
+<p>Unlike selection sort, heapsort does not waste time with a linear-time scan of the unsorted region; rather, heap sort maintains the unsorted region in a heap data structure (binary tree) to more quickly find the largest element in each step.</p>
 
-<p>In this implementation, gap is taken to be the middle point of the array to sort.</p>
+<p>Although somewhat slower in practice on most machines than a well-implemented quicksort, it has the advantage of a more favorable worst-case O(n log n) runtime. Heapsort is an in-place algorithm, but it is not a stable sort.</p>
 
-<p>Note that this method uses the <code>SwappedItem</code> <code>Operation.move</code> rather than <code>Operation.swap</code> &ndash; it moves the value in the
-first number to the index specified in the second number in SwappedItems. Using .swap operation is more common in the
-current implementations, as .move is used currently only by ShellSort.</p>
-
-<p>See <a href="https://en.wikipedia.org/wiki/Shellsort">https://en.wikipedia.org/wiki/Shellsort</a></p>
+<p>See <a href="https://en.wikipedia.org/wiki/Heapsort">https://en.wikipedia.org/wiki/Heapsort</a></p>
 
           </section>
           <section class="section task-group-section">
@@ -163,9 +158,9 @@ current implementations, as .move is used currently only by ShellSort.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13SortSpectacle05ShellA0V4sizeSivp"></a>
-                    <a name="//apple_ref/swift/Property/size" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13SortSpectacle05ShellA0V4sizeSivp">size</a>
+                    <a name="/s:13SortSpectacle04HeapA0V9arraySizeACSi_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(arraySize:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle04HeapA0V9arraySizeACSi_tcfc">init(arraySize:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -173,14 +168,14 @@ current implementations, as .move is used currently only by ShellSort.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The size of the array to sort.</p>
+                        <p>Initializes the Heapsort with the size of the array to sort.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">size</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">arraySize</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -190,9 +185,9 @@ current implementations, as .move is used currently only by ShellSort.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13SortSpectacle05ShellA0V4nameSSvp"></a>
-                    <a name="//apple_ref/swift/Property/name" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13SortSpectacle05ShellA0V4nameSSvp">name</a>
+                    <a name="/s:13SortSpectacle04HeapA0V4sizeSivp"></a>
+                    <a name="//apple_ref/swift/Property/size" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle04HeapA0V4sizeSivp">size</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -200,7 +195,34 @@ current implementations, as .move is used currently only by ShellSort.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The name of the sort method.</p>
+                        <p>The array size.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">size</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SortSpectacle04HeapA0V4nameSSvp"></a>
+                    <a name="//apple_ref/swift/Property/name" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle04HeapA0V4nameSSvp">name</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Name of the sorting method.</p>
 
                       </div>
                       <div class="declaration">
@@ -217,9 +239,9 @@ current implementations, as .move is used currently only by ShellSort.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13SortSpectacle05ShellA0V11descriptionSSvp"></a>
+                    <a name="/s:13SortSpectacle04HeapA0V11descriptionSSvp"></a>
                     <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13SortSpectacle05ShellA0V11descriptionSSvp">description</a>
+                    <a class="token" href="#/s:13SortSpectacle04HeapA0V11descriptionSSvp">description</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -227,7 +249,7 @@ current implementations, as .move is used currently only by ShellSort.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The description of the Shellsort method.</p>
+                        <p>Description of the sorting method.</p>
 
                       </div>
                       <div class="declaration">
@@ -244,9 +266,9 @@ current implementations, as .move is used currently only by ShellSort.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13SortSpectacle0A6MethodP8webLinksSaySS_SStGvp"></a>
+                    <a name="/s:13SortSpectacle04HeapA0V8webLinksSaySS_SStGvp"></a>
                     <a name="//apple_ref/swift/Property/webLinks" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13SortSpectacle0A6MethodP8webLinksSaySS_SStGvp">webLinks</a>
+                    <a class="token" href="#/s:13SortSpectacle04HeapA0V8webLinksSaySS_SStGvp">webLinks</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -254,7 +276,8 @@ current implementations, as .move is used currently only by ShellSort.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>Weblinks to read more information.</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -270,195 +293,9 @@ current implementations, as .move is used currently only by ShellSort.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13SortSpectacle05ShellA0V10innerIndex33_F4919692261DC41368CCBB2C5D3A04B6LLSivp"></a>
-                    <a name="//apple_ref/swift/Property/innerIndex" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13SortSpectacle05ShellA0V10innerIndex33_F4919692261DC41368CCBB2C5D3A04B6LLSivp">innerIndex</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Inner loop index counter.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">innerIndex</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13SortSpectacle05ShellA0V3gap33_F4919692261DC41368CCBB2C5D3A04B6LLSivp"></a>
-                    <a name="//apple_ref/swift/Property/gap" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13SortSpectacle05ShellA0V3gap33_F4919692261DC41368CCBB2C5D3A04B6LLSivp">gap</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The gap, divides the sorted array to sublist(s) to be sorted one at a time.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">gap</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13SortSpectacle05ShellA0V12movableValue33_F4919692261DC41368CCBB2C5D3A04B6LLSivp"></a>
-                    <a name="//apple_ref/swift/Property/movableValue" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13SortSpectacle05ShellA0V12movableValue33_F4919692261DC41368CCBB2C5D3A04B6LLSivp">movableValue</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The value to move in the array.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">movableValue</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13SortSpectacle05ShellA0V5State33_F4919692261DC41368CCBB2C5D3A04B6LLO"></a>
-                    <a name="//apple_ref/swift/Enum/State" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13SortSpectacle05ShellA0V5State33_F4919692261DC41368CCBB2C5D3A04B6LLO">State</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>State handling for ShellSort step by step sorting.</p>
-
-<p>The various loops in the <code>realAlgorithm()</code> implementation are &ldquo;opened up&rdquo; to <code><a href="../Structs/ShellSort.html#/s:13SortSpectacle05ShellA0V8nextStep5array12swappedItemsSbSaySiG_AA07SwappedH0VztF">nextStep(...)</a></code> implementation
- using state variable. Depending on the state (which loop and which part of the loop) is executed, state
- is changed. See comments in <code><a href="../Structs/ShellSort.html#/s:13SortSpectacle05ShellA0V13realAlgorithm5arrayySaySiGz_tF">realAlgorithm(...)</a></code> for details.</p>
-
-                        <a href="../Structs/ShellSort/State.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">enum</span> <span class="kt">State</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13SortSpectacle05ShellA0V5state33_F4919692261DC41368CCBB2C5D3A04B6LLAC5StateAELLOvp"></a>
-                    <a name="//apple_ref/swift/Property/state" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13SortSpectacle05ShellA0V5state33_F4919692261DC41368CCBB2C5D3A04B6LLAC5StateAELLOvp">state</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The state variable holding the current state of the sorting.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">state</span><span class="p">:</span> <span class="kt"><a href="../Structs/ShellSort/State.html">State</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13SortSpectacle05ShellA0V9arraySizeACSi_tcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(arraySize:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13SortSpectacle05ShellA0V9arraySizeACSi_tcfc">init(arraySize:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Initializes the sorter to handle arrays of specific size.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">arraySize</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>arraySize</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The size of the array that is sorted.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13SortSpectacle05ShellA0V7restartyyF"></a>
+                    <a name="/s:13SortSpectacle04HeapA0V7restartyyF"></a>
                     <a name="//apple_ref/swift/Method/restart()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13SortSpectacle05ShellA0V7restartyyF">restart()</a>
+                    <a class="token" href="#/s:13SortSpectacle04HeapA0V7restartyyF">restart()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -466,7 +303,7 @@ current implementations, as .move is used currently only by ShellSort.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Restarts the sorter to start from beginning.</p>
+                        <p>Restarts the sorting method by giving intial values to member variables.</p>
 
                       </div>
                       <div class="declaration">
@@ -483,9 +320,9 @@ current implementations, as .move is used currently only by ShellSort.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13SortSpectacle05ShellA0V8nextStep5array12swappedItemsSbSaySiG_AA07SwappedH0VztF"></a>
+                    <a name="/s:13SortSpectacle04HeapA0V8nextStep5array12swappedItemsSbSaySiG_AA07SwappedH0VztF"></a>
                     <a name="//apple_ref/swift/Method/nextStep(array:swappedItems:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13SortSpectacle05ShellA0V8nextStep5array12swappedItemsSbSaySiG_AA07SwappedH0VztF">nextStep(array:<wbr>swappedItems:<wbr>)</a>
+                    <a class="token" href="#/s:13SortSpectacle04HeapA0V8nextStep5array12swappedItemsSbSaySiG_AA07SwappedH0VztF">nextStep(array:<wbr>swappedItems:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -493,8 +330,7 @@ current implementations, as .move is used currently only by ShellSort.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Performs a step in the sorting of the array. Caller will do the actual swapping of values in the array.
-See <code><a href="../Structs/ShellSort/State.html">State</a></code> and <code>realAlgorithm()</code> for explanations for the states.</p>
+                        <p>Executes a step of the sorting.</p>
 
                       </div>
                       <div class="declaration">
@@ -505,50 +341,15 @@ See <code><a href="../Structs/ShellSort/State.html">State</a></code> and <code>r
 
                         </div>
                       </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>array</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The array containing the elements to be sorted</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>swappedItems</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Will hold the indexes to swap if any.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>Returns true if the array is sorted.</p>
-                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13SortSpectacle05ShellA0V13realAlgorithm5arrayySaySiGz_tF"></a>
-                    <a name="//apple_ref/swift/Method/realAlgorithm(array:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13SortSpectacle05ShellA0V13realAlgorithm5arrayySaySiGz_tF">realAlgorithm(array:<wbr>)</a>
+                    <a name="/s:13SortSpectacle04HeapA0V5State33_96BBAC9A2BB81DA5889FF7E8F7B52E36LLO"></a>
+                    <a name="//apple_ref/swift/Enum/State" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle04HeapA0V5State33_96BBAC9A2BB81DA5889FF7E8F7B52E36LLO">State</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -556,7 +357,89 @@ See <code><a href="../Structs/ShellSort/State.html">State</a></code> and <code>r
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The tight loop implementation of Shell sort, sorting the array at one go.</p>
+                        <p>States of the step-by-step algorithm.</p>
+
+                        <a href="../Structs/HeapSort/State.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">enum</span> <span class="kt">State</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SortSpectacle04HeapA0V5state33_96BBAC9A2BB81DA5889FF7E8F7B52E36LLAC5StateAELLOvp"></a>
+                    <a name="//apple_ref/swift/Property/state" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle04HeapA0V5state33_96BBAC9A2BB81DA5889FF7E8F7B52E36LLAC5StateAELLOvp">state</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The state of the step-by-step algorithm.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">state</span><span class="p">:</span> <span class="kt"><a href="../Structs/HeapSort/State.html">State</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SortSpectacle04HeapA0V18stateBeforeSifting33_96BBAC9A2BB81DA5889FF7E8F7B52E36LLAC5StateAELLOvp"></a>
+                    <a name="//apple_ref/swift/Property/stateBeforeSifting" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle04HeapA0V18stateBeforeSifting33_96BBAC9A2BB81DA5889FF7E8F7B52E36LLAC5StateAELLOvp">stateBeforeSifting</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>To which state to return after sifting down.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">stateBeforeSifting</span><span class="p">:</span> <span class="kt"><a href="../Structs/HeapSort/State.html">State</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SortSpectacle04HeapA0V13realAlgorithm5arrayySaySiGz_tF"></a>
+                    <a name="//apple_ref/swift/Method/realAlgorithm(array:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle04HeapA0V13realAlgorithm5arrayySaySiGz_tF">realAlgorithm(array:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The real algorithm without step-by-step execution.</p>
 
                       </div>
                       <div class="declaration">
@@ -567,24 +450,140 @@ See <code><a href="../Structs/ShellSort/State.html">State</a></code> and <code>r
 
                         </div>
                       </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>array</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The array containing the elements to sort.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SortSpectacle04HeapA0V7heapify33_96BBAC9A2BB81DA5889FF7E8F7B52E36LLyySaySiGz_SitF"></a>
+                    <a name="//apple_ref/swift/Method/heapify(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle04HeapA0V7heapify33_96BBAC9A2BB81DA5889FF7E8F7B52E36LLyySaySiGz_SitF">heapify(_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Heapify</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">heapify</span><span class="p">(</span><span class="n">_</span> <span class="nv">array</span><span class="p">:</span> <span class="k">inout</span> <span class="p">[</span><span class="kt">Int</span><span class="p">],</span> <span class="n">_</span> <span class="nv">count</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SortSpectacle04HeapA0V8siftDown33_96BBAC9A2BB81DA5889FF7E8F7B52E36LL_5start3endySaySiGz_S2itF"></a>
+                    <a name="//apple_ref/swift/Method/siftDown(_:start:end:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle04HeapA0V8siftDown33_96BBAC9A2BB81DA5889FF7E8F7B52E36LL_5start3endySaySiGz_S2itF">siftDown(_:<wbr>start:<wbr>end:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sifts the values to their correct places in the heap.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">siftDown</span><span class="p">(</span><span class="n">_</span> <span class="nv">array</span><span class="p">:</span> <span class="k">inout</span> <span class="p">[</span><span class="kt">Int</span><span class="p">],</span> <span class="nv">start</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">end</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SortSpectacle04HeapA0V6parent33_96BBAC9A2BB81DA5889FF7E8F7B52E36LLyS2iF"></a>
+                    <a name="//apple_ref/swift/Method/parent(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle04HeapA0V6parent33_96BBAC9A2BB81DA5889FF7E8F7B52E36LLyS2iF">parent(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Heap utility method to get the parent node of an index.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">parent</span><span class="p">(</span><span class="n">_</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SortSpectacle04HeapA0V9leftChild33_96BBAC9A2BB81DA5889FF7E8F7B52E36LLyS2iF"></a>
+                    <a name="//apple_ref/swift/Method/leftChild(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle04HeapA0V9leftChild33_96BBAC9A2BB81DA5889FF7E8F7B52E36LLyS2iF">leftChild(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Heap utility method to get the left child node of an index.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">leftChild</span><span class="p">(</span><span class="n">_</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SortSpectacle04HeapA0V10rightChild33_96BBAC9A2BB81DA5889FF7E8F7B52E36LLyS2iF"></a>
+                    <a name="//apple_ref/swift/Method/rightChild(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle04HeapA0V10rightChild33_96BBAC9A2BB81DA5889FF7E8F7B52E36LLyS2iF">rightChild(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Heap utility method to get the right child node of an index.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">rightChild</span><span class="p">(</span><span class="n">_</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
