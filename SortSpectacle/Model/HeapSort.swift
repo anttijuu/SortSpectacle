@@ -205,7 +205,7 @@ struct HeapSort: SortMethod {
    /// - parameter index The index the parent of which is looked for.
    /// - returns The index of the parent node.
    private func parent(_ index: Int) -> Int {
-      return Int(floor((Double(index - 1))/2.0))
+      return Int(((Double(index) - 1.0)/2.0).rounded(.towardZero))
    }
 
    /// Heap utility method to get the left child node of an index.
