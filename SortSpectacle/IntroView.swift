@@ -30,7 +30,7 @@ struct IntroView: View {
             Text("After animations, sorting methods are used to sort a large array and execution time is recorded. You will be able to see the results after this.\n")
             Text("You can adjust the count of numbers to sort (currently \(engine.countOfNumbers)) as well as the animations in the application settings.")
             Picker(selection: self.$selectedNumberIndex, label: Text("How many numbers to sort")) {
-               ForEach(0..<self.numberArray.count) { number in
+               ForEach(0..<self.numberArray.count, id: \.self) { number in
                   Text("\(numberArray[number])")
                }
             }

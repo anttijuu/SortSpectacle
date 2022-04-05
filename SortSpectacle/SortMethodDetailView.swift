@@ -15,7 +15,7 @@ struct SortMethodDetailView: View {
       VStack {
          Text(sortMethod.description)
          Spacer()
-         ForEach(0..<sortMethod.webLinks.count) { linkIndex in
+         ForEach(0..<sortMethod.webLinks.count, id: \.self) { linkIndex in
             Button(action: {
                if let url = URL(string: self.sortMethod.webLinks[linkIndex].1) {
                   UIApplication.shared.open(url)
