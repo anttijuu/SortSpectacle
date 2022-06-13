@@ -38,16 +38,6 @@
                ReferencedContainer = "container:SortSpectacle.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8627700923FD1CD700E339EC"
-               BuildableName = "SortSpectacleUITests.xctest"
-               BlueprintName = "SortSpectacleUITests"
-               ReferencedContainer = "container:SortSpectacle.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

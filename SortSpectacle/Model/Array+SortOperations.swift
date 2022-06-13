@@ -104,4 +104,9 @@ extension Array where Element == Int {
       return self.count == other.count && self.sorted() == other.sorted()
    }
 
+   mutating func replace(from source: ArraySlice<Int>, to index: Int) {
+      let endIndex = index + source.count
+      self.replaceSubrange(index..<endIndex, with: source)
+   }
+
 }
