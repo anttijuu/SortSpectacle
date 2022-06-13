@@ -2,9 +2,11 @@
 
 Sort Spectacle is a Swift/SwiftUI app demonstrating visually how different sorting algorithms behave.
 
-Currently Bubble sort, Lamp sort, Shell sort, Heap sort and Radix sort are implemented. Additionally, Swift Foundation Array's sort() is called, to compare performance in the final step of the demonstration. Swift's Array.sort() implements Tim sort.
+Currently Bubble sort, Lamp sort, Shell sort, Heap sort, Radix sort and Block sort (variant of Merge sort) are implemented. Additionally, Swift Foundation Array's sort() is called, to compare performance in the final step of the demonstration. Swift's Array.sort() implements Tim sort.
 
-See a short [demo video](https://youtu.be/5oQp6j5spfM) of the app running on iPhone 11. Video is old and does not include Heap sort.
+Note that the Block sort is not yet animated, so it will be executed only at the end when measuring performance without animation.
+
+See a short [demo video](https://youtu.be/5oQp6j5spfM) of the app running on iPhone 11.
 
 ## How to use
 
@@ -16,12 +18,12 @@ Please note that you should build the app in **Release configuration** to make i
 
 More sorting methods. E.g. implement Timsort from Foundation source code to execute step by step.
 
-New video including Heap sort.
+Implement step by step version of Block sort.
 
 Better settings / configuration: 
 
 - count of numbers to sort (has a picker at front page but it is ugly)
-- fancier graphics to display (not compromizing the sort speed, though), especially with low count of numbers to sort
+- fancier graphics & audio  (not compromizing the sort speed, though), especially with low count of numbers to sort
 - adjusting speed, depending on array size (is already slower if count is small but does not look too good)
 
 ## Contributing
@@ -44,6 +46,6 @@ MIT. See the LICENSE file for details.
 
 ## Who did this
 
-(c) Antti Juustila, 2020 All Rights Reserved.
+(c) Antti Juustila, 2020-2022 All Rights Reserved.
 INTERACT Research Group, University of Oulu, Finland
 

@@ -287,7 +287,8 @@ class SortSpectacleTests: XCTestCase {
    }
 
    func testMergeSortReal() {
-      //intArray.prepare(range: 1...20)
+      // intArray.prepare(range: -99...99, count: 1024)
+      // intArray = [5,3,1,7,9,0,1,6,2,5,353,122,4,999,324,642,6236];
       var sort = MergeSort(arraySize: intArray.count)
       let size = intArray.count
       let expectation = XCTestExpectation(description: "Sorting done using \(sort.name) in less than \(timeout) seconds")
@@ -299,7 +300,6 @@ class SortSpectacleTests: XCTestCase {
          }
       }
       wait(for: [expectation], timeout: timeout)
-      //print("\(intArray)")
       XCTAssertEqual(size, intArray.count, "Array size is not the same than before sorting.")
       XCTAssert(intArray.isSorted())
    }

@@ -9,11 +9,15 @@
 import Foundation
 
 /**
- Mergesort is an i..<
+ Block sort, or block merge sort, is a sorting algorithm combining at least two merge operations with an insertion sort to arrive at O(n log n) in-place stable sorting. It gets its name from the observation that merging two sorted lists, A and B, is equivalent to breaking A into evenly sized blocks, inserting each A block into B under special rules, and merging AB pairs.
 
- See https://en.wikipedia.org/wiki/Merge_sort
+ WikiSort by Mike McFadden is an implementation of "block merge sort", which is a stable merge sort based on the work described in "Ratio based stable in-place merging", by Pok-Son Kim and Arne Kutzner. It's generally as fast as a standard merge sort while using O(1) memory, and can be modified to use additional memory optionally provided to it which can further improve its speed.
 
- Based on https://github.com/BonzaiThePenguin/WikiSort/blob/master/WikiSort.java
+ The implementation here is a Swift port of Java implementation by Mike McFadden in  https://github.com/BonzaiThePenguin/WikiSort/blob/master/WikiSort.java
+
+ For details and commented code, see the original Java version.
+
+ Note that the Java version has a `Range` class, here we are using the Swift `Range<Int>` instead.
  */
 struct MergeSort: SortMethod {
    /**
@@ -32,24 +36,34 @@ struct MergeSort: SortMethod {
 
    /// Name of the sorting method.
    var name: String {
-      "MergeSort"
+      "Block Sort"
    }
 
    /// Description of the sorting method.
    var description: String {
       """
-      Merge sort is an..<
+      Merge sort is a divide-and-conquer algorithm that was invented by John von Neumann in 1945. A detailed description and analysis of bottom-up merge sort appeared in a report by Goldstine and von Neumann as early as 1948.
+
+      Block sort, or block merge sort, is a sorting algorithm combining at least two merge operations with an insertion sort to arrive at O(n log n) in-place stable sorting. It gets its name from the observation that merging two sorted lists, A and B, is equivalent to breaking A into evenly sized blocks, inserting each A block into B under special rules, and merging AB pairs.
+
+      The implementation here is a Swift port of Java implementation of Block sort by Mike McFadden.
+
+      WikiSort by Mike McFadden is an implementation of "block merge sort", which is a stable merge sort based on the work described in "Ratio based stable in-place merging", by Pok-Son Kim and Arne Kutzner. It's generally as fast as a standard merge sort while using O(1) memory, and can be modified to use additional memory optionally provided to it which can further improve its speed.
       """
    }
 
    /// Weblinks to read more information.
    var webLinks: [(String, String)] {
-      [("Wikipedia on Mege sort", "https://en.wikipedia.org/wiki/Merge_sort")]
+      [
+         ("Wikipedia on Block sort", "https://en.wikipedia.org/wiki/Block_sort"),
+         ("Wikipedia on Merge sort", "https://en.wikipedia.org/wiki/Merge_sort"),
+         ("WikiSort by Mike McFadden", "https://github.com/BonzaiThePenguin/WikiSort")
+      ]
    }
 
    /// Restarts the sorting method by giving intial values to member variables.
    mutating func restart() {
-
+      // Nada
    }
 
    /// Executes a step of the sorting.
@@ -57,11 +71,13 @@ struct MergeSort: SortMethod {
    /// - parameter swappedItems The structure to put the indexes to sort, sorting is done elsewhere.
    /// - returns Returns true if the sorting is done.
    mutating func nextStep(array: [Int], swappedItems: inout SwappedItems) -> Bool {
-
-     return false
+      // TODO: Implement the phased version (good luck in that...)
+     return true
    }
 
    // MARK: - Helper types
+   /// Helper data type
+   /// For details, see the original Java version linked in the comments/docs.
    struct Pull {
       var from: Int = 0
       var to: Int = 0
@@ -76,8 +92,9 @@ struct MergeSort: SortMethod {
       }
    }
 
+   /// Helper data type
+   /// For details, see the original Java version linked in the comments/docs.
    struct Iterator {
-
       let size: Int
       var powerOfTwo: Int
       var numerator: Int = 0
@@ -127,7 +144,7 @@ struct MergeSort: SortMethod {
             numeratorStep -= denominator
             decimalStep += 1
          }
-         return (decimalStep < size)
+         return decimalStep < size
       }
 
       static func floorPowerOfTwo(of value: Int) -> Int {
@@ -137,7 +154,7 @@ struct MergeSort: SortMethod {
          x = x | (x >> 4)
          x = x | (x >> 8)
          x = x | (x >> 16)
-         x = x | (x >> 32)
+//         x = x | (x >> 32)
          return x - (x >> 1)
       }
 
@@ -157,7 +174,7 @@ struct MergeSort: SortMethod {
             end = mid
          }
       }
-      if start == range.upperBound - 1 && array[start] < 0 {
+      if start == range.upperBound - 1 && array[start] < value {
          start += 1
       }
       return start
@@ -168,7 +185,7 @@ struct MergeSort: SortMethod {
       var end = range.upperBound - 1
       while start < end {
          let mid = start + (end - start)/2
-         if array[mid] >= 0 {
+         if value >= array[mid] {
             start = mid + 1
          } else {
             end = mid
@@ -201,7 +218,7 @@ struct MergeSort: SortMethod {
       }
       let skip: Int = max(range.count/unique, 1)
       var index: Int = range.lowerBound + skip
-      while array[index - 1] >= value {
+      while value >= array[index - 1] {
          if index >= range.upperBound - skip {
             return binaryLast(array: array, value: value, range: index..<range.upperBound)
          }
@@ -231,7 +248,7 @@ struct MergeSort: SortMethod {
       }
       let skip: Int = max(range.count/unique, 1)
       var index: Int = range.upperBound - skip
-      while index > range.lowerBound && array[index - 1] < value {
+      while index > range.lowerBound && value < array[index - 1] {
          if index < range.lowerBound + skip {
             return binaryLast(array: array, value: value, range: range.lowerBound..<index)
          }
@@ -409,6 +426,9 @@ struct MergeSort: SortMethod {
          aRange = aRange.lowerBound + amount..<bRange.upperBound
          let index = binaryLast(array: array, value: array[aRange.lowerBound], range: aRange)
          aRange = index..<aRange.upperBound
+         if aRange.count == 0 {
+            break
+         }
       }
       assert(size == array.count)
    }
@@ -422,17 +442,14 @@ struct MergeSort: SortMethod {
    }
 
    private func insertionSort(_ array: inout [Int], range: Range<Int>) {
-      for i in stride(from: range.lowerBound, to: range.upperBound, by: 1) {
+      for i in stride(from: range.lowerBound + 1, to: range.upperBound, by: 1) {
          let temp = array[i]
-         var outerJ = i
-         for j in stride(from: i, to: range.lowerBound, by: -1) {
-            if temp < array[j - 1] {
-               break
-            }
+         var j = i
+         while j > range.lowerBound && temp < array[j - 1] {
             array[j] = array[j - 1]
-            outerJ = j
+            j -= 1
          }
-         array[outerJ] = temp
+         array[j] = temp
       }
    }
 
@@ -707,7 +724,7 @@ struct MergeSort: SortMethod {
                }
 
                last = b.upperBound - 1
-               count = 0
+               count = 1
                while count < find {
                   index = findFirstBackward(array: array, value: array[last], range: b.lowerBound..<last, unique: find - count)
                   if index == b.lowerBound {
@@ -760,7 +777,7 @@ struct MergeSort: SortMethod {
                if pull[pullIndex].to < pull[pullIndex].from {
                   index = pull[pullIndex].from
                   for count in stride(from: 1, to: length, by: 1) {
-                     index = findFirstBackward(array: array, value: array[index - 1], range: pull[pullIndex].to..<pull[pullIndex].from - (count - 1), unique: length-count)
+                     index = findFirstBackward(array: array, value: array[index - 1], range: pull[pullIndex].to..<pull[pullIndex].from - (count - 1), unique: length - count)
                      let range = index + 1..<pull[pullIndex].from + 1
                      rotate(array: &array, amount: range.count - count, range: range, useCache: true)
                      pull[pullIndex].from = index + count
@@ -817,10 +834,13 @@ struct MergeSort: SortMethod {
                   blockA = A.lowerBound..<A.upperBound
                   firstA = A.lowerBound..<A.lowerBound + blockA.count % blockSize
                   var indexA = buffer1.lowerBound
-                  for index in stride(from: firstA.upperBound, to: blockA.upperBound-1, by: blockSize) {
+                  index = firstA.upperBound
+                  while index < blockA.upperBound {
                      array.swapAt(indexA, index)
                      indexA += 1
+                     index += blockSize
                   }
+
                   lastA = firstA
                   lastB = 0..<0
                   blockB = B.lowerBound..<B.lowerBound+min(blockSize, B.count)
@@ -835,15 +855,17 @@ struct MergeSort: SortMethod {
 
                   if blockA.count > 0 {
                      while true {
-                        if (lastB.count > 0 && array[lastB.upperBound - 1] > array[indexA]) || blockB.count == 0 {
+                        if (lastB.count > 0 && array[lastB.upperBound - 1] >= array[indexA]) || blockB.count == 0 {
                            let bSplit = binaryFirst(array: array, value: array[indexA], range: lastB)
                            let bRemaining = lastB.upperBound - bSplit
 
                            var minA = blockA.lowerBound
-                           for findA in stride(from: minA + blockSize, to: blockA.upperBound, by: blockSize) {
+                           var findA = minA + blockSize
+                           while findA < blockA.upperBound {
                               if array[findA] < array[minA] {
                                  minA = findA
                               }
+                              findA += blockSize
                            }
                            blockSwap(array: &array, start1: blockA.lowerBound, start2: minA, blockSize: blockSize)
 
@@ -877,7 +899,7 @@ struct MergeSort: SortMethod {
                         } else if blockB.count < blockSize {
                            rotate(array: &array, amount: -blockB.count, range: blockA.lowerBound..<blockB.upperBound, useCache: false)
                            lastB = blockA.lowerBound..<blockA.lowerBound + blockB.count
-                           blockA = blockA.lowerBound..<blockA.upperBound + blockB.count
+                           blockA = blockA.lowerBound+blockB.count..<blockA.upperBound + blockB.count
                            blockB = blockB.lowerBound..<blockB.lowerBound
                         } else {
                            blockSwap(array: &array, start1: blockA.lowerBound, start2: blockB.lowerBound, blockSize: blockSize)
