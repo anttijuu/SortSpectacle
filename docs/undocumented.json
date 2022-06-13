@@ -85,6 +85,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/Array+SortOperations.swift",
+      "line": 107,
+      "symbol": "Array.replace(from:to:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/HeapSort.swift",
       "line": 130,
       "symbol": "HeapSort.startIndex",
@@ -159,6 +166,265 @@
       "line": 46,
       "symbol": "LampSort.state",
       "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 82,
+      "symbol": "MergeSort.Pull.from",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 83,
+      "symbol": "MergeSort.Pull.to",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 84,
+      "symbol": "MergeSort.Pull.count",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 85,
+      "symbol": "MergeSort.Pull.range",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 87,
+      "symbol": "MergeSort.Pull.reset()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 98,
+      "symbol": "MergeSort.Iterator.size",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 99,
+      "symbol": "MergeSort.Iterator.powerOfTwo",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 100,
+      "symbol": "MergeSort.Iterator.numerator",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 101,
+      "symbol": "MergeSort.Iterator.decimal",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 103,
+      "symbol": "MergeSort.Iterator.denominator",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 104,
+      "symbol": "MergeSort.Iterator.decimalStep",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 105,
+      "symbol": "MergeSort.Iterator.numeratorStep",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 107,
+      "symbol": "MergeSort.Iterator.init(size:minLevel:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 116,
+      "symbol": "MergeSort.Iterator.begin()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 121,
+      "symbol": "MergeSort.Iterator.nextRange()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 132,
+      "symbol": "MergeSort.Iterator.finished",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 136,
+      "symbol": "MergeSort.Iterator.length",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 140,
+      "symbol": "MergeSort.Iterator.nextLevel()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 150,
+      "symbol": "MergeSort.Iterator.floorPowerOfTwo(of:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 163,
+      "symbol": "MergeSort.cacheSize",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 164,
+      "symbol": "MergeSort.cache",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 166,
+      "symbol": "MergeSort.binaryFirst(array:value:range:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 183,
+      "symbol": "MergeSort.binaryLast(array:value:range:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 200,
+      "symbol": "MergeSort.findFirstForward(array:value:range:unique:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 215,
+      "symbol": "MergeSort.findLastForward(array:value:range:unique:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 230,
+      "symbol": "MergeSort.findFirstBackward(array:value:range:unique:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 245,
+      "symbol": "MergeSort.findLastBackward(array:value:range:unique:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 260,
+      "symbol": "MergeSort.reverse(_:in:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 269,
+      "symbol": "MergeSort.blockSwap(array:start1:start2:blockSize:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 278,
+      "symbol": "MergeSort.rotate(array:amount:range:useCache:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 321,
+      "symbol": "MergeSort.merge(from:a:b:into:atIndex:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 351,
+      "symbol": "MergeSort.mergeExternal(_:a:b:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 384,
+      "symbol": "MergeSort.mergeInternal(_:a:b:buffer:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 412,
+      "symbol": "MergeSort.mergeInPlace(array:a:b:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 436,
+      "symbol": "MergeSort.netSwap(array:order:range:x:y:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 444,
+      "symbol": "MergeSort.insertionSort(_:range:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/MergeSort.swift",
+      "line": 457,
+      "symbol": "MergeSort.sort(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
@@ -366,7 +632,7 @@
     },
     {
       "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/Model/SortCoordinator.swift",
-      "line": 309,
+      "line": 310,
       "symbol": "SortCoordinator.nextMethod()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -387,7 +653,7 @@
     },
     {
       "file": "/Users/juustila/workspace/SortSpectacle/SortSpectacle/ResultsView.swift",
-      "line": 58,
+      "line": 56,
       "symbol": "ResultsView_Previews",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
