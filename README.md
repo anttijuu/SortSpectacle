@@ -27,9 +27,9 @@ Please note that for performance comparisons, you should build the app in **Rele
 
 - [ ] More sorting methods. E.g. implement Timsort from Foundation source code to execute step by step.
 - [ ] Implement step by step version of Block sort.
-- [ ] Count of numbers to sort (has a picker at front page but it is ugly).
-- [ ] Fancier graphics & audio  (not compromizing the sort speed, though), especially with low count of numbers to sort.
-- [ ] Adjusting speed, depending on array size (is already slower if count is small but does not look too good).
+- [ ] Count of numbers to sort -- currently has a picker at front page but it is ugly.
+- [ ] Fancier graphics & audio, but not compromising the sort speed, though, especially with low count of numbers to sort.
+- [ ] Adjusting speed, depending on array size -- is already slower if count is small but does not look too good.
 
 ## Contributing
 
