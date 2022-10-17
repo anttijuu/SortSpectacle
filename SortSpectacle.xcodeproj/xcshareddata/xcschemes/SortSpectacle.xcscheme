@@ -26,7 +26,23 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      enableAddressSanitizer = "YES"
+      enableASanStackUseAfterReturn = "YES"
+      enableUBSanitizer = "YES"
+      systemAttachmentLifetime = "keepNever"
+      userAttachmentLifetime = "keepAlways"
+      codeCoverageEnabled = "YES"
+      onlyGenerateCoverageForSpecifiedTargets = "YES">
+      <CodeCoverageTargets>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "86276FE823FD1CD600E339EC"
+            BuildableName = "SortSpectacle.app"
+            BlueprintName = "SortSpectacle"
+            ReferencedContainer = "container:SortSpectacle.xcodeproj">
+         </BuildableReference>
+      </CodeCoverageTargets>
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -35,16 +51,6 @@
                BlueprintIdentifier = "86276FFE23FD1CD700E339EC"
                BuildableName = "SortSpectacleTests.xctest"
                BlueprintName = "SortSpectacleTests"
-               ReferencedContainer = "container:SortSpectacle.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8627700923FD1CD700E339EC"
-               BuildableName = "SortSpectacleUITests.xctest"
-               BlueprintName = "SortSpectacleUITests"
                ReferencedContainer = "container:SortSpectacle.xcodeproj">
             </BuildableReference>
          </TestableReference>

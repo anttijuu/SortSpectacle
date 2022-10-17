@@ -146,6 +146,7 @@ class SortCoordinator: ObservableObject {
       sortingMethods.append(LampSort(arraySize: array.count))
       sortingMethods.append(HeapSort(arraySize: array.count))
       sortingMethods.append(RadixSort(arraySize: array.count))
+      sortingMethods.append(MergeSort(arraySize: array.count))
       sortingMethods.append(NativeSwiftSort(arraySize: array.count))
       currentMethodIndex = 0
       currentMethod = sortingMethods[currentMethodIndex]

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>LampSort Structure Reference</title>
+    <title>MergeSort Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -13,8 +13,8 @@
     <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Struct/LampSort" class="dashAnchor"></a>
-    <a title="LampSort Structure Reference"></a>
+    <a name="//apple_ref/swift/Struct/MergeSort" class="dashAnchor"></a>
+    <a title="MergeSort Structure Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">SortSpectacle Docs</a> (64% documented)</p>
@@ -30,7 +30,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">SortSpectacle Reference</a>
         <img id="carat" src="../img/carat.png" alt=""/>
-        LampSort Structure Reference
+        MergeSort Structure Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -144,20 +144,23 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>LampSort</h1>
+            <h1>MergeSort</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">LampSort</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/SortMethod.html">SortMethod</a></span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">MergeSort</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/SortMethod.html">SortMethod</a></span></code></pre>
 
                 </div>
               </div>
-            <p>LampSort implements the non-recursive version of QuickSort.</p>
+            <p>Block sort, or block merge sort, is a sorting algorithm combining at least two merge operations with an insertion sort to arrive at O(n log n) in-place stable sorting. It gets its name from the observation that merging two sorted lists, A and B, is equivalent to breaking A into evenly sized blocks, inserting each A block into B under special rules, and merging AB pairs.</p>
 
-<p>The algorithm uses two stacks to keep lower and higher indexes between which sorting
-happens, and sorts these ranges. See the animation in action on how this method behaves.</p>
+<p>WikiSort by Mike McFadden is an implementation of &ldquo;block merge sort&rdquo;, which is a stable merge sort based on the work described in &ldquo;Ratio based stable in-place merging&rdquo;, by Pok-Son Kim and Arne Kutzner. It&rsquo;s generally as fast as a standard merge sort while using O(1) memory, and can be modified to use additional memory optionally provided to it which can further improve its speed.</p>
 
-<p>For more information, see e.g. <a href="https://medium.com/concerning-pharo/lampsort-a-non-recursive-quicksort-implementation-4d4891b217bd">https://medium.com/concerning-pharo/lampsort-a-non-recursive-quicksort-implementation-4d4891b217bd</a></p>
+<p>The implementation here is a Swift port of Java implementation by Mike McFadden in  <a href="https://github.com/BonzaiThePenguin/WikiSort/blob/master/WikiSort.java">https://github.com/BonzaiThePenguin/WikiSort/blob/master/WikiSort.java</a></p>
+
+<p>For details and commented code, see the original Java version.</p>
+
+<p>Note that the Java version has a <code>Range</code> class, here we are using the Swift <code>Range&lt;Int&gt;</code> instead.</p>
 
           </section>
           <section class="section task-group-section">
@@ -166,197 +169,9 @@ happens, and sorts these ranges. See the animation in action on how this method 
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13SortSpectacle0A6MethodP4sizeSivp"></a>
-                    <a name="//apple_ref/swift/Property/size" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13SortSpectacle0A6MethodP4sizeSivp">size</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">size</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13SortSpectacle04LampA0V4lows33_2FCA08766527A1C929FF07B913DD636BLLAA5StackVySiGvp"></a>
-                    <a name="//apple_ref/swift/Property/lows" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13SortSpectacle04LampA0V4lows33_2FCA08766527A1C929FF07B913DD636BLLAA5StackVySiGvp">lows</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Holds the indexes to the lower indexes of areas to sort.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">lows</span><span class="p">:</span> <span class="kt"><a href="../Structs/Stack.html">Stack</a></span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13SortSpectacle04LampA0V5highs33_2FCA08766527A1C929FF07B913DD636BLLAA5StackVySiGvp"></a>
-                    <a name="//apple_ref/swift/Property/highs" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13SortSpectacle04LampA0V5highs33_2FCA08766527A1C929FF07B913DD636BLLAA5StackVySiGvp">highs</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Holds the indexes to the higher indes values to sort.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">highs</span><span class="p">:</span> <span class="kt"><a href="../Structs/Stack.html">Stack</a></span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13SortSpectacle04LampA0V5State33_2FCA08766527A1C929FF07B913DD636BLLO"></a>
-                    <a name="//apple_ref/swift/Enum/State" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13SortSpectacle04LampA0V5State33_2FCA08766527A1C929FF07B913DD636BLLO">State</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The state variable used in step by step sorting.</p>
-
-                        <a href="../Structs/LampSort/State.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">enum</span> <span class="kt">State</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13SortSpectacle04LampA0V4nameSSvp"></a>
-                    <a name="//apple_ref/swift/Property/name" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13SortSpectacle04LampA0V4nameSSvp">name</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The name of the sort method.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13SortSpectacle04LampA0V11descriptionSSvp"></a>
-                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13SortSpectacle04LampA0V11descriptionSSvp">description</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Short description for the sort method.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13SortSpectacle0A6MethodP8webLinksSaySS_SStGvp"></a>
-                    <a name="//apple_ref/swift/Property/webLinks" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13SortSpectacle0A6MethodP8webLinksSaySS_SStGvp">webLinks</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">webLinks</span><span class="p">:</span> <span class="p">[(</span><span class="kt">String</span><span class="p">,</span> <span class="kt">String</span><span class="p">)]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13SortSpectacle04LampA0V9arraySizeACSi_tcfc"></a>
+                    <a name="/s:13SortSpectacle05MergeA0V9arraySizeACSi_tcfc"></a>
                     <a name="//apple_ref/swift/Method/init(arraySize:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13SortSpectacle04LampA0V9arraySizeACSi_tcfc">init(arraySize:<wbr>)</a>
+                    <a class="token" href="#/s:13SortSpectacle05MergeA0V9arraySizeACSi_tcfc">init(arraySize:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -364,7 +179,7 @@ happens, and sorts these ranges. See the animation in action on how this method 
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Initializes the sorting method.</p>
+                        <p>Initializes the Heapsort with the size of the array to sort.</p>
 
                       </div>
                       <div class="declaration">
@@ -381,9 +196,9 @@ happens, and sorts these ranges. See the animation in action on how this method 
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13SortSpectacle04LampA0V7restartyyF"></a>
-                    <a name="//apple_ref/swift/Method/restart()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13SortSpectacle04LampA0V7restartyyF">restart()</a>
+                    <a name="/s:13SortSpectacle05MergeA0V4sizeSivp"></a>
+                    <a name="//apple_ref/swift/Property/size" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle05MergeA0V4sizeSivp">size</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -391,7 +206,115 @@ happens, and sorts these ranges. See the animation in action on how this method 
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Restarts the method by resetting all members to initial state.</p>
+                        <p>The array size.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">size</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SortSpectacle05MergeA0V4nameSSvp"></a>
+                    <a name="//apple_ref/swift/Property/name" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle05MergeA0V4nameSSvp">name</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Name of the sorting method.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SortSpectacle05MergeA0V11descriptionSSvp"></a>
+                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle05MergeA0V11descriptionSSvp">description</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Description of the sorting method.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SortSpectacle05MergeA0V8webLinksSaySS_SStGvp"></a>
+                    <a name="//apple_ref/swift/Property/webLinks" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle05MergeA0V8webLinksSaySS_SStGvp">webLinks</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Weblinks to read more information.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">webLinks</span><span class="p">:</span> <span class="p">[(</span><span class="kt">String</span><span class="p">,</span> <span class="kt">String</span><span class="p">)]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SortSpectacle05MergeA0V7restartyyF"></a>
+                    <a name="//apple_ref/swift/Method/restart()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle05MergeA0V7restartyyF">restart()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Restarts the sorting method by giving intial values to member variables.</p>
 
                       </div>
                       <div class="declaration">
@@ -408,9 +331,9 @@ happens, and sorts these ranges. See the animation in action on how this method 
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13SortSpectacle04LampA0V8nextStep5array12swappedItemsSbSaySiG_AA07SwappedH0VztF"></a>
+                    <a name="/s:13SortSpectacle05MergeA0V8nextStep5array12swappedItemsSbSaySiG_AA07SwappedH0VztF"></a>
                     <a name="//apple_ref/swift/Method/nextStep(array:swappedItems:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13SortSpectacle04LampA0V8nextStep5array12swappedItemsSbSaySiG_AA07SwappedH0VztF">nextStep(array:<wbr>swappedItems:<wbr>)</a>
+                    <a class="token" href="#/s:13SortSpectacle05MergeA0V8nextStep5array12swappedItemsSbSaySiG_AA07SwappedH0VztF">nextStep(array:<wbr>swappedItems:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -418,7 +341,7 @@ happens, and sorts these ranges. See the animation in action on how this method 
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Peforms a step in Lampsort. Caller will do the actual moving/swapping of values in the array.</p>
+                        <p>Executes a step of the sorting.</p>
 
                       </div>
                       <div class="declaration">
@@ -429,50 +352,28 @@ happens, and sorts these ranges. See the animation in action on how this method 
 
                         </div>
                       </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>array</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The array containing the elements to sort.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>swappedItems</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The object which will have the indexes to swap after step has been executed.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>Returns true if after this step, the array has been sorted.</p>
-                      </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Helper%20types"></a>
+                <a name="//apple_ref/swift/Section/Helper types" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Helper%20types"></a>
+                  <h3 class="section-name"><span>Helper types</span>
+</h3>
+                </div>
+              </div>
+              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13SortSpectacle04LampA0V13realAlgorithm5arrayySaySiGz_tF"></a>
-                    <a name="//apple_ref/swift/Method/realAlgorithm(array:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13SortSpectacle04LampA0V13realAlgorithm5arrayySaySiGz_tF">realAlgorithm(array:<wbr>)</a>
+                    <a name="/s:13SortSpectacle05MergeA0V4PullV"></a>
+                    <a name="//apple_ref/swift/Struct/Pull" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle05MergeA0V4PullV">Pull</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -480,7 +381,63 @@ happens, and sorts these ranges. See the animation in action on how this method 
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Executes the &ldquo;real&rdquo; Lampsort algoritm in one go using loops.</p>
+                        <p>Helper data type
+For details, see the original Java version linked in the comments/docs.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">Pull</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SortSpectacle05MergeA0V8IteratorV"></a>
+                    <a name="//apple_ref/swift/Struct/Iterator" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle05MergeA0V8IteratorV">Iterator</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Helper data type
+For details, see the original Java version linked in the comments/docs.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">Iterator</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SortSpectacle05MergeA0V13realAlgorithm5arrayySaySiGz_tF"></a>
+                    <a name="//apple_ref/swift/Method/realAlgorithm(array:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SortSpectacle05MergeA0V13realAlgorithm5arrayySaySiGz_tF">realAlgorithm(array:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The real algorithm without step-by-step execution.</p>
 
                       </div>
                       <div class="declaration">
@@ -490,25 +447,6 @@ happens, and sorts these ranges. See the animation in action on how this method 
                           <pre class="highlight swift"><code><span class="k">mutating</span> <span class="kd">func</span> <span class="nf">realAlgorithm</span><span class="p">(</span><span class="nv">array</span><span class="p">:</span> <span class="k">inout</span> <span class="p">[</span><span class="kt">Int</span><span class="p">])</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>array</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The array to sort.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                     </section>
                   </div>

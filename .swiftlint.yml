@@ -3,3 +3,8 @@ disabled_rules:
  - line_length
  - todo
  - trailing_whitespace
+ - identifier_name
+ - function_body_length
+ - cyclomatic_complexity
+ - type_body_length
+ - file_length

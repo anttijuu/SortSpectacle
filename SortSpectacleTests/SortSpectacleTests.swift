@@ -27,6 +27,7 @@ class SortSpectacleTests: XCTestCase {
       }
       count = Int.random(in: 2...maxArraySize)
       intArray.prepare(range: range, count: count)
+      print("Testing random array of size \(count)")
    }
 
    override func tearDown() {
@@ -282,6 +283,24 @@ class SortSpectacleTests: XCTestCase {
          }
       }
       wait(for: [expectation], timeout: timeout)
+      XCTAssert(intArray.isSorted())
+   }
+
+   func testMergeSortReal() {
+      // intArray.prepare(range: -99...99, count: 1024)
+      // intArray = [5,3,1,7,9,0,1,6,2,5,353,122,4,999,324,642,6236];
+      var sort = MergeSort(arraySize: intArray.count)
+      let size = intArray.count
+      let expectation = XCTestExpectation(description: "Sorting done using \(sort.name) in less than \(timeout) seconds")
+      intArray.shuffle()
+      DispatchQueue.global().sync { [self] in
+         self.measure {
+            sort.realAlgorithm(array: &intArray)
+            expectation.fulfill()
+         }
+      }
+      wait(for: [expectation], timeout: timeout)
+      XCTAssertEqual(size, intArray.count, "Array size is not the same than before sorting.")
       XCTAssert(intArray.isSorted())
    }
 

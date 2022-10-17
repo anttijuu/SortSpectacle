@@ -4,24 +4,14 @@
 <dict>
 	<key>classNames</key>
 	<dict>
-		<key>SortSpectacleCollectionTests</key>
+		<key>SortSpectacleTests</key>
 		<dict>
-			<key>testCopying()</key>
+			<key>testMergeSortReal()</key>
 			<dict>
 				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
 				<dict>
 					<key>baselineAverage</key>
-					<real>0.000012</real>
-					<key>baselineIntegrationDisplayName</key>
-					<string>Local Baseline</string>
-				</dict>
-			</dict>
-			<key>testPerformanceExample()</key>
-			<dict>
-				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
-				<dict>
-					<key>baselineAverage</key>
-					<real>0.001760</real>
+					<real>0.001456</real>
 					<key>baselineIntegrationDisplayName</key>
 					<string>Local Baseline</string>
 				</dict>
