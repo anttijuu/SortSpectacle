@@ -269,8 +269,8 @@ class SortCoordinator: ObservableObject {
          if debug { print("in stop, moving to measuring state") }
          DispatchQueue.main.asyncAfter(deadline: .now()+2, execute: { [self] in
             state = .measuring
-            prepareOriginalArray(with: 10000)
-            description = "Comparing algorithms with \(array.count) numbers..."
+            prepareOriginalArray(with: 100_000)
+				description = "Comparing algorithms with \(array.count.formatted()) numbers..."
             performanceTable.removeAll(keepingCapacity: true)
             timer = Timer.scheduledTimer(withTimeInterval: waitingForNextSortMethod, repeats: false) { _ in
                self.execute()
@@ -281,7 +281,7 @@ class SortCoordinator: ObservableObject {
          if debug { print("in stop, moving to atEnd state") }
          state = .atEnd
          prepareOriginalArray(with: countOfNumbers)
-         description = "Compare results in sorting \(array.count) numbers"
+			description = "Compare results in sorting \(array.count.formatted()) numbers"
          executing = false
 
       default:

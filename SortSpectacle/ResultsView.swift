@@ -49,6 +49,7 @@ struct ResultsView: View {
                Text("Back to start")
             }
          }
+			.padding()
       }
    }
 }

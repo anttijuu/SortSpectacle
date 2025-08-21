@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3102DC6F24A3577B0082D3B8 /* SortMethodDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3102DC6E24A3577B0082D3B8 /* SortMethodDetailView.swift */; };
 		310D16AD2404157C00EB1863 /* SortCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310D16AC2404157C00EB1863 /* SortCoordinator.swift */; };
+		313D70002E5705C400418023 /* SortSpectacleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313D6FFF2E5705BE00418023 /* SortSpectacleApp.swift */; };
 		31469E8A2422392B00C6E864 /* ShellSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31469E892422392B00C6E864 /* ShellSort.swift */; };
 		317E18672406551600D5DD7E /* LampSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317E18662406551600D5DD7E /* LampSort.swift */; };
 		317E186B24065FD800D5DD7E /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317E186A24065FD800D5DD7E /* Stack.swift */; };
@@ -18,12 +19,9 @@
 		31EC2A51248D2BED00193A87 /* NativeSwiftSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EC2A50248D2BED00193A87 /* NativeSwiftSort.swift */; };
 		31F5750C270DE2B900573636 /* HeapSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F5750B270DE2B900573636 /* HeapSort.swift */; };
 		8613E0D7248A6E160082F255 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8613E0D6248A6E160082F255 /* ResultsView.swift */; };
-		86276FED23FD1CD600E339EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86276FEC23FD1CD600E339EC /* AppDelegate.swift */; };
-		86276FEF23FD1CD600E339EC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86276FEE23FD1CD600E339EC /* SceneDelegate.swift */; };
 		86276FF123FD1CD600E339EC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86276FF023FD1CD600E339EC /* ContentView.swift */; };
 		86276FF323FD1CD700E339EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86276FF223FD1CD700E339EC /* Assets.xcassets */; };
 		86276FF623FD1CD700E339EC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86276FF523FD1CD700E339EC /* Preview Assets.xcassets */; };
-		86276FF923FD1CD700E339EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86276FF723FD1CD700E339EC /* LaunchScreen.storyboard */; };
 		8627700423FD1CD700E339EC /* SortSpectacleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8627700323FD1CD700E339EC /* SortSpectacleTests.swift */; };
 		8627701E23FD201F00E339EC /* Array+SortOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8627701D23FD201F00E339EC /* Array+SortOperations.swift */; };
 		865CD06D251DCE0A006BFC9D /* RadixSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865CD06C251DCE0A006BFC9D /* RadixSort.swift */; };
@@ -51,6 +49,7 @@
 /* Begin PBXFileReference section */
 		3102DC6E24A3577B0082D3B8 /* SortMethodDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortMethodDetailView.swift; sourceTree = "<group>"; };
 		310D16AC2404157C00EB1863 /* SortCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCoordinator.swift; sourceTree = "<group>"; };
+		313D6FFF2E5705BE00418023 /* SortSpectacleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortSpectacleApp.swift; sourceTree = "<group>"; };
 		31469E892422392B00C6E864 /* ShellSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellSort.swift; sourceTree = "<group>"; };
 		3159E6B52428AC4F00315192 /* SortSpectacle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SortSpectacle.entitlements; sourceTree = "<group>"; };
 		317E18662406551600D5DD7E /* LampSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LampSort.swift; sourceTree = "<group>"; };
@@ -63,12 +62,9 @@
 		31F5750B270DE2B900573636 /* HeapSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeapSort.swift; sourceTree = "<group>"; };
 		8613E0D6248A6E160082F255 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResultsView.swift; path = SortSpectacle/ResultsView.swift; sourceTree = SOURCE_ROOT; };
 		86276FE923FD1CD600E339EC /* SortSpectacle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SortSpectacle.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		86276FEC23FD1CD600E339EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		86276FEE23FD1CD600E339EC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		86276FF023FD1CD600E339EC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		86276FF223FD1CD700E339EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		86276FF523FD1CD700E339EC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		86276FF823FD1CD700E339EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		86276FFA23FD1CD700E339EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		86276FFF23FD1CD700E339EC /* SortSpectacleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SortSpectacleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8627700323FD1CD700E339EC /* SortSpectacleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortSpectacleTests.swift; sourceTree = "<group>"; };
@@ -145,16 +141,14 @@
 		86276FEB23FD1CD600E339EC /* SortSpectacle */ = {
 			isa = PBXGroup;
 			children = (
+				313D6FFF2E5705BE00418023 /* SortSpectacleApp.swift */,
 				3159E6B52428AC4F00315192 /* SortSpectacle.entitlements */,
 				8627701C23FD1FF600E339EC /* Model */,
-				86276FEC23FD1CD600E339EC /* AppDelegate.swift */,
-				86276FEE23FD1CD600E339EC /* SceneDelegate.swift */,
 				31989D9A249134D100FD7A88 /* IntroView.swift */,
 				86276FF023FD1CD600E339EC /* ContentView.swift */,
 				8613E0D6248A6E160082F255 /* ResultsView.swift */,
 				3102DC6E24A3577B0082D3B8 /* SortMethodDetailView.swift */,
 				86276FF223FD1CD700E339EC /* Assets.xcassets */,
-				86276FF723FD1CD700E339EC /* LaunchScreen.storyboard */,
 				86276FFA23FD1CD700E339EC /* Info.plist */,
 				86276FF423FD1CD700E339EC /* Preview Content */,
 			);
@@ -259,8 +253,9 @@
 		86276FE123FD1CD600E339EC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1640;
 				ORGANIZATIONNAME = "Antti Juustila";
 				TargetAttributes = {
 					86276FE823FD1CD600E339EC = {
@@ -301,7 +296,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86276FF923FD1CD700E339EC /* LaunchScreen.storyboard in Resources */,
 				86276FF623FD1CD700E339EC /* Preview Assets.xcassets in Resources */,
 				86276FF323FD1CD700E339EC /* Assets.xcassets in Resources */,
 			);
@@ -349,13 +343,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				31469E8A2422392B00C6E864 /* ShellSort.swift in Sources */,
-				86276FED23FD1CD600E339EC /* AppDelegate.swift in Sources */,
 				865CD06D251DCE0A006BFC9D /* RadixSort.swift in Sources */,
 				31F5750C270DE2B900573636 /* HeapSort.swift in Sources */,
 				31BED2BA27019DBA0042EB5B /* SortSpectacle.docc in Sources */,
 				317E186B24065FD800D5DD7E /* Stack.swift in Sources */,
 				31E2199A283945C900C71BB0 /* MergeSort.swift in Sources */,
-				86276FEF23FD1CD600E339EC /* SceneDelegate.swift in Sources */,
+				313D70002E5705C400418023 /* SortSpectacleApp.swift in Sources */,
 				31989D9B249134D100FD7A88 /* IntroView.swift in Sources */,
 				86BFEF2E2403D9310016690A /* SortMethod.swift in Sources */,
 				8613E0D7248A6E160082F255 /* ResultsView.swift in Sources */,
@@ -399,17 +392,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		86276FF723FD1CD700E339EC /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				86276FF823FD1CD700E339EC /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		8627701123FD1CD700E339EC /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -449,6 +431,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -511,6 +494,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -535,19 +519,29 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SortSpectacle/SortSpectacle.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"SortSpectacle/Preview Content\"";
 				DEVELOPMENT_TEAM = "$(inherited)";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SortSpectacle/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Sort Spectacle";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 0.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
 				RUN_DOCUMENTATION_COMPILER = YES;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -559,19 +553,29 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SortSpectacle/SortSpectacle.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"SortSpectacle/Preview Content\"";
 				DEVELOPMENT_TEAM = "$(inherited)";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SortSpectacle/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Sort Spectacle";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 0.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
 				RUN_DOCUMENTATION_COMPILER = YES;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -580,7 +584,6 @@
 		8627701723FD1CD700E339EC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "$(inherited)";
@@ -602,7 +605,6 @@
 		8627701823FD1CD700E339EC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "$(inherited)";
@@ -624,7 +626,6 @@
 		8627701A23FD1CD700E339EC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "$(inherited)";
 				INFOPLIST_FILE = SortSpectacleUITests/Info.plist;
@@ -644,7 +645,6 @@
 		8627701B23FD1CD700E339EC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "$(inherited)";
 				INFOPLIST_FILE = SortSpectacleUITests/Info.plist;

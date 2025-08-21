@@ -48,6 +48,7 @@ struct IntroView: View {
             Text("Tap to start")
          }
       }
+		.padding()
    }
 }
 

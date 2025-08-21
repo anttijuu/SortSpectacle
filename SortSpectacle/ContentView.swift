@@ -26,7 +26,9 @@ struct NumbersLineShape: Shape {
 
    /**
     Initializes the shape by providing the array which contains the numbers to be drawn.
-    - parameter sourceArray: The array to draw.
+	 - parameter sourceArray: The array to draw.
+	 ///- Parameter activeInd1: In which index/indices the algorithm is currently operating
+	 ///- Parameter activeInd2: In which index/indices the algorithm is currently operating
    */
    init(sourceArray: [Int]?, activeInd1: Int, activeInd2: Int) {
       if let arr = sourceArray {

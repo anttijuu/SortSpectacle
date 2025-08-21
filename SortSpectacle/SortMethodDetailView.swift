@@ -11,6 +11,8 @@ import SwiftUI
 struct SortMethodDetailView: View {
    var sortMethod: SortMethod
 
+	@Environment(\.openURL) private var openURL
+	
    var body: some View {
       VStack {
          Text(sortMethod.description)
@@ -18,7 +20,7 @@ struct SortMethodDetailView: View {
          ForEach(0..<sortMethod.webLinks.count, id: \.self) { linkIndex in
             Button(action: {
                if let url = URL(string: self.sortMethod.webLinks[linkIndex].1) {
-                  UIApplication.shared.open(url)
+                  openURL(url)
                }
             }) {
                HStack {
@@ -30,7 +32,7 @@ struct SortMethodDetailView: View {
          .padding(.bottom)
       }
       .padding()
-      .navigationBarTitle(sortMethod.name)
+      .navigationTitle(sortMethod.name)
    }
 
    //            Link(description, destination: URL(string: link)!) {
